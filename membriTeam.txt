@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 Fabricio Madaio
-<<<<<<< HEAD
-
 Giovanni Leo
-=======
 Luigi Durso
->>>>>>> luigi
-=======
-Fabrizio Magayo
 Guido Ownatore rizzo
->>>>>>> guido
-=======
-Fabricio Madaio Raffaele ceruso o boss
->>>>>>> raffaele
+Raffaele ceruso o boss
+
