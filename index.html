@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width">
+			<meta name="description" content="Sito E-Commerce">
+			<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+			<meta name="author" content="Fabricio Nicolas Madaio">
+
+			<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+			</script>
+			<![endif]-->
+
+			<title>Sito E-Commerce	</title>
+			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/singup.css">
+
+			<script src="javascript/utils.js"></script>
+			<script src="javascript/showcase.js"></script>
+			<script src="javascript/navBar.js"></script>
+			<script> 
+				window.onload = function(e){ 
+					startNavBar();
+					startShowcase();
+				}
+			</script>
+	</head>
+
+	<body>
+	
+			<header>
+				<a href="javascript:toHome()">
+					<img src="img/logo.png" class="logo" alt="CheesE-Commerce" />
+				</a>
+			</header>
+			
+			<nav>
+
+				<ul>
+					<li class="menu-dropdown">
+						
+							<div class="menu-icon" onclick="menuMobile();">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</div>
+							
+							<div class="menu-content" onclick="blockReset();">
+							<ul>
+								<li>
+									<a  href="javascript:toHome()"> Prodotti </a>
+								</li>
+								<li>
+									<a href = "UserCart"> Carrello </a>
+								</li>
+								<li>
+									<a href="UserSignupForm"> Registrazione </a>
+								</li>
+							</ul>
+						  </div>
+						
+					</li>
+					
+					<li class = "fullmenu">
+						<a href="javascript:toHome()"> Prodotti </a>
+					</li>
+					<li class = "fullmenu">
+						<a href = "UserCart"> Carrello </a>
+					</li>
+					<li class = "fullmenu">
+						<a href="UserSignupForm"> Registrazione </a>
+					</li>
+					
+					<li style="float:right;overflow:hidden">
+						<a href = "UserCart" class="menubutton"><img src="img/cart.png" style="width: 30px;" alt="cart"></a>
+					</li>
+					
+					<li class="login-dropdown">
+						<a id="loginButton" onclick="loginForm();">
+								Login 
+						</a>
+						<div class="login-content" onclick="blockReset();">
+						  
+								<form class="form" id="formLogin" action="login" method="POST">
+									<input class="input-text fillrow" name="username" id="username" type="text" placeholder="Username" style="margin-bottom: 3px;" required> 
+									<input class="input-text fillrow" name="password" id="password" type="password" placeholder="Password" style="margin-bottom: 14px;" required>
+										<div class='error-li' style='display:block;margin-bottom: 0px;'>
+											<p>username e/o password errati</p>
+										</div>
+									<br>
+									<input type="submit" class="submit" value="Login" style="padding: 8px;">
+								
+								</form>
+								<form class="form" id="formLogout" action="logout">
+									 <input type="submit" class="submit" value="Logout" style="padding: 8px;"> 	
+								</form>
+						</div>
+					</li>
+					
+				</ul>
+				
+				<ul class="searchBar">
+					
+					<li class="search">
+						<div style="margin-left: 12px;">
+						<div class="search">
+							<a class="search">
+								<img src="img/search.png" class="product-preview" alt="formaggio" />
+							</a>
+							<div style="overflow: hidden;">
+								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
+							</div>
+						</div>
+						</div>
+					</li>
+					
+					<li class="search-settings">
+						<div>
+							<p>Ordina per:</p>
+						</div>
+					
+						<div>
+							<select id="ordinamento" class="search-settings" onchange="startShowcase()" style="font-size: 13px;">
+								<option value="DESC">Prezzo decrescente</option>
+								<option value="ASC">Prezzo crescente</option>
+							</select>
+						</div>
+					</li>
+					<li class="search-settings">
+						<div>
+							<p>Prezzo da:</p>
+						</div>
+						<div style="margin:8px">
+							<select id="inizioFascia" class="number" onchange="startShowcase()">
+								<option value=""></option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="4">4</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+							</select>
+							<span>a:</span>
+							<select id="fineFascia" class="number"  onchange="startShowcase()">
+								<option value=""></option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="4">4</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+			</nav>
+			
+			<section>
+				<table class="alternate" id="catalogTable">
+				  
+				</table>
+				<br>
+			</section>
+				
+			
+			<footer style="text-align:center">
+				<div class="background">
+					<div class="wrapper">
+					
+						<img src="svg/logo.svg" alt="logo"/>
+						<label>
+							Copyright @ Webmaster
+						</label>
+					</div>
+				</div>
+			</footer>
+
+	</body>
+
+</html>

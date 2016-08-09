@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <listener>
+    <listener-class>
+		database.DatabaseInitializer
+		</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>AdminIndex</servlet-name>
+    <servlet-class>controllers.admin.AdminIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminIndex</servlet-name>
+    <url-pattern>/admin/</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserIndex</servlet-name>
+    <servlet-class>controllers.user.UserIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserIndex</servlet-name>
+    <url-pattern> </url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>UserIndex</welcome-file>
+  </welcome-file-list>
+</web-app>
