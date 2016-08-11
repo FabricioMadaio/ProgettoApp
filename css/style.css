@@ -160,7 +160,7 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: #F3A10D;
+	background-color: #507BF8;
 	border-radius: 4px;
 	box-shadow: 4px 4px 1px #EEE;
 	border: 1px solid #DDD;
@@ -287,7 +287,7 @@ footer div.background{
 	margin-left: 8px;
     margin-right: 8px;
 	text-align:center;
-	background-color: #F3AC0D;
+	background-color: #507BF8;
 	box-shadow: 4px 0px 1px #EEE;
 }
 
@@ -317,7 +317,7 @@ footer label{
 
 .login-content {
 	right:0;
-	border: 1px solid #F3A10D;
+	border: 1px solid #25A7E4;
 	transition: all 0.2s ease-in;
 	border-radius: 6px;
     display: none;
@@ -334,7 +334,7 @@ footer label{
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #F3A10D;
+    border-bottom: 7px solid #25A7E4;
     position: absolute;
     top: -7px;
     right: 9px;
@@ -345,7 +345,7 @@ footer label{
     display: inline-block;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid #F2F2F2;
+    border-bottom: 6px solid #25A7E4;
     position: absolute;
     top: -6px;
     right: 10px;
@@ -356,7 +356,7 @@ footer label{
 	margin: 6px 9px 9px 9px;
     padding: 4px 6px 8px 6px;
     border-radius: 3px;
-    background: #F3C10D;
+    background: #628AFF;
     font-size: 1.2em;
     border: 0;
     position: relative;
@@ -386,7 +386,7 @@ footer label{
 	display:none;
 	position: absolute;
 	border-radius: 6px;
-    background-color: #F3B70D;
+    background-color: #628AFF;
     min-width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 0px;
