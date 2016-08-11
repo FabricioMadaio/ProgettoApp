@@ -72,11 +72,11 @@ input.input-text, input.bigrow, select, textarea,.amount{
 
 .submit:hover {
 	transition: all 0.2s ease-in-out;
-	background-color:#EF8315;
+	background-color:#2556E4;
 }
 
 .submit:active {
-	background-color:#EF590F;
+	background-color:#2556E4;
 }
 
 .submit:focus {
@@ -90,7 +90,7 @@ input.input-text, input.bigrow, select, textarea,.amount{
     line-height: 17px;
     -webkit-appearance: none;
     border-radius: 6px;
-    background: #EFB00F;
+    background: #628AFF;
     border: 1px solid #d9d9de;
     color: #FFFFFF;
     margin: 0;
