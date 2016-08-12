@@ -50,7 +50,7 @@ input.input-text, input.bigrow, select, textarea,.amount{
 	
 	border-radius: 6px;
     background: white;
-    border: 1px solid #d9d9de;
+    border: 1px solid #507bf8;
     color: #0f2105;
     font-size: 14px;
     margin: 0;
@@ -158,7 +158,7 @@ input{
 	 outline: none;
 }
 input.text:focus, input.input-text:focus, input.password:focus,.date:focus,select:focus,textarea:focus,.amount:focus{
-    border-color: #00a0ff;
+    border-color: #2c3093;
     background-color: #FFF;
     -webkit-transition: all 0.2s ease-in-out 0.4s;
     -moz-transition: all 0.2s ease-in-out 0.4s;

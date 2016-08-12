@@ -73,6 +73,12 @@ textarea{
 	height:64px;
 }
 
+
+header.bigHeader{
+	margin-bottom: 30px;
+    margin-top: 30px;
+}
+
 a.disabled , a.disabled:hover{
 	background-color: grey;
     color: #cccccc;
