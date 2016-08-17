@@ -1,0 +1,179 @@
+
+.title{
+	text-shadow:none;
+	color:black;
+}
+
+section.sectionbox{
+	width: 100%;
+	max-width: 500px;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	background-color: white;
+	box-shadow: 4px 4px 1px #EEE;
+	margin: auto;
+}
+
+fieldset{
+	border: 0px;
+}
+
+fieldset ol{
+	list-style: none; 
+	padding: 0px;
+}
+
+fieldset li{
+	width:100%;
+	float:none;
+}
+
+.error-li{
+	height: auto;
+    margin-bottom: 14px;
+    display:none;
+}
+
+.error-li p, p.error{
+	border: 1px solid red;
+    background-color: red;
+    color: white;
+    margin: 0px;
+    padding: 8px;
+    text-align: center;
+}
+
+input.input-text, input.bigrow, select, textarea,.amount{
+	box-sizing: border-box;
+    line-height: 17px;
+    -webkit-appearance: none;
+	
+	border-radius: 6px;
+    background: white;
+    border: 1px solid #507bf8;
+    color: #0f2105;
+    font-size: 14px;
+    margin: 0;
+    padding: 6px 5px;
+    -webkit-font-smoothing: antialiased;
+   	outline: none;
+}
+
+
+.amount{
+	 width:80px;
+	 padding: 3px 5px;
+}
+
+.amount:disabled{
+	 background: #eeeeee;
+}
+
+
+.submit:hover {
+	transition: all 0.2s ease-in-out;
+	background-color:#2556E4;
+}
+
+.submit:active {
+	background-color:#2556E4;
+}
+
+.submit:focus {
+	 outline: none;
+}
+
+
+.submit{
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 17px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    background: #628AFF;
+    border: 1px solid #d9d9de;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 10px 5px;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font: 15px Arial;
+	font-weight: bold;
+	
+}
+
+fieldset label{
+	color: #0f2105;
+	font: 14px arial;
+}	
+
+/*30% block element*/
+.littlerow{
+	width: 30%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/*70% ~ block element*/
+.bigrow{
+	width: 68%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/*100% block*/
+.fillrow{
+	width:100%;
+}
+	
+/*50% blocks*/
+.midrow-l{
+	width:48%;
+	float: left;
+}
+.midrow-r{
+	width:48%;
+	float: right;
+}
+
+div.graybox{
+	background-color: #ECE8E8;
+	padding: 10px;
+	border: 1px solid #D8D4D4;
+}
+
+li.remark{
+	height: auto;
+    width: auto;
+    padding: 6px;
+    text-align: center;
+    background-color: #F1F1F1;
+    padding: 10px;
+}
+
+input{
+	 outline: none;
+}
+input.text:focus, input.input-text:focus, input.password:focus,.date:focus,select:focus,textarea:focus,.amount:focus{
+    border-color: #2c3093;
+    background-color: #FFF;
+    -webkit-transition: all 0.2s ease-in-out 0.4s;
+    -moz-transition: all 0.2s ease-in-out 0.4s;
+    -ms-transition: all 0.2s ease-in-out 0.4s;
+    -o-transition: all 0.2s ease-in-out 0.4s;
+    transition: all 0.2s ease-in-out 0.4s;
+    -webkit-box-shadow: #e8f6ff 0 0 5px;
+    -moz-box-shadow: #e8f6ff 0 0 5px;
+    -ms-box-shadow: #e8f6ff 0 0 5px;
+    -o-box-shadow: #e8f6ff 0 0 5px;
+    box-shadow: #e8f6ff 0 0 5px;
+    outline: none;
+}
+
+input[type="text"]:disabled{
+	 background: #eeeeee;
+	 width: 100%;
+}
