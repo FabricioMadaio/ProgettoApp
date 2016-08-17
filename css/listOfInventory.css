@@ -1,0 +1,38 @@
+/*CSS per la lista di inventari*/
+.circle {
+  position: relative;
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-color: #38a9e4;
+  color: white;
+  font-family: Helvetica, Arial Black, sans;
+  font-size: 48px;
+  text-align: center;
+  margin: 25px;
+}
+
+.block-to-inline {
+  display: inline-block;
+  text-align: center;
+}
+
+.text-for-span{
+	color: #383636;
+	font-size:2em;
+	font-family:sans-serif; 
+}
+
+ .image-cutting{
+    -webkit-clip-path:circle(128px at 128px 128px);
+    clip-path:circle(128px at 128px 128px); 
+    width: 128px;
+    height:128px;
+ }
+ .text-for-last-span{
+	color: #383636;
+	font-size:2em;
+	font-family:sans-serif; 
+	visibility: hidden;
+}

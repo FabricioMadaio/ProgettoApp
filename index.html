@@ -15,15 +15,17 @@
 			<title>Company inventory</title>
 			<link rel="stylesheet" type="text/css" href="css/style.css">
 			<link rel="stylesheet" type="text/css" href="css/singup.css">
+			<link rel="stylesheet" type="text/css" href="css/listOfInventory.css">
+			<link rel="stylesheet" type="text/css" href="css/modal.css">
 
-			<script src="javascript/utils.js"></script>
-			<script src="javascript/showcase.js"></script>
-			<script src="javascript/navBar.js"></script>
+
+			<script src="javascript/common/utils.js"></script>
+			<script src="javascript/common/modal.js"></script>
+			<script src="javascript/common/navBar.js"></script>
 			<script> 
-				/*window.onload = function(e){ 
-					startNavBar();
-					startShowcase();
-				}*/
+				window.onload = function(e){ 
+					var m = new Modal("myModal");
+				}
 			</script>
 	</head>
 
@@ -108,8 +110,70 @@
 				</ul>
 			</nav>
 			
+			
+
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content">
+				<form class="form" id="formNew" action="login" method="POST">
+				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="myModal_close closeButton">×</a>
+						</li>
+						<li>
+							<p>Nuovo Inventario</p>
+						</li>
+					</ul>
+					<div class="modal-body">
+						
+							<p>Inserisci un nome per il tuo inventario</p>
+							<input type="text" class="input-text fillrow"/>
+							<br>
+							<br>
+					</div>
+					
+					<div class="modal-footer">
+							<input type="submit" class="submit submitButton" value="Crea"/>
+					</div>
+					
+				</form>
+			  </div>
+			 </div>
+			  <!-- Modal test End -->
+			
 			<section>
-				<H1>MATTEO E IL GRANDE PRETE</H1>
+	                <div class="block-to-inline">
+	                    <div class="circle">
+						</div>
+						<br/>
+						<span class="text-for-span">Vestiti</span>	
+	                </div>
+	                <div class="block-to-inline">
+						<div class="circle">
+						</div>
+						<br/>
+						<span class="text-for-span">Vestiti</span>		
+	                </div>
+	                <div class="block-to-inline">
+						<div class="circle">
+						</div>
+						<br/>
+						<span class="text-for-span">Vestiti</span>
+					</div>
+					
+					<!-- Trigger/Open The Modal -->
+	                <div class="block-to-inline myModal_open">
+						<div class="circle">
+						 <img class="image-cutting" src="img/logoAdd.png" alt="logo aggiungi prodotto">
+						</div>
+						<br/>
+						<span class="text-for-last-span" >lorem</span><!--This span is for verical allignamet of the div elements-->
+						
+					</div>
+
 				<table class="alternate" id="catalogTable">
 				  
 				</table>
