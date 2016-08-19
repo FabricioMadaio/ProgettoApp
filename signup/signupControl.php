@@ -1,8 +1,9 @@
 
+<!-- CONTROLLER MODULE -->
 <?php
-	// define variables and set to empty values
-	$nameErr = $emailErr = $genderErr = $websiteErr = "";
-	$name = $email = $gender = $comment = $website = "";
+	
+	/*init model*/
+	include 'initSignup.php';
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  if (empty($_POST["name"])) {
@@ -47,11 +48,7 @@
 		$gender = test_input($_POST["gender"]);
 	  }
 	}
-	
-	session_start();
-	$_SESSION["name"] = $_POST["name"];
-	
-	 header("location: signup.php");
+	include "signupView.php";
 
 	function test_input($data) {
 	  $data = trim($data);
