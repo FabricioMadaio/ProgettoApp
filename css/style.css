@@ -226,6 +226,14 @@ table{
 		box-shadow: 4px 4px 1px #EEE;
 }
 
+.inventoryContainer{
+		width: 100%;
+		border: 1px solid #DDD;
+		border-radius: 3px;
+		background-color: white;
+		box-shadow: 4px 4px 1px #EEE;
+}
+
 td,th{
 		text-align:left;
 		padding: 8px;

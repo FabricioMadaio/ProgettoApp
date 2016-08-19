@@ -2,8 +2,9 @@
 .circle {
   position: relative;
   display: inline-block;
-  width: 128px;
-  height: 128px;
+  /*dimensioni calcolate in base alle dimensioni della croce di 52px  (52px = 60% di 86px)*/
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   background-color: #38a9e4;
   color: white;
@@ -11,28 +12,36 @@
   font-size: 48px;
   text-align: center;
   margin: 25px;
+  margin-bottom: 0px;
+  margin-top: 14px;
+}
+
+.circle:active{
+	background-color: #74cdfb;
 }
 
 .block-to-inline {
   display: inline-block;
   text-align: center;
+  width: 140px;
 }
 
 .text-for-span{
 	color: #383636;
-	font-size:2em;
+	font-size:1.2em;
 	font-family:sans-serif; 
+    display: block;
+	overflow: hidden;
+    margin: 5px;
+	white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
  .image-cutting{
-    -webkit-clip-path:circle(128px at 128px 128px);
-    clip-path:circle(128px at 128px 128px); 
-    width: 128px;
-    height:128px;
+    position: relative;
+    margin: auto;
+	/*lunghezza relativa al genitore, il cerchio sottostante*/
+    width: 52%;
+	/*posizionamento in centro (NOTA - calcolare sempre in questo modo: (100 - percentualeWidth) / 2)*/
+    margin-top: 24%;
  }
- .text-for-last-span{
-	color: #383636;
-	font-size:2em;
-	font-family:sans-serif; 
-	visibility: hidden;
-}
