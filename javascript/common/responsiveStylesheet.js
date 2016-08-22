@@ -1,6 +1,6 @@
 /******************************************************************** 
 
-	MODULO NAVBAR:
+	MODULO RESPONSIVE STYLESHEET:
 	
 	gestisce il comportamento della barra di navigazione
 	in ambito mobile
@@ -9,21 +9,21 @@
 
 *********************************************************************/
 
+var elementStartWidth = 140;
+
 /*funzione di inizio (da chiamare nella onload)*/
-function startNavBar(){ 
+function startStylesheet(){ 
 
 	/*chiudo tutti i menu cliccando sul body*/
 	document.body.onclick = reset;
 	window.onclick = reset;
+	var timeout;
 	
 	/*inserisco il listener del resize*/
 	window.addEventListener("resize", onResize);
 	
 	/*carico i dati della local storage*/
-	//loadUser();
 	onResize();
-	
-	setErrors();
 
 	/*funzione per aggiustare la navbar dopo il cambio di orientamento dello schermo*/
 	window.addEventListener('orientationchange', function () {
@@ -80,34 +80,18 @@ function startNavBar(){
     });
 }
 
-
-function setErrors(){
-	
-	//nome e cognome portano un unico messaggio di errore
-	
-	var error = document.getElementsByClassName("error-li");
-	
-	if(error.length!=0){
-		loginForm();
-	}
-}
-
-
 /*chiude tutti i menu a dropdown*/
 function reset(){
 	resetVisibility("menu-content");
-	resetVisibility("login-content");
 }
 
 /* apre e chiude il form di login*/
 function loginForm(){
 	resetVisibility("menu-content");
-	updateVisibility("login-content");
 }
 
 /* apre e chiude il menu mobile*/
 function menuMobile(){
-	resetVisibility("login-content");
 	updateVisibility("menu-content");
 }
 
@@ -137,41 +121,25 @@ function blockReset(){
 	window.event.stopPropagation();
 }
 
-/*registra l'username in localstorage*/
-function loginUsername(username){
-	localStorage.setItem("username",username);
-}
-
-/*carica i dati dell'utente da local storage*/
-function loadUser(){
-	
-	if(typeof(Storage) !== "undefined") {
-		
-		var username = localStorage["username"];
-		if(username){
-			resetVisibility("login-content");
-			var formLogin = document.getElementById("formLogin");
-			var formLogout = document.getElementById("formLogout");
-			var button = document.getElementById("loginButton");
-			
-			/*modifico l'intestazione il tasto logout e aggiungo il saluto*/
-			formLogin.style.display="none";
-			formLogout.style.display="block";
-			
-			button.text="Benvenuto, "+username+"!";
-			
-		}
-	} else {
-		alert("Sorry! No Web Storage support..");
-	}
-}
-
 /*ridimensionamento schermo*/
 function onResize(){
 	
-	var menu = document.getElementsByClassName("login-dropdown")[0];
-	var nav = document.getElementsByTagName("nav")[0];
+	/*aggiusto la dimensione dei riquadri in modo da riempire il contenitore*/
 	
-	/*applico questo stile per riempire tutta la navbar rimasta con il saluto*/
-	//menu.style.maxWidth = ""+(nav.offsetWidth - 116)+"px";
+	var container = document.getElementsByClassName("responsiveGrid")[0];
+	var elms = document.getElementsByClassName('inventoryElem');
+	
+	if(elms.length>0){
+		
+		var capacity = parseInt(container.clientWidth/elementStartWidth)+1;
+		var newWidth = (container.clientWidth/capacity)-1;
+		
+		if(elms.length<capacity) newWidth = elementStartWidth;
+			
+		for (var i = 0; i < elms.length; i++) {
+			elms[i].style.width = ""+newWidth+"px";
+		}
+		
+	}
+	
 }

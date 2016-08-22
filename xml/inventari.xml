@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inventoryList>
+	<inventory>
+		<id>1</id>
+		<name>Vestiti con nome lungo</name>
+		<color>red</color>
+	</inventory>
+	<inventory>
+		<id>1</id>
+		<name>Vestiti con nome lungo</name>
+		<color>blue</color>
+	</inventory>
+	<inventory>
+		<id>1</id>
+		<name>Vestiti con nome lungo</name>
+		<color>green</color>
+	</inventory>
+	<inventory>
+		<id>1</id>
+		<name>Vestiti con nome lungo</name>
+		<color>orange</color>
+	</inventory>
+</inventoryList>

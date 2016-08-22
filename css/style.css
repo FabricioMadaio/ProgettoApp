@@ -171,6 +171,7 @@ ul {
 	box-shadow: 4px 4px 1px #EEE;
 	border: 1px solid #DDD;
 	position: relative;
+	width: 100%;
 }
 
 ul.searchBar{
@@ -226,12 +227,17 @@ table{
 		box-shadow: 4px 4px 1px #EEE;
 }
 
-.inventoryContainer{
+.responsiveGrid{
 		width: 100%;
 		border: 1px solid #DDD;
 		border-radius: 3px;
 		background-color: white;
 		box-shadow: 4px 4px 1px #EEE;
+}
+.responsiveGrid:after {
+    clear: both;
+    content: "";
+    display: block;
 }
 
 td,th{
