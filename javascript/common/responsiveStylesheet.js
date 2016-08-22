@@ -131,11 +131,16 @@ function onResize(){
 	
 	if(elms.length>0){
 		
+		/*
+			dimensioni contenitore/dimensione di partenza rettangolo
+			NOTA: +1 perche ne aggiungiamo un altro per riempire lo spazio extra
+		*/
 		var capacity = parseInt(container.clientWidth/elementStartWidth)+1;
-		var newWidth = (container.clientWidth/capacity)-1;
+		var newWidth = (container.clientWidth/capacity);
 		
 		if(elms.length<capacity) newWidth = elementStartWidth;
 			
+		/*aggiorna le dimensioni finali*/
 		for (var i = 0; i < elms.length; i++) {
 			elms[i].style.width = ""+newWidth+"px";
 		}
