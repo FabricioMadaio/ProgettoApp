@@ -29,6 +29,7 @@
 
 <body style="text-align:center">
 
+
 			<header class="bigHeader">
 				<a href="javascript:toHome()">
 					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
@@ -43,17 +44,19 @@
 							
 							<li>
 								<input class="input-text midrow-l" name="nome" placeholder="Nome" type="text" value="<?php echo $name;?>" required autofocus="autofocus">
-								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="${user.surname}" type="text" required>
+								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="<?php echo $lastname;?>" type="text" required>
 							</li>
-							
 							<?php if(!empty($nameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$nameErr.'</p></li>';?>
+						    <?php if(!empty($lastnameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$lastnameErr.'</p></li>';?>
 							
 							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="${user.username}" type="text" required >
+								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $username;?>" type="text" required >
+							<?php if(!empty($username)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$username.'</p></li>';?>	
 							</li>
 							
 							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="${user.password}" type="password" required>
+								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
+								<?php if(!empty($username)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
 							</li>
 							<li>
 								<div style="display: inline-block;width: 100%;">
@@ -78,6 +81,9 @@
 					<br>
 				</form>
 			</section>
+
+			<?php $nameErr = $emailErr = $genderErr = $websiteErr =$passwordErr =$lastnameErr=$usernameErr= "";
+	$name = $email = $gender = $comment = $website =$password= $lastname =$username = ""; ?>
 
 	</body>
 
