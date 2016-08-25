@@ -1,15 +1,15 @@
 <?php
  //defiene data to coonect to the database
-function openDbConnectio()
+function openDbConnection()
 {
-	define('DB_USER', 'root');
-	define('DB_PSW', '');
-	define('DB_HOST', 'localhost');
-	define('DB_NAME', 'my_companyinventory');
+	$DB_USER ='root';
+	$DB_PSW  ='';
+	$DB_HOST ='localhost';
+	$DB_NAME ='my_companyinventory';
 
 	 static $conn;
 
-	 $conn = mysqli_connect(DB_HOST,DB_USER,DB_PSW,DB_NAME);
+	 $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PSW,$DB_NAME);
 
 	// Check connection
 	if (!$conn) 
@@ -19,15 +19,15 @@ function openDbConnectio()
 	  else
 	  {
 	    echo "connection ok";
-	    return conn;
+	    return $conn;
 	  }
 }
 
 function queryToDb($query)
    {
-   	 $connection = opnenDbConnection();
-   	 $result = mysqly_query($connection,$query);
-   	 return result;
+   	 $connection = openDbConnection();
+   	 $result = mysqli_query($connection,$query);
+   	 return $result;
    }
 
  ?>

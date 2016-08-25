@@ -1,11 +1,12 @@
 
 <!-- CONTROLLER MODULE -->
 <?php
-	
+
+	/*load dbConn*/
+	include 'dbConnection.php';
 	/*init model*/
 	include 'initSignup.php';
-	include 'dbConnection.php';
-
+	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (empty($_POST["nome"])) {
 	$nameErr = "Name is required";
