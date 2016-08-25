@@ -33,7 +33,7 @@
 	
 			<header>
 				<a href="javascript:toHome()">
-					<img src="../img/logoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 				</a>
 			</header>
 			
@@ -74,28 +74,6 @@
 						<a href="UserSignupForm"> Registrazione </a>
 					</li>
 					
-					<li class="login-dropdown">
-						<a id="loginButton" onclick="loginForm();">
-								Login 
-						</a>
-						<div class="login-content" onclick="blockReset();">
-						  
-								<form class="form" id="formLogin" action="login" method="POST">
-									<input class="input-text fillrow" name="username" id="username" type="text" placeholder="Username" style="margin-bottom: 3px;" required> 
-									<input class="input-text fillrow" name="password" id="password" type="password" placeholder="Password" style="margin-bottom: 14px;" required>
-										<div class='error-li' style='display:block;margin-bottom: 0px;'>
-											<p>username e/o password errati</p>
-										</div>
-									<br>
-									<input type="submit" class="submit" value="Login" style="padding: 8px;">
-								
-								</form>
-								<form class="form" id="formLogout" action="logout">
-									 <input type="submit" class="submit" value="Logout" style="padding: 8px;"> 	
-								</form>
-						</div>
-					</li>
-					
 				</ul>
 				
 			</nav>
@@ -104,28 +82,29 @@
 		
 			<section class="sectionbox" style="max-width:800px;text-align: center;">
 				
-				<br>
-				<div class="productImageContainer">
-					<img src="../img/prodotto1.jpg" id="previewImage" class="productImage" alt="Product" />
-					<input type="file" id="inputImage" class="inputImage" onchange="loadPreview(this)" name="file">
-					<div id="preview_ie"> </div>
-				</div>
-				
-				<br>
-				<br>
-				<fieldset>
-					<ol>
-						<li>
-							<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
-						</li>
-						
-						<li style="height: 128px">		
-							<textarea class="fillrow" style="height: 128px" name="descrizione" placeholder="Descrizione" required=""></textarea>
-						</li>
-						
-						
-					</ol>
-				</fieldset>
+				<form class="form" id="formNew" action="ItemControl.php" method="POST" enctype="multipart/form-data">
+					<br>
+					<div class="productImageContainer">
+						<img src="../img/prodotto1.jpg" id="previewImage" class="productImage" alt="Product" />
+						<input type="file" id="inputImage" class="inputImage" onchange="loadPreview(this)" name="image">
+					</div>
+					
+					<br>
+					<fieldset>
+						<ol>
+							<li>
+								<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
+							</li>
+							
+							<li style="height: 128px">		
+								<textarea class="fillrow" style="height: 128px" name="descrizione" placeholder="Descrizione" required=""></textarea>
+							</li>
+							<li style="margin-top: 9px;height: auto;">		
+								<input type="submit" class="submit submitRightButton" value="Carica">
+							</li>
+						</ol>
+					</fieldset>
+				</form>
 			</section>
 			
 			<br>

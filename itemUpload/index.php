@@ -2,5 +2,5 @@
 	/*init model*/
 	include 'Item.php';
 	/*load view*/
-	include 'itemView.php';
+	include 'ItemView.php';
 ?>

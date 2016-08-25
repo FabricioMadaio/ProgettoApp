@@ -1,9 +1,9 @@
 
 <!-- CONTROLLER MODULE -->
 <?php
-	
+
 	/*init model*/
-	include 'initItem.php';
+	include 'Item.php';
 	
 	/*file upload*/
 	include 'imageUpload.php';
@@ -31,7 +31,6 @@
 	  } else {
 		$item->description = test_input($_POST["description"]);
 	  }
-	  
 	  if(isset($_FILES['image'])) {
 			if( $_FILES['image']['size'] < $max_file_size ){
 			// get file extension
@@ -52,5 +51,5 @@
 	  
 	}
 	
-	include "itemView.php";
+	include "ItemView.php";
 ?>
