@@ -1,22 +1,28 @@
 
-function Modal(id){
+function Modal(id,config){
 	
 	this.id = id;
 	this.element = undefined;
+	this.config = config;
 	
 	//public methods
 	this.startModal = startModal;
 	
-	//private methods
-	this.close = function(){
-		this.element.style.display = "none";
-	}
-	this.open = function(){
-		this.element.style.display = "block";
-	}
-	
 	//initializer
 	this.startModal();
+}
+
+//private methods
+Modal.prototype.close=function(){
+	
+	if(this.config.onClose){this.config.onClose();}
+	this.element.style.display = "none";
+}
+
+Modal.prototype.open=function(){
+	
+	if(this.config.onOpen){this.config.onOpen();}
+	this.element.style.display = "block";
 }
 
 function startModal(){

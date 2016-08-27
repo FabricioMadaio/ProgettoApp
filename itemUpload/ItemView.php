@@ -14,26 +14,54 @@
 
 			<title>Sito E-Commerce	</title>
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
+			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 
 			<script src="../javascript/utils.js"></script>
+			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/showcase.js"></script>
 			<script src="../javascript/navBar.js"></script>
-			<script src="../javascript/imageUpload.js"></script>
+			<script src="../javascript/ImageUploader.js"></script>
 			
 			<script> 
 				window.onload = function(e){ 
 					startNavBar();
 					startShowcase();
+					
+					var uploader = new ImageUploader({
+						inputElement : document.getElementById('inputImage'),
+						uploadUrl : 'ItemControl.php',
+						onProgress : function(event) {
+							//$('#progress').text('Completed '+event.done+' files of '+event.total+' total.');
+							//$('#progressbar').progressbar({ value: (event.done / event.total) * 100 })
+						},
+						onFileComplete : function(event, file) {
+							//$('#fileProgress').append('Finished file '+file.fileName+' with response from server '+event.target.status+'<br />');    
+						},
+						onComplete : function(event) {
+							//$('#progress').text('Completed all '+event.done+' files!');
+							//$('#progressbar').progressbar({ value: (event.done / event.total) * 100 })
+						},
+						maxWidth: 100,
+						quality: 0.90, 
+						//timeout: 5000,
+						debug : true
+					});
+					
+					var m = new Modal("myModal",{
+						onOpen: function(){uploader.tryUpload();}
+					});
+					
 				}
 			</script>
+			
 	</head>
 
 	<body>
 	
 			<header>
 				<a href="javascript:toHome()">
-					<img src="../img/logoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 				</a>
 			</header>
 			
@@ -74,58 +102,69 @@
 						<a href="UserSignupForm"> Registrazione </a>
 					</li>
 					
-					<li class="login-dropdown">
-						<a id="loginButton" onclick="loginForm();">
-								Login 
-						</a>
-						<div class="login-content" onclick="blockReset();">
-						  
-								<form class="form" id="formLogin" action="login" method="POST">
-									<input class="input-text fillrow" name="username" id="username" type="text" placeholder="Username" style="margin-bottom: 3px;" required> 
-									<input class="input-text fillrow" name="password" id="password" type="password" placeholder="Password" style="margin-bottom: 14px;" required>
-										<div class='error-li' style='display:block;margin-bottom: 0px;'>
-											<p>username e/o password errati</p>
-										</div>
-									<br>
-									<input type="submit" class="submit" value="Login" style="padding: 8px;">
-								
-								</form>
-								<form class="form" id="formLogout" action="logout">
-									 <input type="submit" class="submit" value="Logout" style="padding: 8px;"> 	
-								</form>
-						</div>
-					</li>
-					
 				</ul>
 				
 			</nav>
+			
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content">
+				<form class="form" id="formNew" action="login" method="POST">
+				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="myModal_close closeButton">×</a>
+						</li>
+						<li>
+							<p>Caricamento</p>
+						</li>
+					</ul>
+					<div class="modal-body">
+						
+							<p>Inserisci un nome per il tuo inventario</p>
+							<input type="text" class="input-text fillrow"/>
+							<br>
+							<br>
+					</div>
+					
+					<div class="modal-footer">
+							<input type="submit" class="submit submitRightButton" value="Conferma"/>
+					</div>
+					
+				</form>
+			  </div>
+			 </div>
+			  <!-- Modal test End -->
 			
 			<br>
 		
 			<section class="sectionbox" style="max-width:800px;text-align: center;">
 				
-				<br>
-				<div class="productImageContainer">
-					<img src="../img/prodotto1.jpg" id="previewImage" class="productImage" alt="Product" />
-					<input type="file" id="inputImage" class="inputImage" onchange="loadPreview(this)" name="file">
-					<div id="preview_ie"> </div>
-				</div>
-				
-				<br>
-				<br>
-				<fieldset>
-					<ol>
-						<li>
-							<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
-						</li>
-						
-						<li style="height: 128px">		
-							<textarea class="fillrow" style="height: 128px" name="descrizione" placeholder="Descrizione" required=""></textarea>
-						</li>
-						
-						
-					</ol>
-				</fieldset>
+				<form class="form" id="formNew" action="" method="POST" enctype="multipart/form-data">
+					<br>
+					<div class="productImageContainer">
+						<img src="../img/prodotto1.jpg" id="previewImage" class="productImage" alt="Product" />
+						<input type="file" id="inputImage" class="inputImage" onchange="loadPreview(this)" name="image">
+					</div>
+					
+					<br>
+					<fieldset>
+						<ol>
+							<li>
+								<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
+							</li>
+							
+							<li style="height: 128px">		
+								<textarea class="fillrow" style="height: 128px" name="descrizione" placeholder="Descrizione" required=""></textarea>
+							</li>
+							<li style="margin-top: 9px;height: auto;">		
+								<input type="submit" class="submit submitRightButton myModal_open" value="Carica">
+							</li>
+						</ol>
+					</fieldset>
+				</form>
 			</section>
 			
 			<br>

@@ -32,13 +32,6 @@
     font-weight: bold;
 }
 
-.submitButton{
-	float: right;
-    display: inline-block;
-    width: auto;
-    padding: 10px 17px;
-}
-
 /* Modal form Footer */
 .modal-formFooter {
     display: inline-block;
