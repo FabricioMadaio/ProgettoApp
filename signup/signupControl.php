@@ -6,34 +6,60 @@
 	include 'dbConnection.php';
 	/*init model*/
 	include 'initSignup.php';
+
+	$nameCheck = $lastnameCheck = $usernameCheck = $passCheck = $residenceCheck =false;
 	
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (empty($_POST["nome"])) {
-	$nameErr = "Name is required";
-	} else {
-	$name = test_input($_POST["nome"]);
-	// check if name only contains letters and whitespace
-	if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-	$nameErr = "Only letters and white space allowed in name"; 
-	}
-	}
-	if (empty($_POST["cognome"])) {
-	$nameErr = "Lastname is required";
-	} else 
-	$lastname = test_input($_POST["cognome"]);
-	// check if name only contains letters and whitespace
-	if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) {
-	$lastnameErr = "Only letters and white space allowed in lastname"; 
+	if ($_SERVER["REQUEST_METHOD"] == "POST") 
+	{
+		if (empty($_POST["nome"])) 
+		{
+			$nameErr = "Name is required";
+		} 
+		else 
+		{
+			$name = test_input($_POST["nome"]);
+		// check if name only contains letters and whitespace
+			if (!preg_match("/^[a-zA-Z ]*$/",$name)) 
+			{
+			$nameErr = "Only letters and white space allowed in name"; 
+			}
+			else
+			{
+			$nameCheck = true;
+			}
+		}
+
+		if (empty($_POST["cognome"])) 
+		{
+			$lastnameErr = "Lastname is required";
+		}
+		else 
+		{
+			$lastname = test_input($_POST["cognome"]);
+			// check if name only contains letters and whitespace
+			if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) 
+			{
+				$lastnameErr = "Only letters and white space allowed in lastname"; 
+			}
+			else
+			{
+				$lastnameCheck=true;
+			}
+		}
+
+	if (empty($_POST["password"])) 
+	{
+		$passwordErr = "Password is required";
+	} 
+	else 
+	{
+		$password = test_input($_POST["password"]);
+		$passCheck=true;
 	}
 
-	if (empty($_POST["password"])) {
-	$nameErr = "Password is required";
-	} else {
-	$lastname = test_input($_POST["password"]);
-	}
-
-	if (empty($_POST["username"])) {
-	$usernameErr = "";
+	if (empty($_POST["username"])) 
+	{
+	$usernameErr = "username is required";
 	} 
 	else
     {
@@ -46,25 +72,58 @@
 	 		{
 	 			$usernameErr="username already exists";
 		 	}
+		 	else
+		 	{
+		 		$usernameCheck=true;
+		 	}
 
 	}
-}
 
-	if (empty($_POST["comment"])) { 
-	$comment = "";
-	} else
-	 {
-	$comment = test_input($_POST["comment"]);
-	}
+        if (empty($_POST["bday"])) 
+		{
+			$dateErr = "Date is required";
+		}
+		else 
+		{
+			$date = test_input($_POST["bday"]);
+			// check if name only contains letters and whitespace
+			$dateCheck=true;
+			
+		}
 
-	if (empty($_POST["gender"])) {
-	$genderErr = "Gender is required";
-	} else {
-	$gender = test_input($_POST["gender"]);
-	}
-	
+		if (empty($_POST["residenza"])) 
+		{
+			$residenceErr = "residence is required";
+		}
+		else 
+		{
+			$residence = test_input($_POST["residenza"]);
+			// check if name only contains letters and whitespace
+			if (!preg_match("/^[a-zA-Z ]*$/",$residence)) 
+			{
+				$residenceErr = "Only letters and white space allowed in residence"; 
+			}
+			else
+			{
+				$residenceCheck=true;
+			}
+		}
+
+		if($nameCheck==true && $lastnameCheck==true && $usernameCheck==true && $passCheck==true && $residenceCheck==true && $dateCheck ==true)
+        {
+        	echo "sono qui";
+        	$lastId = getLastId();
+        	$query = "INSERT INTO utenti (idUtente, username, password,nome,cognome,dataDiNascita,residenza) VALUES ('$lastId', '$username', '$password', '$name', '$lastname', '$date', '$residence')";
+        	queryToDb($query);
+        }
+        else
+        {
+        	echo "string";
+        }
+    }  
+
 	include "signupView.php";
-
+  
 
 	function test_input($data) {
 	  $data = trim($data);
@@ -73,24 +132,42 @@
 	  return $data;
 	}
 
+	
+    function getLastId()
+    {
+    	$lastId;
+    	$row;
+    	$query="SELECT idUtente FROM utenti ORDER BY idUtente DESC LIMIT 1";
+        $result = queryToDb($query);
+        if(mysqli_num_rows($result) > 0)
+        {
+   		    // output data of each row
+    	  while($row = mysqli_fetch_assoc($result))
+	      { 
+	      	$lastId = $row['idUtente'] +1;
+	       return $lastId;
+	      }
+        }
+
+    }
 
 	function check_username($username)
 	{
-		$conn = openDbConnection();
+		
 		$query ="SELECT username FROM utenti";
 		$result = queryToDb($query);
-		if(mysqli_num_rows($result) > 0)
-        {
-        	if (mysqli_num_rows($result) > 0) {
+		
+        
+      	if (mysqli_num_rows($result) > 0) {
    		    // output data of each row
-    	    while($row = mysqli_fetch_assoc($result)) {
-            if($row["username"] == $username)
+    	while($row = mysqli_fetch_assoc($result)) {
+            if(strcmp ($row["username"] , $username) == 0)
             {
                return true;
             } 
              return false;			
             }
 	      }
-        }
+        
     }
 ?>

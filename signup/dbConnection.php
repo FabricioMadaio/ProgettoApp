@@ -18,7 +18,6 @@ function openDbConnection()
 	   }
 	  else
 	  {
-	    echo "connection ok";
 	    return $conn;
 	  }
 }
@@ -27,6 +26,7 @@ function queryToDb($query)
    {
    	 $connection = openDbConnection();
    	 $result = mysqli_query($connection,$query);
+   	 mysqli_close($connection);
    	 return $result;
    }
 

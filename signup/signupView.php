@@ -51,24 +51,26 @@
 							
 							<li>
 								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $username;?>" type="text" required >
-							<?php if(!empty($username)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$username.'</p></li>';?>	
+							<?php if(!empty($usernameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$usernameErr.'</p></li>';?>	
 							</li>
 							
 							<li>
 								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
-								<?php if(!empty($username)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
+								<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
 							</li>
 							<li>
 								<div style="display: inline-block;width: 100%;">
 								
 									<label class="littlerow">Data di nascita</label>
-									<input class="bigrow" type="date" name="bday" value="${user.birthdate}" required >
+									<input class="bigrow" type="date" name="bday"  required >
 									
 								 </div>
+						    <?php if(!empty($dateErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dateErr.'</p></li>';?>
 							</li>
 							<li>
-								<input class="input-text fillrow" name="residenza" placeholder="Residenza" value="${user.residence}" type="text" required>
+								<input class="input-text fillrow" name="residenza" placeholder="Residenza"  type="text" required>
 							</li>
+							<?php if(!empty($residenceErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$residenceErr.'</p></li>';?>
 							
 						</ol>
 						
