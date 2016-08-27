@@ -8,10 +8,11 @@
 	/*file upload*/
 	include 'imageUpload.php';
 	// settings
-	$max_file_size = 1024*200; // 200kb
+	$max_file_size = 1024*1024; // 1MB
 	$valid_exts = array('jpeg', 'jpg', 'png', 'gif');
 	// thumbnail sizes
 	$sizes = array(100 => 100, 150 => 150, 250 => 250);
+	$msg = '';
 	
 	/* manage post method */
 
@@ -48,8 +49,35 @@
 			$msg = 'Please upload image smaller than 200KB';
 		  }
 	  }
-	  
+	  echo $msg;
 	}
-	
 	include "ItemView.php";
+	
+	
+	function test_input($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
+	}
+
+	function check_username($username)
+	{
+		$conn = openDbConnection();
+		$query ="SELECT username FROM utenti";
+		$result = queryToDb($query);
+		if(mysqli_num_rows($result) > 0)
+        {
+        	if (mysqli_num_rows($result) > 0) {
+   		    // output data of each row
+    	    while($row = mysqli_fetch_assoc($result)) {
+            if($row["username"] == $username)
+            {
+               return true;
+            } 
+             return false;			
+            }
+	      }
+        }
+    }
 ?>

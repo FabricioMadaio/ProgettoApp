@@ -46,6 +46,9 @@
 			case 'image/jpeg':
 				imagejpeg($tmp, $path.".jpeg", 100);
 			break;
+			case 'image/jpg':
+				imagejpeg($tmp, $path.".jpg", 100);
+			break;
 			case 'image/png':
 				imagepng($tmp, $path.".png", 0);
 			break;
