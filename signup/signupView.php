@@ -29,6 +29,7 @@
 
 <body style="text-align:center">
 
+
 			<header class="bigHeader">
 				<a href="javascript:toHome()">
 					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
@@ -43,29 +44,33 @@
 							
 							<li>
 								<input class="input-text midrow-l" name="nome" placeholder="Nome" type="text" value="<?php echo $name;?>" required autofocus="autofocus">
-								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="${user.surname}" type="text" required>
+								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="<?php echo $lastname;?>" type="text" required>
 							</li>
-							
 							<?php if(!empty($nameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$nameErr.'</p></li>';?>
+						    <?php if(!empty($lastnameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$lastnameErr.'</p></li>';?>
 							
 							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="${user.username}" type="text" required >
+								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $username;?>" type="text" required >
+							<?php if(!empty($usernameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$usernameErr.'</p></li>';?>	
 							</li>
 							
 							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="${user.password}" type="password" required>
+								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
+								<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
 							</li>
 							<li>
 								<div style="display: inline-block;width: 100%;">
 								
 									<label class="littlerow">Data di nascita</label>
-									<input class="bigrow" type="date" name="bday" value="${user.birthdate}" required >
+									<input class="bigrow" type="date" name="bday"  required >
 									
 								 </div>
+						    <?php if(!empty($dateErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dateErr.'</p></li>';?>
 							</li>
 							<li>
-								<input class="input-text fillrow" name="residenza" placeholder="Residenza" value="${user.residence}" type="text" required>
+								<input class="input-text fillrow" name="residenza" placeholder="Residenza"  type="text" required>
 							</li>
+							<?php if(!empty($residenceErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$residenceErr.'</p></li>';?>
 							
 						</ol>
 						
