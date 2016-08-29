@@ -18,6 +18,7 @@
 			
 			<script src="../javascript/singup.js"></script>
 			<script src="../javascript/comuni.js"></script>
+			<script src="../javascript/showPassword.js"></script>
 			
 			<script>
 				window.onload = function(){
@@ -55,20 +56,21 @@
 							</li>
 							
 							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
+								<input id="password" class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
 								<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
 							</li>
+							<li style="text-align:left;font-size:14px;font-family:Arial"> <input type="checkbox" style="float:left"  name="checkbox" onclick="showHide()"> Show password</li>
 							<li>
 								<div style="display: inline-block;width: 100%;">
 								
 									<label class="littlerow">Data di nascita</label>
-									<input class="bigrow" type="date" name="bday"  required >
+									<input class="bigrow" type="date" name="bday"  value="<?php echo $date;?>" required >
 									
 								 </div>
 						    <?php if(!empty($dateErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dateErr.'</p></li>';?>
 							</li>
 							<li>
-								<input class="input-text fillrow" name="residenza" placeholder="Residenza"  type="text" required>
+								<input class="input-text fillrow" name="residenza" placeholder="Residenza" value="<?php echo $residence;?>" type="text" required>
 							</li>
 							<?php if(!empty($residenceErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$residenceErr.'</p></li>';?>
 							
