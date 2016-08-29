@@ -3,7 +3,7 @@
 <?php
 
 	/*load dbConn*/
-	include 'dbConnection.php';
+	include '../php/dbConnection.php';
 	/*init model*/
 	include 'initSignup.php';
 
