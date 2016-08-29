@@ -9,7 +9,7 @@
 	include 'imageUpload.php';
 	// settings
 	$max_file_size = 1024*1024; // 1MB
-	$valid_exts = array('jpeg', 'jpg', 'png', 'gif');
+	$valid_typs = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
 	// thumbnail sizes
 	$sizes = array(150 => 150);
 	$msg = '';
@@ -35,10 +35,11 @@
 	  
 	  if(isset($_FILES['image'])) {
 			if( $_FILES['image']['size'] < $max_file_size ){
-			// get file extension
-			$ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+				
+			// get file type
+			$typ = $_FILES['image']['type'];
 			
-			if (in_array($ext, $valid_exts)) {
+			if (in_array($typ, $valid_typs)) {
 			  /* resize image */
 			  foreach ($sizes as $w => $h) {
 				$files[] = resize($w, $h);

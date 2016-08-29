@@ -152,8 +152,11 @@ ImageUploader.prototype.scaleImage = function(img, completionCallback) {
 	for(var i = 0; i < blobBin.length; i++) {
 	  array.push(blobBin.charCodeAt(i));
 	}
-	var blob = new Blob([new Uint8Array(array)], {type: 'image/png', name: "avatar.png"});
-	var file = new File( [blob], 'canvasImage.jpg', { type: 'image/jpeg' } );
+	blob = new Blob([new Uint8Array(array)], {type: 'image/jpeg', name: "fileName.jpeg"});
+	
+	var file = blob;
+	file.lastModifiedDate = new Date();
+    file.name = "fileName.jpeg";
 	
 	document.getElementById('previewImage').src = imageData;
 	this.images.push(file);
