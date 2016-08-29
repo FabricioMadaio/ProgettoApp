@@ -33,7 +33,7 @@
 		/* create image from string */
 		$image = imagecreatefromstring($imgString);
 		$tmp = imagecreatetruecolor($width, $height);
-		
+				$tmp = $image;
 		/* crop and resize image*/
 		imagecopyresampled(	$tmp, $image,
 							0, 0,

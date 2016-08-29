@@ -3,15 +3,6 @@
  * 
  */
  
- /*sostituisce l'immagine di preview con quella caricata da input file*/
- function loadPreview(input){
-	 
-	if (input.files && input.files[0]) {
-		
-		document.getElementById('previewImage').src = window.URL.createObjectURL(input.files[0]);
-	}
- }
- 
 var ImageUploader = function(config) {
     if (!config || (!config.inputElement) || (!config.inputElement.getAttribute) || config.inputElement.getAttribute('type') !== 'file') {
         throw new Error('Config object passed to ImageUploader constructor must include "inputElement" set to be an element of type="file"');
@@ -21,10 +12,23 @@ var ImageUploader = function(config) {
     var This = this;
 	
 	this.images = [];
+	this.xhr = null;
+	this.processing = false;
+	
+	This.progressObject = {
+		total : 1,
+		done : 0,
+		currentItemTotal : 0,
+		currentItemDone : 0
+	};
 	
     this.config.inputElement.addEventListener('change', function(event) {
         var fileArray = [];
         var cursor = 0;
+		This.processing = true;
+		This.images = [];
+
+		
         for (; cursor < This.config.inputElement.files.length; ++cursor) {
             fileArray.push(This.config.inputElement.files[cursor]);
         }
@@ -37,7 +41,7 @@ var ImageUploader = function(config) {
         if (This.config.onProgress) {
             This.config.onProgress(This.progressObject);
         }
-        This.handleFileList(fileArray, This.progressObject);
+        This.handleFileList(fileArray);
     }, false);
 
     if (This.config.debug) {
@@ -54,13 +58,7 @@ ImageUploader.prototype.handleFileList = function(fileArray) {
             This.handleFileList(fileArray);
         });
     } else if (fileArray.length === 1) {
-        this.handleFileSelection(fileArray[0], function() {
-            /*
-			if (This.config.onComplete) {
-                This.config.onComplete(This.progressObject);
-            }
-			*/
-        });
+        this.handleFileSelection(fileArray[0],function(){This.processing = false;});
     }
 };
 
@@ -82,10 +80,63 @@ ImageUploader.prototype.handleFileSelection = function(file, completionCallback)
 
 ImageUploader.prototype.scaleImage = function(img, completionCallback) {
 	
+	var orientation = 1;
+	
+	EXIF.getData(img, function () {
+		orientation = this.exifdata.Orientation;
+	});
+	
     var canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+	var minsize = Math.min(img.width,img.height);
+
+	var x = (img.width - minsize) / 2;
+	if(orientation<2) x = 0;
+	
+    canvas.width = minsize;
+    canvas.height = minsize;
+	
+	var ctx = canvas.getContext('2d');
+
+    switch (orientation) {
+      case 2:
+        // horizontal flip
+        ctx.translate(img.width, 0)
+        ctx.scale(-1, 1)
+        break
+      case 3:
+        // 180° rotate left
+        ctx.translate(img.width, img.height)
+        ctx.rotate(Math.PI)
+        break
+      case 4:
+        // vertical flip
+        ctx.translate(0, img.height)
+        ctx.scale(1, -1)
+        break
+      case 5:
+        // vertical flip + 90 rotate right
+        ctx.rotate(0.5 * Math.PI)
+        ctx.scale(1, -1)
+        break
+      case 6:
+        // 90° rotate right
+        ctx.rotate(0.5 * Math.PI)
+        ctx.translate(0, -img.height)
+        break
+      case 7:
+        // horizontal flip + 90 rotate right
+        ctx.rotate(0.5 * Math.PI)
+        ctx.translate(img.width, -img.height)
+        ctx.scale(-1, 1)
+        break
+      case 8:
+        // 90° rotate left
+        ctx.rotate(-0.5 * Math.PI)
+        ctx.translate(-img.width, 0)
+        break
+    }
+	
+    ctx.drawImage(img, -x, 0, img.width, img.height);
 
     while (canvas.width >= (2 * this.config.maxWidth)) {
         canvas = this.getHalfScaleCanvas(canvas);
@@ -101,21 +152,34 @@ ImageUploader.prototype.scaleImage = function(img, completionCallback) {
 	for(var i = 0; i < blobBin.length; i++) {
 	  array.push(blobBin.charCodeAt(i));
 	}
-	var file = new Blob([new Uint8Array(array)], {type: 'image/png', name: "avatar.png"});
+	var blob = new Blob([new Uint8Array(array)], {type: 'image/png', name: "avatar.png"});
+	var file = new File( [blob], 'canvasImage.jpg', { type: 'image/jpeg' } );
 	
+	document.getElementById('previewImage').src = imageData;
 	this.images.push(file);
 	
-	completionCallback();
-    //this.performUpload(imageData, completionCallback);
+	if(completionCallback){
+		completionCallback();
+    }
 };
+
+ImageUploader.prototype.abortUpload = function(){
+	if(this.xhr){
+		this.xhr.abort();
+		this.xhr = null;
+	}
+}
 
 ImageUploader.prototype.tryUpload = function() {
 	
 	var This = this;
 	
 	var handle = setInterval(function(){
-		if(This.images.length>0){
+		
+		if(!This.processing){
+			This.abortUpload();
 			This.performUpload();
+			console.log("upload");
 			clearInterval(handle);
 		}
 	}, 10);
@@ -130,12 +194,15 @@ ImageUploader.prototype.tryUpload = function() {
 ImageUploader.prototype.performUpload = function() {
 	
     var xhr = new XMLHttpRequest();
+	this.xhr = xhr;
+	
     var This = this;
     var uploadInProgress = true;
     var headers = this.config.requestHeaders;
+	
     xhr.onload = function(e) {
         uploadInProgress = false;
-        This.uploadComplete(e, completionCallback);
+        This.uploadComplete(e,xhr);
     };
     xhr.upload.addEventListener("progress", function(e) {
         This.progressUpdate(e.loaded, e.total);
@@ -157,8 +224,11 @@ ImageUploader.prototype.performUpload = function() {
 	
 	var fd = new FormData();
     fd.append("name", "some_filename.jpg");
-    fd.append("image", This.images[0]);
     fd.append("description", "lah_de_dah");
+	
+	if(This.images.length>0){
+		fd.append("image", This.images[0]);
+	}
     
     xhr.send(fd);
 
@@ -170,11 +240,7 @@ ImageUploader.prototype.performUpload = function() {
                     target: {
                         status: 'Timed out' 
                     }
-                }, function(){
-								if (This.config.onComplete) {
-									This.config.onComplete(This.progressObject);
-								}
-				});
+                },xhr);
             }
         }, this.config.timeout);
     }
@@ -184,16 +250,14 @@ ImageUploader.prototype.performUpload = function() {
         this.config.workspace.appendChild(document.createElement('br'));
         this.config.workspace.appendChild(resizedImage);
 
-        resizedImage.src = imageData;
+        //resizedImage.src = imageData;
     }
 };
 
-ImageUploader.prototype.uploadComplete = function(event, completionCallback) {
-    this.progressObject.done++;
-    this.progressUpdate(0, 0);
-    completionCallback();
-    if (this.config.onFileComplete) {
-        this.config.onFileComplete(event, this.currentFile);
+ImageUploader.prototype.uploadComplete = function(event, xhr) {
+    this.progressUpdate(1, 1);
+	if (this.config.onComplete) {
+        this.config.onComplete(event, xhr);
     }
 };
 

@@ -15,43 +15,55 @@
 			<title>Sito E-Commerce	</title>
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
-
-			<script src="../javascript/utils.js"></script>
+			
+			<script src="../javascript/common/utils.js"></script>
+			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/showcase.js"></script>
-			<script src="../javascript/navBar.js"></script>
-			<script src="../javascript/ImageUploader.js"></script>
+		
+			<script src="../javascript/imageUtils/exif.js"></script>
+			<script src="../javascript/imageUtils/ImageUploader.js"></script>
+			
+			<script src="../javascript/inventoryList.js"></script>
 			
 			<script> 
-				window.onload = function(e){ 
-					startNavBar();
-					startShowcase();
+				function start(){ 
+					/* responsiveness*/
+					startStylesheet();
 					
 					var uploader = new ImageUploader({
 						inputElement : document.getElementById('inputImage'),
 						uploadUrl : 'ItemControl.php',
 						onProgress : function(event) {
-							//$('#progress').text('Completed '+event.done+' files of '+event.total+' total.');
-							//$('#progressbar').progressbar({ value: (event.done / event.total) * 100 })
+							var value = ((event.currentItemDone / event.currentItemTotal) * 100).toFixed() + "%";
+							setProgressBar(value);
 						},
-						onFileComplete : function(event, file) {
-							//$('#fileProgress').append('Finished file '+file.fileName+' with response from server '+event.target.status+'<br />');    
+						onComplete : function(event,xhr) {
+							document.getElementById("response").innerHTML = xhr.response;
 						},
-						onComplete : function(event) {
-							//$('#progress').text('Completed all '+event.done+' files!');
-							//$('#progressbar').progressbar({ value: (event.done / event.total) * 100 })
-						},
-						maxWidth: 100,
+						maxWidth: 150,
 						quality: 0.90, 
 						//timeout: 5000,
 						debug : true
 					});
 					
 					var m = new Modal("myModal",{
-						onOpen: function(){uploader.tryUpload();}
+						onOpen: function(){
+								uploader.tryUpload();
+								setProgressBar("0%");
+							},
+						onClose: function(){uploader.abortUpload()}
 					});
 					
+					document.openModal = function(){
+						m.open();
+					}
+				}
+				
+				function setProgressBar(value){
+					document.getElementById("progressBar").style.width = value;
+					document.getElementById("progressValue").innerHTML = value;
 				}
 			</script>
 			
@@ -123,14 +135,17 @@
 					</ul>
 					<div class="modal-body">
 						
-							<p>Inserisci un nome per il tuo inventario</p>
-							<input type="text" class="input-text fillrow"/>
+							<div class="progress-container">
+							  <div id="progressBar" class="progressbar" style="width:0%">
+							  </div>
+							</div>
+
+							<p id="progressValue">0%</p>
+							
+							<div id="response">
+								
+							</div>
 							<br>
-							<br>
-					</div>
-					
-					<div class="modal-footer">
-							<input type="submit" class="submit submitRightButton" value="Conferma"/>
 					</div>
 					
 				</form>
@@ -142,28 +157,34 @@
 		
 			<section class="sectionbox" style="max-width:800px;text-align: center;">
 				
-				<form class="form" id="formNew" action="" method="POST" enctype="multipart/form-data">
-					<br>
-					<div class="productImageContainer">
-						<img src="../img/prodotto1.jpg" id="previewImage" class="productImage" alt="Product" />
-						<input type="file" id="inputImage" class="inputImage" onchange="loadPreview(this)" name="image">
-					</div>
-					
-					<br>
-					<fieldset>
-						<ol>
-							<li>
-								<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
-							</li>
-							
-							<li style="height: 128px">		
-								<textarea class="fillrow" style="height: 128px" name="descrizione" placeholder="Descrizione" required=""></textarea>
-							</li>
-							<li style="margin-top: 9px;height: auto;">		
-								<input type="submit" class="submit submitRightButton myModal_open" value="Carica">
-							</li>
-						</ol>
-					</fieldset>
+				<h1 class="title"> Nuovo Prodotto </h1>
+				
+				<form class="form" id="formNew" action="javascript:document.openModal();" method="POST" style="margin: 3px 2%;">	
+					<aside class="left">
+						<div class="itemImageContainer">
+							<img src="../img/prodotto1.jpg" id="previewImage" class="itemImage circle" alt="Product" />
+							<div class="fileUpload">
+								<span>Cambia Immagine</span>
+								<input type="file" id="inputImage" class="upload" name="file" accept="image/*">
+							</div>
+						</div>
+					</aside>
+					<aside>
+						<fieldset>
+							<ol class="Item">
+								<li>
+									<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
+								</li>
+								
+								<li style="height: 153px">		
+									<textarea class="fillrow" style="height: 100%;" name="descrizione" placeholder="Descrizione" required=""></textarea>
+								</li>
+								<li style="margin-top: 14px;height: auto;">		
+									<input type="submit" class="submit submitRightButton" value="Carica">
+								</li>
+							</ol>
+						</fieldset>
+					</aside>
 				</form>
 			</section>
 			
@@ -183,5 +204,9 @@
 			</footer>
 
 	</body>
+	
+	<script>
+			start();
+	</script>
 
 </html>
