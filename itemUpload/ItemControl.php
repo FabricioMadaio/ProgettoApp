@@ -1,6 +1,6 @@
-
-<!-- CONTROLLER MODULE -->
 <?php
+
+	/*CONTROLLER MODULE*/
 
 	/*init model*/
 	include 'Item.php';
@@ -11,7 +11,7 @@
 	$max_file_size = 1024*1024; // 1MB
 	$valid_exts = array('jpeg', 'jpg', 'png', 'gif');
 	// thumbnail sizes
-	$sizes = array(100 => 100, 150 => 150, 250 => 250);
+	$sizes = array(150 => 150);
 	$msg = '';
 	
 	/* manage post method */
@@ -32,15 +32,18 @@
 	  } else {
 		$item->description = test_input($_POST["description"]);
 	  }
+	  
 	  if(isset($_FILES['image'])) {
 			if( $_FILES['image']['size'] < $max_file_size ){
 			// get file extension
 			$ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+			
 			if (in_array($ext, $valid_exts)) {
 			  /* resize image */
 			  foreach ($sizes as $w => $h) {
 				$files[] = resize($w, $h);
 			  }
+			  $msg = 'caricamento completato';
 
 			} else {
 			  $msg = 'Unsupported file';
@@ -51,8 +54,6 @@
 	  }
 	  echo $msg;
 	}
-	include "ItemView.php";
-	
 	
 	function test_input($data) {
 	  $data = trim($data);

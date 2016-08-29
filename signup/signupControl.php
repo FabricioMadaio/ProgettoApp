@@ -68,7 +68,7 @@
 	  	{
 	   	 $usernameErr = "Invalid username"; 
 	  	}
-			if(check_username($username))
+			if(!usernameAvailable($username))
 	 		{
 	 			$usernameErr="username already exists";
 		 	}
@@ -151,7 +151,7 @@
 
     }
 
-	function check_username($username)
+	function usernameAvailable($username)
 	{
 		
 		$query ="SELECT username FROM utenti";
@@ -160,14 +160,17 @@
         
       	if (mysqli_num_rows($result) > 0) {
    		    // output data of each row
-    	while($row = mysqli_fetch_assoc($result)) {
-            if(strcmp ($row["username"] , $username) == 0)
-            {
-               return true;
-            } 
-             return false;			
-            }
-	      }
+			while($row = mysqli_fetch_assoc($result)) {
+				echo "".$row["username"]." ".$username;
+				if(strcmp ($row["username"] , $username) == 0)
+				{
+				   return false;
+				} 
+					
+			}
+			
+			return true;
+	    }
         
     }
 ?>

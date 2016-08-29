@@ -255,17 +255,10 @@ table.alternate tr:nth-child(even){background-color: #f2f2f2}
 
 th{background-color: #e2e2e2}
 
-aside.gallery{
+aside.left{
 	float:left;
-	width:40%;
 	margin-top: 6px;
 }
-
-aside.features{
-	float:right;
-	width:60%;
-}
-
 
 a.thumbnailSelected{
 	margin-left: 6px;
@@ -517,18 +510,30 @@ div.search:hover{
 }
 
 .fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 0px;
-    margin-right: 12px;
-    display: block;
-    float: left;
-    background-color: #FF6217;
-    border-radius:2px;
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0px;
+	display: block;
+	background-color: #adbdec;
+	border-radius: 2px;
+	border: 1px solid #8c98e4;
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	padding: 6px 23px;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #2b665e;
 }
 
 .fileUpload:hover {
-    background-color: red;
+    background-color: #507bf8;
 }
 .fileUpload input.upload {
 	
@@ -563,15 +568,8 @@ a.mySubmit{
 	background-color: inherit;
 }
 
-ol.databaseIO li{
-	height:auto;
-}
-
-div.productImageContainer{
-	position: relative;
-	max-width:320px;
-	width:70%;
-	display: inline-block;
+ol.Item{
+	margin-top: 6px;
 }
 
 .inputImage{
@@ -587,19 +585,53 @@ div.productImageContainer{
     opacity: 0;
 }
 
-img.productImage{
-	display: inline-block;
-    float: none;
-    border: 1px solid #DDD;
+div.itemImageContainer{
+	background: #e8e8e8;
+	border: 1px solid #DDD;
     border-radius: 3px;
-    background-color: white;
     box-shadow: 4px 4px 1px #EEE;
-	width:100%;
+	position: relative;
+	margin: 15px;
+	margin-top: 4px;
+	display: inline-block;
 }
 
-#preview_ie {
-  FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)
-}  
+img.itemImage{
+	width: 150px;
+    height: 150px;
+	margin:0px;
+	margin-top: 8px;
+    margin-bottom: 3px;
+	background-color:initial;
+	border: 1px solid #d0caca;
+}
+
+.progressbar {
+    height: 100%;
+    position: absolute;
+    line-height: inherit;
+	
+	background-image: -webkit-linear-gradient(#53feb7,#27e118);
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 #97fdd0,0 -1px 0 #41c352,0 0 0 1px #24b557,0 1px 5px #999;
+	
+	-webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+}
+
+.progress-container {
+    width: 100%;
+    height: 1.5em;
+    position: relative;
+    background-color: #f1f1f1;
+	margin-top: 24px;
+	
+	background-image: -webkit-linear-gradient(#d9dee7,#e2e7ef);
+    border: 1px solid;
+    border-color: #959aa6 #b4b9c3 #d0d5de;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 3px #b4b9c3;
+}
 
 /*adattamento a schermi mobile*/
 
@@ -677,20 +709,18 @@ img.productImage{
 		width: 100%;	
 	}
 	
+	
 	ul.searchBar{
 		height:auto;
 		display:inline-block;
 		width: 100%;
 	}
-	
-	.fileUpload{
-	    margin-bottom: 6px;
-	    
-	}
-	
 	.fileUploadInput{
 		max-width: none;
 		margin-bottom:10px;
     	width: 100%;
+	}
+	aside.left{
+		float: none;
 	}
 }
