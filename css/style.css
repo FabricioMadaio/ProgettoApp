@@ -90,11 +90,11 @@ a.disabled , a.disabled:hover{
 .myButton {
 	
 	margin-top: 20px;
-	background-color:#F3C10D;
+	background-color:#628AFF;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	border:1px solid #FF9C08;
+	border:1px solid #d9d9de;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -104,16 +104,45 @@ a.disabled , a.disabled:hover{
 	font-weight: bold;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #2b665e;
-	margin-left: -88px;
-	margin-bottom: 16px;
 }
 .myButton:hover {
 	transition: all 0.2s ease-in-out;
-	background-color:#EF8315;
+	background-color:#2556E4;
 }
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+
+.infoBox{
+	text-align: center;
+    color: #555;
+    border: .1em solid;
+    border-radius: 10px;
+    font-family: Tahoma,Geneva,Arial,sans-serif;
+    font-size: 15px;
+    padding: 8px 8px 8px 8px;
+    margin: 10px;
+    cursor: default;
+    background: #e9ffd9;
+    font-weight: bold;
+    border-color: #D1FAB6;
+}
+
+ul.errorList{
+	height: auto;
+    background-color: initial;
+    box-shadow: initial;
+    margin: initial;
+    border: initial;
+    position: initial;
+	color: red;
+	font-weight: normal;
+}
+
+ul.errorList li{
+	float: none;
+    height: auto;
 }
 
 .cartButton{
@@ -619,6 +648,11 @@ img.itemImage{
     transition: width 1s;
 }
 
+.progressError{
+	background-image: -webkit-linear-gradient(#fed153,#e13218);
+    box-shadow: inset 0 1px 0 #fdd297,0 -1px 0 #c36b41,0 0 0 1px #b55824,0 1px 5px #999;
+}
+
 .progress-container {
     width: 100%;
     height: 1.5em;
@@ -639,14 +673,6 @@ img.itemImage{
 
 	.fullmenu{
 		display:none;
-	}
-	
-	.myButton{
-		width: 100%;
-		text-align: center;
-		padding-left: 0;
-		padding-right: 0;
-		margin-left: 0;
 	}
 	
 	.cartButton{

@@ -36,11 +36,18 @@
 						inputElement : document.getElementById('inputImage'),
 						uploadUrl : 'ItemControl.php',
 						onProgress : function(event) {
-							var value = ((event.currentItemDone / event.currentItemTotal) * 100).toFixed() + "%";
+							var value = ((event.currentItemDone / event.currentItemTotal) * 99).toFixed() + "%";
 							setProgressBar(value);
 						},
 						onComplete : function(event,xhr) {
 							document.getElementById("response").innerHTML = xhr.response;
+							var e = document.getElementById("errorResponse");
+							if(e!=null){
+								document.getElementById("progressBar").className+=" progressError";
+								document.getElementById("progressValue").innerHTML = "0%";
+							}else{
+								setProgressBar("100%");
+							}
 						},
 						maxWidth: 150,
 						quality: 0.90, 
@@ -50,6 +57,9 @@
 					
 					var m = new Modal("myModal",{
 						onOpen: function(){
+							
+								document.getElementById("progressBar").className="progressbar";
+								document.getElementById("response").innerHTML = "";
 								uploader.tryUpload();
 								setProgressBar("0%");
 							},
@@ -142,7 +152,7 @@
 
 							<p id="progressValue">0%</p>
 							
-							<div id="response">
+							<div id="response" style="text-align:center">
 								
 							</div>
 							<br>
@@ -173,11 +183,11 @@
 						<fieldset>
 							<ol class="Item">
 								<li>
-									<input class="input-text bigrow" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
+									<input class="input-text bigrow" id="name" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
 								</li>
 								
 								<li style="height: 153px">		
-									<textarea class="fillrow" style="height: 100%;" name="descrizione" placeholder="Descrizione" required=""></textarea>
+									<textarea class="fillrow" style="height: 100%;"  id="description" name="descrizione" placeholder="Descrizione" required=""></textarea>
 								</li>
 								<li style="margin-top: 14px;height: auto;">		
 									<input type="submit" class="submit submitRightButton" value="Carica">

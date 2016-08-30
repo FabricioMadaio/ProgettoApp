@@ -1,85 +1,92 @@
 <?php
 
 	/*CONTROLLER MODULE*/
+	
+	include '../php/inputUtils.php';
+	include '../php/dbConnection.php';
 
-	/*init model*/
+	include 'Image.php';
 	include 'Item.php';
+	
 	
 	/*file upload*/
 	include 'imageUpload.php';
+	
+	/*init model*/
+	$item = new Item("","","");
+	
 	// settings
 	$max_file_size = 1024*1024; // 1MB
 	$valid_typs = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
+
 	// thumbnail sizes
 	$sizes = array(150 => 150);
-	$msg = '';
+	
+	$response = '';
+	
+	/*open the connection*/
+	$conn = openDbConnection();
 	
 	/* manage post method */
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	  if (empty($_POST["name"])) {
-		$item->name = "Name is required";
-	  } else {
-		$item->name = test_input($_POST["name"]);
-		// check if name only contains letters and whitespace
-		if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-		  $nameErr = "Only letters and white space allowed"; 
+		if (empty($_POST["name"])) {
+			$response = "<li>- Inserire un nome</li>";
+		} else {
+			$item->name = testInput($_POST["name"]);
+			// check if name only contains letters and whitespace
+			if (!isAlphanumeric($item->name)) {
+				$response = "<li>- Sono ammessi solo numeri e lettere per il nome</li>"; 
+			}
+			// check if product already exists
+			if (!$item->nameAvailable($conn)) {
+				$response = "<li>- Il nome inserito è gia stato usato</li>"; 
+			}
 		}
-	  }
 	  
-	  if (empty($_POST["description"])) {
-		$item->description = "description is required";
-	  } else {
-		$item->description = test_input($_POST["description"]);
-	  }
+		if (empty($_POST["description"])) {
+			$item->description = "";
+		} else {
+			$item->description = testInput($_POST["description"]);
+		}
 	  
-	  if(isset($_FILES['image'])) {
+		if(isset($_FILES['image'])) {
 			if( $_FILES['image']['size'] < $max_file_size ){
 				
-			// get file type
-			$typ = $_FILES['image']['type'];
-			
-			if (in_array($typ, $valid_typs)) {
-			  /* resize image */
-			  foreach ($sizes as $w => $h) {
-				$files[] = resize($w, $h);
-			  }
-			  $msg = 'caricamento completato';
+				// get file type
+				$typ = $_FILES['image']['type'];
 
-			} else {
-			  $msg = 'Unsupported file';
+				
+				if (in_array($typ, $valid_typs)) {
+					/* resize image */
+					foreach ($sizes as $w => $h) {
+						$item->imageUrl = resize($w, $h);
+					}
+				} else {
+				  $response .= '<li>- Immagine non supportata</li>';
+				}
+			} else{
+			$response .= '<li>- Caricare una immagine con dimensioni inferiori a 200KB</li>';
 			}
-		  } else{
-			$msg = 'Please upload image smaller than 200KB';
-		  }
-	  }
-	  echo $msg;
+		}
+	
+		if(empty($response)){
+			$response = $item->dbInsert(2,$conn);
+		}
+		
+		if(empty($response)){
+			$response = "<section class='infoBox'>Caricamento Completato!</section>";
+			$response .= "<a class='myButton' onclick='javascript:toClientHome()'>Torna alla Home</a>";
+		}else{
+			$error = $response;
+			$response ="<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";
+			$response .="<p id='errorResponse'>Errore</p><ul class='errorList'>".$error."</ul><br></section>";
+		}
+		
+		//chiudo la connessione
+		mysqli_close($conn);
+		
+		echo $response;
 	}
 	
-	function test_input($data) {
-	  $data = trim($data);
-	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
-	  return $data;
-	}
-
-	function check_username($username)
-	{
-		$conn = openDbConnection();
-		$query ="SELECT username FROM utenti";
-		$result = queryToDb($query);
-		if(mysqli_num_rows($result) > 0)
-        {
-        	if (mysqli_num_rows($result) > 0) {
-   		    // output data of each row
-    	    while($row = mysqli_fetch_assoc($result)) {
-            if($row["username"] == $username)
-            {
-               return true;
-            } 
-             return false;			
-            }
-	      }
-        }
-    }
 ?>

@@ -226,8 +226,8 @@ ImageUploader.prototype.performUpload = function() {
     }
 	
 	var fd = new FormData();
-    fd.append("name", "some_filename.jpg");
-    fd.append("description", "lah_de_dah");
+    fd.append("name", document.getElementById("name").value);
+    fd.append("description", document.getElementById("description").value);
 	
 	if(This.images.length>0){
 		fd.append("image", This.images[0]);
