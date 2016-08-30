@@ -11,19 +11,19 @@
 		  $this->url = $url;
 		}
 	
-		public function dbInsert($conn){			
+		public function dbInsert($dbconn){			
 		
 			$id = ($this->id==null)?"NULL":$this->id;
 			
 			$query="INSERT INTO immagini (idImmagini, immagine) VALUES (".$id.",'".$this->url."')";
-			queryToDb($query,$conn);
-			return mysqli_insert_id($conn);
+			$dbconn->query($query);
+			return mysqli_insert_id($dbconn->getConnection());
 		}
 		
-		static public function getIdFromUrl($url,$conn){
+		static public function getIdFromUrl($url,$dbconn){
 			
 			$query="SELECT * FROM immagini WHERE immagine = '".$url."'";
-			$result = queryToDb($query,$conn);
+			$result = $dbconn->query($query);
 			if(mysqli_num_rows($result) > 0)
 			{
 				// output data of each row

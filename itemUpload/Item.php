@@ -37,20 +37,20 @@
 		}
 		
 		/* restituisce l'id del immagine. Se non è stata caricata la inserisce nel db */
-		private function retrieveImageId($conn){
+		private function retrieveImageId($dbconn){
 			
 			if(!empty($this->imageUrl)){
 				
 					$img = new Image(null,$this->imageUrl);
-					return $img->dbInsert($conn);
+					return $img->dbInsert($dbconn);
 			}
 			return -1;
 		}
 		
-		public function nameAvailable($conn){
+		public function nameAvailable($dbconn){
 			
 			$query="SELECT * FROM prodotti WHERE nomeProdotto = '".$this->name."'";
-			$result = queryToDb($query,$conn);
+			$result = $dbconn->query($query);
 			if(mysqli_num_rows($result) > 0)
 			{
 				return false;
@@ -58,15 +58,10 @@
 			return true;
 		}
 		
-		public function dbInsert($inventID,$conn){
-			try{
-				$imageID = $this->retrieveImageId($conn);
-				queryToDb($this->getInsertQuery($imageID,$inventID),$conn);
-			} catch (Exception $e) {
-				return $e->getMessage();
-			}
+		public function dbInsert($inventID,$dbconn){
 			
-			return "";
+			$imageID = $this->retrieveImageId($dbconn);
+			$dbconn->query($this->getInsertQuery($imageID,$inventID));
 		}
 		
 	}

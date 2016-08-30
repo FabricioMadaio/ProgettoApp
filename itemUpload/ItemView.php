@@ -44,6 +44,7 @@
 							var e = document.getElementById("errorResponse");
 							if(e!=null){
 								document.getElementById("progressBar").className+=" progressError";
+								document.getElementById("progressBar").style.width = "100%";
 								document.getElementById("progressValue").innerHTML = "0%";
 							}else{
 								setProgressBar("100%");
