@@ -1,10 +1,9 @@
 <?php
-
 	/*load dbConn*/
 	include '../php/dbConnection.php';
 	
 	/*init model*/
-	include 'initSignup.php';
+	include 'initLogin.php';
 	/*load view*/
-	include 'signupView.php';
-?>
+	include 'loginView.php';
+ ?>
