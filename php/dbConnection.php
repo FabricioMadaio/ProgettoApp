@@ -2,7 +2,7 @@
  //defiene data to coonect to the database
 function openDbConnection()
 {
-	$DB_USER ='companyinventory';
+	$DB_USER ='root';
 	$DB_PSW  ='';
 	$DB_HOST ='localhost';
 	$DB_NAME ='my_companyinventory';
