@@ -37,7 +37,7 @@
 			
 			<section class="sectionbox">
 				<h1 class="title"> Login </h1>
-				<form action="loginControll.php" method="post" style="margin-left: 10%;margin-right: 10%;">
+				<form action="loginControl.php" method="post" style="margin-left: 10%;margin-right: 10%;">
 					<fieldset>
 						<ol>
 							

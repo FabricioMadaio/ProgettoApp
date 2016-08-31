@@ -1,6 +1,6 @@
 <?php
 	/*load dbConn*/
-	include '../php/dbConnection.php';
+	include '../php/DBConnection.php';
 	
 	/*init model*/
 	include 'initLogin.php';
