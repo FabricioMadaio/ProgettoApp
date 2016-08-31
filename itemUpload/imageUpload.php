@@ -21,11 +21,10 @@
 
 		/* new random file name */
 		while (true) {
-			$filename = uniqid('image', true);
+			$filename = uniqid('', false);
 			$search = glob($path.$filename);
 			if (!$search || count($search)<=0) break;
 		}
-		$path = $path.$filename;
 
 		/* read binary data from image file */
 		$imgString = file_get_contents($_FILES['image']['tmp_name']);
@@ -44,16 +43,20 @@
 		/* Save image */
 		switch ($_FILES['image']['type']) {
 			case 'image/jpeg':
-				imagejpeg($tmp, $path.".jpeg", 100);
+				$filename.=".jpeg";
+				imagejpeg($tmp, $path.$filename, 100);
 			break;
 			case 'image/jpg':
-				imagejpeg($tmp, $path.".jpg", 100);
+				$filename.=".jpg";
+				imagejpeg($tmp, $path.$filename, 100);
 			break;
 			case 'image/png':
-				imagepng($tmp, $path.".png", 0);
+				$filename.=".png";
+				imagepng($tmp, $path.$filename, 0);
 			break;
 			case 'image/gif':
-				imagegif($tmp, $path.".gif");
+				$filename.=".gif";
+				imagegif($tmp, $path.$filename);
 			break;
 			default:
 				exit;
@@ -64,6 +67,6 @@
 		imagedestroy($image);
 		imagedestroy($tmp);
 		
-		return $path;
+		return $filename;
 	}
 ?>
