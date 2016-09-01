@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///C:/xampp/htdocs/ProgettoApp/debugInventory.html -->
+<html style="
+    height: 100%;
+"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			
+			<meta name="viewport" content="width=device-width">
+			<meta name="description" content="Sito E-Commerce">
+			<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+			<meta name="author" content="Fabricio Nicolas Madaio">
+
+			<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+			</script>
+			<![endif]-->
+
+			<title>Company inventory</title>
+			<link rel="stylesheet" type="text/css" href="./debugInventory_files/style.css">
+			<link rel="stylesheet" type="text/css" href="./debugInventory_files/singup.css">
+			<link rel="stylesheet" type="text/css" href="./debugInventory_files/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="./debugInventory_files/modal.css">
+
+
+			<script src="./debugInventory_files/utils.js"></script>
+			<script src="./debugInventory_files/responsiveStylesheet.js"></script>
+			<script src="./debugInventory_files/modal.js"></script>
+			<script src="./debugInventory_files/inventoryList.js"></script>
+			
+			<script> 
+				window.onload = function(e){ 
+					/* responsiveness*/
+					//startStylesheet();
+					
+					var m = new Modal("myModal");
+				}
+			</script>
+	</head>
+
+	<body style="">
+	
+			<header>
+				<a href="javascript:toHome()">
+					<img src="./debugInventory_files/LogoFinal.png" class="logo" alt="Company Inventory">
+					<!--Font logo rockwell-->
+				</a>
+			</header>
+			
+			<nav>
+
+				<ul>
+					<li class="menu-dropdown">
+						
+							<div class="menu-icon" onclick="menuMobile();">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</div>
+							
+							<div class="menu-content" onclick="blockReset();" style="display: none;">
+							<ul>
+								<li>
+									<a href="javascript:toHome()"> Info </a>
+								</li>
+								<li>
+									<a href="file:///C:/xampp/htdocs/ProgettoApp/inventory/UserSignupForm"> Il tuo profilo </a>
+								</li>
+							</ul>
+						  </div>
+						
+					</li>
+					
+					<li class="fullmenu">
+						<a href="javascript:toHome()"> Info </a>
+					</li>
+					<li class="fullmenu">
+						<a href="file:///C:/xampp/htdocs/ProgettoApp/inventory/UserSignupForm"> Il tuo profilo </a>
+					</li>
+					
+					<li class="login-dropdown">
+						
+						<div class="login-content" onclick="blockReset();">
+						  
+								<form class="form" id="formLogin" action="file:///C:/xampp/htdocs/ProgettoApp/inventory/login" method="POST">
+									<input class="input-text fillrow" name="username" id="username" type="text" placeholder="Username" style="margin-bottom: 3px;" required=""> 
+									<input class="input-text fillrow" name="password" id="password" type="password" placeholder="Password" style="margin-bottom: 14px;" required="">
+										<div class="error-li" style="display:block;margin-bottom: 0px;">
+											<p>username e/o password errati</p>
+										</div>
+									<br>
+									<input type="submit" class="submit" value="Login" style="padding: 8px;">
+								
+								</form>
+								<form class="form" id="formLogout" action="file:///C:/xampp/htdocs/ProgettoApp/inventory/logout">
+									 <input type="submit" class="submit" value="Logout" style="padding: 8px;"> 	
+								</form>
+						</div>
+					</li>
+					
+				</ul>
+				
+				
+				<ul style="
+    background-color: #4d4dcc;
+">
+					
+						
+					
+				<li style="
+    float: none;
+    /* width: 100%; */
+">
+					<span id="loginButton" onclick="loginForm();" style="
+    float: none;
+    font-size: 18px;
+    padding-top: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+">
+								Formaggi
+						</span></li><li style="
+    float: left;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 1px;
+    /* width: 100%; */
+">
+					<span id="myButton" onclick="loginForm();" style="
+    color: white;
+    border: 1px #628aff solid;
+    background: #628AFF;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 7px;
+    margin-top: 10px;
+    margin-right: 9px;
+    display: block;
+    text-overflow: initial;
+    overflow: visible;
+    white-space: initial;
+    font-weight: normal;
+">
+								Rimuovi
+						</span></li></ul>
+			<ul class="searchBar">
+					
+					<li class="search">
+						<div style="margin-left: 12px;">
+						<div class="search">
+							<a class="search">
+								<img src="./debugInventory_files/search.png" class="product-preview" alt="formaggio">
+							</a>
+							<div style="overflow: hidden;">
+								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required="">
+							</div>
+						</div>
+						</div>
+					</li>
+				</ul>
+			</nav>
+			
+			
+
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content">
+				<form class="form" id="formNew" action="file:///C:/xampp/htdocs/ProgettoApp/inventory/login" method="POST">
+				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="myModal_close closeButton">×</a>
+						</li>
+						<li>
+							<p>Nuovo Inventario</p>
+						</li>
+					</ul>
+					<div class="modal-body">
+						
+							<p>Inserisci un nome per il tuo inventario</p>
+							<input type="text" class="input-text fillrow">
+							<br>
+							<br>
+					</div>
+					
+					<div class="modal-footer">
+							<input type="submit" class="submit submitRightButton" value="Conferma">
+					</div>
+					
+				</form>
+			  </div>
+			 </div>
+			  <!-- Modal test End -->
+			
+			<section class="responsiveGrid">
+				
+				
+				<div style="float:left;width:100%;border-bottom: 1px #dedede solid;/* overflow: visible; */">
+					<div class="inventoryElem" style="
+						width: 90px;
+					">
+								<div class="squareBox">
+									<div class="circle squareContent" style="
+										margin: 6px;
+										background-size: 100%;
+										background-image: url(&quot;img/prodotto1.jpg&quot;);
+									">
+									</div>
+								</div>
+								
+					</div>
+					<div style="float: left;margin-top: 16px;width: 59%;overflow: visible;white-space: nowrap;text-overflow: ellipsis;">
+					<p style="
+						margin: 3px;
+						margin-top: 7px;
+						font-weight: bolder;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					">Vestiti con il nome lungo</p>
+					 <div><span style="
+						font-size: 14px;
+						margin-left: 10px;
+						margin-right: 4px;
+					">qta.</span><input type="text" style="
+						width: 24px;
+					" value="99"></div>
+					 </div>
+					<a class="" style="
+						padding: 4px 8px;
+						padding-left: 0px;
+						float: right;
+						margin-right: 3px;
+						margin-top: 1px;
+						color: gray;
+						font-size: 28px;
+						font-weight: bolder;
+						/* border: 1px gray solid; */
+						border-radius: 6px;
+						/* overflow: auto; */
+					">×</a>	
+				</div>
+				
+			<div style="float:left;width:100%;border-bottom: 1px #dedede solid;/* overflow: visible; */">
+					<div class="inventoryElem" style="
+						width: 90px;
+					">
+								<div class="squareBox">
+									<div class="circle squareContent" style="
+										margin: 6px;
+										background-size: 100%;
+										background-image: url(&quot;img/prodotto1.jpg&quot;);
+									">
+									</div>
+								</div>
+								
+					</div>
+					<div style="float: left;margin-top: 16px;width: 59%;overflow: visible;white-space: nowrap;text-overflow: ellipsis;">
+					<p style="
+						margin: 3px;
+						margin-top: 7px;
+						font-weight: bolder;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					">Vestiti con il nome lungo</p>
+					 <div><span style="
+						font-size: 14px;
+						margin-left: 10px;
+						margin-right: 4px;
+					">qta.</span><input type="text" style="
+						width: 24px;
+					" value="99"></div>
+					 </div>
+					<a class="" style="
+						padding: 4px 8px;
+						padding-left: 0px;
+						float: right;
+						margin-right: 3px;
+						margin-top: 1px;
+						color: gray;
+						font-size: 28px;
+						font-weight: bolder;
+						/* border: 1px gray solid; */
+						border-radius: 6px;
+						/* overflow: auto; */
+					">×</a>	
+				</div><div style="float:left;width:100%;border-bottom: 1px #dedede solid;/* overflow: visible; */">
+					<div class="inventoryElem" style="
+						width: 90px;
+					">
+								<div class="squareBox">
+									<div class="circle squareContent" style="
+										margin: 6px;
+										background-size: 100%;
+										background-image: url(&quot;img/prodotto1.jpg&quot;);
+									">
+									</div>
+								</div>
+								
+					</div>
+					<div style="float: left;margin-top: 16px;width: 59%;overflow: visible;white-space: nowrap;text-overflow: ellipsis;">
+					<p style="
+						margin: 3px;
+						margin-top: 7px;
+						font-weight: bolder;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					">Vestiti con il nome lungo</p>
+					 <div><span style="
+						font-size: 14px;
+						margin-left: 10px;
+						margin-right: 4px;
+					">qta.</span><input type="text" style="
+						width: 24px;
+					" value="99"></div>
+					 </div>
+					<a class="" style="
+						padding: 4px 8px;
+						padding-left: 0px;
+						float: right;
+						margin-right: 3px;
+						margin-top: 1px;
+						color: gray;
+						font-size: 28px;
+						font-weight: bolder;
+						/* border: 1px gray solid; */
+						border-radius: 6px;
+						/* overflow: auto; */
+					">×</a>	
+				</div></section>
+			
+			<footer style="text-align:center">
+				<div class="background">
+					<div class="wrapper">
+					
+						<img src="./debugInventory_files/logoFooter.svg" alt="logo">
+						<label>
+							Copyright @ Webmaster
+						</label>
+					</div>
+				</div>
+			</footer>
+			
+			
+
+	
+
+</body></html>

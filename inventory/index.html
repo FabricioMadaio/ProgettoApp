@@ -13,49 +13,32 @@
 			<![endif]-->
 
 			<title>Company inventory</title>
-			<link rel="stylesheet" type="text/css" href="css/style.css">
-			<link rel="stylesheet" type="text/css" href="css/singup.css">
-			<link rel="stylesheet" type="text/css" href="css/inventoryGrid.css">
-			<link rel="stylesheet" type="text/css" href="css/modal.css">
+			<link rel="stylesheet" type="text/css" href="../css/style.css">
+			<link rel="stylesheet" type="text/css" href="../css/singup.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 
 
-			<script src="javascript/common/utils.js"></script>
-			<script src="javascript/common/responsiveStylesheet.js"></script>
-			<script src="javascript/common/modal.js"></script>
-			<script src="javascript/inventoryList.js"></script>
+			<script src="../javascript/common/utils.js"></script>
+			<script src="../javascript/common/responsiveStylesheet.js"></script>
+			<script src="../javascript/common/modal.js"></script>
+			<script src="../javascript/inventoryList.js"></script>
 			
 			<script> 
 				window.onload = function(e){ 
 					/* responsiveness*/
-					startStylesheet();
+					//startStylesheet();
 					
-					var m = new Modal("myModal",{
-						onOpen: null,
-						onClose: null
-					});
+					var m = new Modal("myModal");
 				}
 			</script>
 	</head>
 
 	<body>
-	<?php 
-	session_start();
-    if(isset($_SESSION["username"]) && isset($_SESSION["password"]))
-    {
-    	echo "ok";
-    	echo "session".$_SESSION["username"]."ok";
-    	echo "<br/>";
-    	echo "session".$_SESSION["username"]."ok";
-    }
-    else
-    {
-    	echo "gay";
-    	header('Location:login/');
-    }
-	 ?>
+	
 			<header>
 				<a href="javascript:toHome()">
-					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 					<!--Font logo rockwell-->
 				</a>
 			</header>
@@ -121,7 +104,7 @@
 						<div style="margin-left: 12px;">
 						<div class="search">
 							<a class="search">
-								<img src="img/search.png" class="product-preview" alt="formaggio" />
+								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
 								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
@@ -167,41 +150,15 @@
 			  <!-- Modal test End -->
 			
 			<section class="responsiveGrid">
-			
-				<span id="elementGrid">
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
+				<div>
 					<div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
+								<div class="squareBox">
+									<div class="circle squareContent">
+									</div>
+								</div>
+								
 							</div>
-						</div>
 						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-					
-				</span>
-				<!-- Trigger/Open The Modal -->
-				<div class="inventoryElem">
-					<div class="squareBox">
-						<div class="circle squareContent myModal_open">
-							<img class="imageAdd" src="img/logoAdd.png" alt="logo aggiungi prodotto">
-						</div>
-					</div>
-					
-					<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
-					
 				</div>
 			</section>
 			
