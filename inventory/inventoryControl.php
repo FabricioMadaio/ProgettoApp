@@ -10,12 +10,13 @@
     } 
 
     $dbconn = new DBConnection();
-	if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
+	
+	if(!isset($_SESSION["username"]))
     {
-    	header('Location:login/');
+    	header('Location:../login/');
     }
 
-    $username=$_SESSION["username"];
+    $username =$_SESSION["username"];
     $password =$_SESSION["password"];
     $inventoryNameCheck = false;
 	try
@@ -33,7 +34,7 @@
 						$inventoryName = test_input($_POST["inventoryName"]);
 						if(!preg_match("/^[a-zA-Z0-9]*$/",$inventoryName)) 
 						{
-							 $inventoryNameErr = "Nome inventario invilado(solo lettere e numeri)"; 
+							 $inventoryNameErr = "Nome inventario invalido(solo lettere e numeri)"; 
 						}
 						else
 						{
@@ -49,19 +50,18 @@
 
 				    }
 
-				if($inventoryNameCheck == true && isset($_POST['inventorySubmit']))
+				if($inventoryNameCheck == true)
 				{
 					$lastId = getLastId($dbconn);
 					$userId = getUserid($dbconn,$username,$password);
 					$query ="INSERT INTO inventari (idInventario, idUtente, nomeInventario, quantitaProdotto) VALUES ('$lastId', '$userId', '$inventoryName', '1')";
 					$result = $dbconn->query($query);
 				}
-				else if ($inventoryNameCheck == true) {
-					echo '';
-				}
-				else
-				{
+				
+				if(!empty($inventoryNameErr)){
 					echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$inventoryNameErr.'</p></li></ol>';
+				}else{
+					echo 'inserimentoRiuscito';
 				}
 
 		  }

@@ -34,6 +34,10 @@
 						onOpen:null,
 						onClose:null
 					});
+					
+					document.closeModal = function(){
+						m.close();
+					}
 				}
 			</script>
 	</head>
@@ -83,28 +87,6 @@
 						<a href="UserSignupForm"> Il tuo profilo </a>
 					</li>
 					
-					<li class="login-dropdown">
-						<a id="loginButton" onclick="loginForm();">
-								Login 
-						</a>
-						<div class="login-content" onclick="blockReset();">
-						  
-								<form class="form" id="formLogin" action="login" method="POST">
-									<input class="input-text fillrow" name="username" id="username" type="text" placeholder="Username" style="margin-bottom: 3px;" required> 
-									<input class="input-text fillrow" name="password" id="password" type="password" placeholder="Password" style="margin-bottom: 14px;" required>
-										<div class='error-li' style='display:block;margin-bottom: 0px;'>
-											<p>username e/o password errati</p>
-										</div>
-									<br>
-									<input type="submit" class="submit" value="Login" style="padding: 8px;">
-								
-								</form>
-								<form class="form" id="formLogout" action="logout">
-									 <input type="submit" class="submit" value="Logout" style="padding: 8px;"> 	
-								</form>
-						</div>
-					</li>
-					
 				</ul>
 				
 				<ul class="searchBar">
@@ -131,7 +113,7 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action="inventoryControl.php" method="POST">
+				<form class="form" id="formNew" action="javascript:showHint()" method="POST">
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -141,10 +123,10 @@
 							<p>Nuovo Inventario</p>
 						</li>	  
 					</ul>
-					<div class="modal-body">
+					<div class="modal-body" id="modalBody">
 						
 							<p>Inserisci un nome per il tuo inventario</p>
-							<input type="text" name="inventoryName" class="input-text fillrow" onkeydown="showHint(this.value)"/>
+							<input type="text" id="inventoryname"name="inventoryName" class="input-text fillrow"/>
 							<br>
 							<ol id="errorList">
 								
