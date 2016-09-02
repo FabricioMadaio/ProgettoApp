@@ -2,7 +2,7 @@
  //define data to connect to the database
 	class DBConnection {
 		
-		public static $DB_USER ='companyinventory';
+		public static $DB_USER ='root';
 		public static $DB_PSW  ='';
 		public static $DB_HOST ='localhost';
 		public static $DB_NAME ='my_companyinventory';
