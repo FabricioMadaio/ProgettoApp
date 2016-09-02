@@ -13,16 +13,17 @@
 			<![endif]-->
 
 			<title>Company inventory</title>
-			<link rel="stylesheet" type="text/css" href="css/style.css">
-			<link rel="stylesheet" type="text/css" href="css/singup.css">
-			<link rel="stylesheet" type="text/css" href="css/inventoryGrid.css">
-			<link rel="stylesheet" type="text/css" href="css/modal.css">
+			<link rel="stylesheet" type="text/css" href="../css/style.css">
+			<link rel="stylesheet" type="text/css" href="../css/singup.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 
 
-			<script src="javascript/common/utils.js"></script>
-			<script src="javascript/common/responsiveStylesheet.js"></script>
-			<script src="javascript/common/modal.js"></script>
-			<script src="javascript/inventoryList.js"></script>
+			<script src="../javascript/common/utils.js"></script>
+			<script src="../javascript/common/responsiveStylesheet.js"></script>
+			<script src="../javascript/common/modal.js"></script>
+			<script src="../javascript/inventoryList.js"></script>
+			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
 			
 			<script> 
 				window.onload = function(e){ 
@@ -30,8 +31,8 @@
 					startStylesheet();
 					
 					var m = new Modal("myModal",{
-						onOpen: null,
-						onClose: null
+						onOpen:null,
+						onClose:null
 					});
 				}
 			</script>
@@ -39,23 +40,14 @@
 
 	<body>
 	<?php 
-	session_start();
-    if(isset($_SESSION["username"]) && isset($_SESSION["password"]))
+    if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
     {
-    	echo "ok";
-    	echo "session".$_SESSION["username"]."ok";
-    	echo "<br/>";
-    	echo "session".$_SESSION["username"]."ok";
-    }
-    else
-    {
-    	echo "gay";
     	header('Location:login/');
     }
 	 ?>
 			<header>
 				<a href="javascript:toHome()">
-					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 					<!--Font logo rockwell-->
 				</a>
 			</header>
@@ -121,7 +113,7 @@
 						<div style="margin-left: 12px;">
 						<div class="search">
 							<a class="search">
-								<img src="img/search.png" class="product-preview" alt="formaggio" />
+								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
 								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
@@ -139,7 +131,7 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action="login" method="POST">
+				<form class="form" id="formNew" action="inventoryControl.php" method="POST">
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -147,18 +139,21 @@
 						</li>
 						<li>
 							<p>Nuovo Inventario</p>
-						</li>
+						</li>	  
 					</ul>
 					<div class="modal-body">
 						
 							<p>Inserisci un nome per il tuo inventario</p>
-							<input type="text" class="input-text fillrow"/>
+							<input type="text" name="inventoryName" class="input-text fillrow" onkeydown="showHint(this.value)"/>
 							<br>
+							<ol id="errorList">
+								
+							</ol>
 							<br>
 					</div>
 					
 					<div class="modal-footer">
-							<input type="submit" class="submit submitRightButton" value="Conferma"/>
+							<input type="submit"  name="inventorySubmit" class="submit submitRightButton" value="Conferma"/>
 					</div>
 					
 				</form>
@@ -196,7 +191,7 @@
 				<div class="inventoryElem">
 					<div class="squareBox">
 						<div class="circle squareContent myModal_open">
-							<img class="imageAdd" src="img/logoAdd.png" alt="logo aggiungi prodotto">
+							<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
 						</div>
 					</div>
 					
@@ -211,7 +206,7 @@
 				<div class="background">
 					<div class="wrapper">
 					
-						<img src="img/logoFooter.svg" alt="logo"/>
+						<img src="../img/logoFooter.svg" alt="logo"/>
 						<label>
 							Copyright @ Webmaster
 						</label>
