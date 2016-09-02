@@ -11,6 +11,7 @@
 /*cerchio*/
 .circle {
   display: inline-block;
+  background-size: 100%;
   border-radius: 50%;
   background-color: #38a9e4;
   color: white;
