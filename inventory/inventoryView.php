@@ -123,6 +123,7 @@
 							<p>Nuovo Inventario</p>
 						</li>	  
 					</ul>
+					    <p id="ok" style="margin-left:3%;display:none"> Inserimento riuscito</p>
 					<div class="modal-body" id="modalBody">
 						
 							<p>Inserisci un nome per il tuo inventario</p>
@@ -134,15 +135,13 @@
 							<br>
 					</div>
 					
-					<div class="modal-footer">
+					<div  id="footer" class="modal-footer">
 							<input type="submit"  name="inventorySubmit" class="submit submitRightButton" value="Conferma"/>
 					</div>
 					
 				</form>
 			  </div>
 			 </div>
-			  <!-- Modal test End -->
-			
 			<section class="responsiveGrid">
 			
 				<span id="elementGrid">

@@ -23,9 +23,16 @@ Modal.prototype.open=function(){
 	
 	if(this.config.onOpen){this.config.onOpen();}
 	this.element.style.display = "block";
+	document.getElementById("modalBody").style.display="block";
+	document.getElementById("ok").style.display="none";
+	document.getElementById("errorList").style.display="none";
+	document.getElementById("footer").style.display="block";
+	document.getElementById("inventoryname").value="";
 }
 
 function startModal(){
+
+
 	
 	// Get the modal
 	var modal = this;
