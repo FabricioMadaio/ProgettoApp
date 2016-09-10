@@ -17,6 +17,7 @@ Modal.prototype.close=function(){
 	
 	if(this.config.onClose){this.config.onClose();}
 	this.element.style.display = "none";
+	startInventoryList();
 }
 
 Modal.prototype.open=function(){

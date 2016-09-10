@@ -38,10 +38,11 @@
 					document.closeModal = function(){
 						m.close();
 					}
+					startInventoryList();
+
 				}
 			</script>
 	</head>
-
 	<body>
 	<?php 
     if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
