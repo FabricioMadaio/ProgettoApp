@@ -15,7 +15,7 @@
 	/*server code*/
 	//loadDoc(loadXMLInventories,"getInventories"+params);
  
-	loadDoc(loadXMLInventories,"xml/inventari.xml");
+	loadDoc(loadXMLInventories,"../xml/index.php");
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/

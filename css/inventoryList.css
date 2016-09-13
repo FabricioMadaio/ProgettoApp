@@ -1,0 +1,130 @@
+.inventoryTitle{
+    float: none;
+    font-size: 18px;
+    padding-top: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 6px;
+    text-decoration: none;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+li.positionFix{
+	float: left;
+    width: 74px;
+} 
+
+li.removeButton{
+	float: right;
+} 
+
+.inventoryRemove{
+    color: white;
+    border: 1px #628aff solid;
+    background: #628AFF;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 7px;
+    margin-top: 10px;
+    margin-right: 9px;
+    display: block;
+    text-overflow: initial;
+    overflow: visible;
+    white-space: initial;
+    font-weight: normal;
+}
+
+.inventoryRemove:hover {
+	transition: all 0.2s ease-in-out;
+	background-color:black;
+	border-color:black;
+}
+.inventoryRemove:active {
+	position:relative;
+	top:1px;
+}
+
+.listRow{
+	float: left;
+    width: 100%;
+    border-bottom: 1px #dedede solid;
+}
+
+.listElement{
+	display: block;
+    float: left;
+    text-align: center;
+    width: 90px;
+}
+
+.listTextContainer{
+	margin-top: 16px;
+	overflow: visible;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.listText{
+	margin: 3px;
+	margin-top: 7px;
+	font-weight: bolder;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.littleListText{
+	font-size: 14px;
+	margin-left: 10px;
+	margin-right: 2px;
+}
+
+.circleMargin{
+	margin: 6px;
+}
+
+.fixedCircle{
+	width:90px;
+}
+
+.removeItemButton{
+    z-index: 1;
+    position: relative;
+	padding: 0px 3px;
+    float: right;
+    line-height: 22px;
+    margin-right: 4px;
+    margin-top: 6px;
+    color: gray;
+    font-size: 28px;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.removeItemButton:hover {
+	transition: all 0.2s ease-in-out;
+	background-color: gray;
+	color: white;
+}
+.removeItemButton:active {
+	position:relative;
+	top:1px;
+}
+
+@media screen and (max-width : 480px){
+	li.positionFix{
+		float: left;
+		width: 0;
+	} 
+	
+	.inventoryTitle{
+		text-align: left;
+		margin-left: 4px;
+	}
+}
