@@ -146,68 +146,86 @@
 			
 			<section class="responsiveGrid">
 			
-				<div class="listRow">
-					<div class="listElement">
-								<div class="squareBox">
-									<div class="circle squareContent circleMargin" style="
-										background-image: url(../img/prodotto1.jpg);
-									">
-									</div>
-								</div>
-								
-					</div>
-					<a class="removeItemButton">×</a>	
-					<div class="listTextContainer">
-						<p class="listText">Vestiti con il nome lungo</p>
-						 <div>
-							<span class="littleListText">qta.</span>
-							<input type="text" style="width: 24px;" value="99">
-						</div>
-					</div>
+					<div class="inventoryElem">
+						<a class="removeItemButton">×</a>	
 						
-				</div>
+						<div class="squareBox">
+							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+							<div style="bottom: 0;right: 0;position: absolute;">
+									<input type="number" value="99" style="
+										    color: #f9f9f9;
+											background-color: #406be8;
+											font-size: 19px;
+											margin-bottom: 7px;
+											margin-right: 8px;
+											padding: 1px;
+											border: 3px #dad7d7 solid;
+											border-radius: 99px;
+											width: 36px;
+											text-align: center;
+											display: block;
+											box-shadow: 2px 3px 1px #EEE;
+											padding-top: 2px;
+									"/>
+							</div>
+							
+						</div>
+						<span class="inventoryName">Vestiti con il nome lungo</span>	
+	                </div>					
 				
-				<div class="listRow">
-					<div class="listElement">
-								<div class="squareBox">
-									<div class="circle squareContent circleMargin" style="
-										background-image: url(../img/prodotto1.jpg);
-									">
-									</div>
-								</div>
-								
-					</div>
-					<a class="removeItemButton">×</a>	
-					<div class="listTextContainer">
-						<p class="listText">Vestiti con il nome lungo</p>
-						 <div>
-							<span class="littleListText">qta.</span>
-							<input type="text" style="width: 24px;" value="99">
-						</div>
-					</div>
+				<div class="inventoryElem">
+						<a class="removeItemButton">×</a>	
 						
-				</div>
+						<div class="squareBox">
+							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+							<div style="bottom: 0;right: 0;position: absolute;">
+									<input type="number" value="99" style="
+										    color: #f9f9f9;
+											background-color: #406be8;
+											font-size: 19px;
+											margin-bottom: 7px;
+											margin-right: 8px;
+											padding: 1px;
+											border: 3px #dad7d7 solid;
+											border-radius: 99px;
+											width: 36px;
+											text-align: center;
+											display: block;
+											box-shadow: 2px 3px 1px #EEE;
+											padding-top: 2px;
+									"/>
+							</div>
+							
+						</div>
+						<span class="inventoryName">Vestiti con il nome lungo</span>	
+	                </div>			
 				
-				<div class="listRow">
-					<div class="listElement">
-								<div class="squareBox">
-									<div class="circle squareContent circleMargin" style="
-										background-image: url(../img/prodotto1.jpg);
-									">
-									</div>
-								</div>
-								
-					</div>
-					<a class="removeItemButton">×</a>	
-					<div class="listTextContainer">
-						<p class="listText">Vestiti con il nome lungo</p>
-						 <div>
-							<span class="littleListText">qta.</span>
-							<input type="text" style="width: 24px;" value="99">
-						</div>
-					</div>
+				<div class="inventoryElem">
+						<a class="removeItemButton">×</a>	
 						
-				</div>
+						<div class="squareBox">
+							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+							<div style="bottom: 0;right: 0;position: absolute;">
+									<input type="number" value="99" style="
+										    color: #f9f9f9;
+											background-color: #406be8;
+											font-size: 19px;
+											margin-bottom: 7px;
+											margin-right: 8px;
+											padding: 1px;
+											border: 3px #dad7d7 solid;
+											border-radius: 99px;
+											width: 36px;
+											text-align: center;
+											display: block;
+											box-shadow: 2px 3px 1px #EEE;
+											padding-top: 2px;
+									"/>
+							</div>
+							
+						</div>
+						<span class="inventoryName">Vestiti con il nome lungo</span>	
+	                </div>			
 			</section>
 			
 				

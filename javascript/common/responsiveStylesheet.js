@@ -10,6 +10,7 @@
 *********************************************************************/
 
 var elementStartWidth = 140;
+var marginCloseButton = 6;
 
 /*funzione di inizio (da chiamare nella onload)*/
 function startStylesheet(){ 
@@ -135,14 +136,25 @@ function onResize(){
 			dimensioni contenitore/dimensione di partenza rettangolo
 			NOTA: +1 perche ne aggiungiamo un altro per riempire lo spazio extra
 		*/
-		var capacity = parseInt(container.clientWidth/elementStartWidth)+1;
-		var newWidth = (container.clientWidth/capacity);
+		var containerWidth = container.clientWidth;
 		
-		if(elms.length<capacity) newWidth = elementStartWidth;
+		var capacity = parseInt(containerWidth/elementStartWidth)+1;
+		var newWidth = (containerWidth/capacity);
+		
+		//sottraggo il 20 percento di un singolo rettangolo a tutta la serie
+		newWidth-= (newWidth/20)/capacity;
+		
+		var margin = 0;
+		
+		if(elms.length<capacity){
+			newWidth = elementStartWidth;
+			margin = marginCloseButton;
+		} 
 			
 		/*aggiorna le dimensioni finali*/
 		for (var i = 0; i < elms.length; i++) {
 			elms[i].style.width = ""+newWidth+"px";
+			elms[i].getElementsByClassName("removeItemButton")[0].style.marginRight = ""+margin+"px";
 		}
 		
 	}
