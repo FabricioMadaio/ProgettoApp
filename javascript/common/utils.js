@@ -9,7 +9,7 @@
 *********************************************************************/
 
  /* chiamata ajax di tipo POST generica */
- function loadDoc(handler,path) {
+ function loadDoc(handler,path,attrs) {
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200 && handler!= null) {
@@ -18,7 +18,8 @@
 	  };
 	  console.log(path);
 	  xhttp.open("POST", path, true);
-	  xhttp.send();
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send(attrs);
 }
  
  /*resituisce i parametri passati in un URI */
@@ -92,3 +93,7 @@
  function toClientHome(){
 	 document.location.href = parentUrl(parentUrl(document.location.href));
  }
+ function toProductList(){
+	 document.location.href = parentUrl(parentUrl(document.location.href))+"/productList/";
+ }
+
