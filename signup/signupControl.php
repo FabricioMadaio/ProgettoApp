@@ -127,11 +127,11 @@
 				$query = "INSERT INTO utenti (idUtente, username, password,nome,cognome,dataDiNascita,residenza) VALUES ('$lastId', '$username', '$password', '$name', '$lastname', '$date', '$residence')";
 				if(!$dbconn->query($query))
 				{
-				   header('Location:../registrationErrorePage.html');
+				   header('Location:../registrationErrorPage.html');
 				}
 				else
 				{
-					header('Location:../registrationSuccesifulPage.html');
+					header('Location:../registrationSuccessfulPage.html');
 				}
 				
 			}
@@ -139,7 +139,7 @@
 		$dbconn->close();	
 		
 	}catch (Exception $e) {
-		header('Location:../registrationErrorePage.html');
+		header('Location:../registrationErrorPage.html');
 	}
 	
 

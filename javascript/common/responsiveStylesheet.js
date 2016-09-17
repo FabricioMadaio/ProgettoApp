@@ -154,7 +154,9 @@ function onResize(){
 		/*aggiorna le dimensioni finali*/
 		for (var i = 0; i < elms.length; i++) {
 			elms[i].style.width = ""+newWidth+"px";
-			elms[i].getElementsByClassName("removeItemButton")[0].style.marginRight = ""+margin+"px";
+			var itemButton = elms[i].getElementsByClassName("removeItemButton");
+			if(itemButton && itemButton.lenght>0)
+				itemButton[0].style.marginRight = ""+margin+"px";
 		}
 		
 	}
