@@ -22,24 +22,15 @@
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/inventoryList.js"></script>
+			<script src="../javascript/productsList.js"></script>
 			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
-
+			
 			<script> 
 				window.onload = function(e){ 
 					/* responsiveness*/
 					startStylesheet();
+					startProductsList();
 					
-					var m = new Modal("myModal",{
-						onOpen:null,
-						onClose:null
-					});
-					
-					document.closeModal = function(){
-						m.close();
-					}
-					startInventoryList();
-
 				}
 			</script>
 	</head>
@@ -76,9 +67,6 @@
 								<li>
 									<a href="UserSignupForm"> Il tuo profilo </a>
 								</li>
-								<li>
-									<a  href="javascript:toProductList()"> Cerca un prodotto </a>
-								</li>
 							</ul>
 						  </div>
 						
@@ -89,9 +77,6 @@
 					</li>
 					<li class = "fullmenu">
 						<a href="UserSignupForm"> Il tuo profilo </a>
-					</li>
-					<li class = "fullmenu">
-						<a  href="javascript:toProductList()"> Cerca un prodotto </a>
 					</li>
 					
 				</ul>
@@ -105,7 +90,7 @@
 								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
+								<input class="search" id="ricerca" onchange="checkIfSearch()" placeholder="Cerca" type="text"">
 							</div>
 						</div>
 						</div>
@@ -113,42 +98,6 @@
 				</ul>
 			</nav>
 			
-			
-
-			<!-- The Modal -->
-			<div id="myModal" class="modal">
-		
-			  <!-- Modal content -->
-			  <div class="modal-content">
-				<form class="form" id="formNew" action="javascript:showHint()" method="POST">
-				
-					<ul class="modal-header">
-						<li style="float:right">
-							<a class="myModal_close closeButton">×</a>
-						</li>
-						<li>
-							<p>Nuovo Inventario</p>
-						</li>	  
-					</ul>
-					    <p id="ok" style="margin-left:3%;display:none"> Inserimento riuscito</p>
-					<div class="modal-body" id="modalBody">
-						
-							<p>Inserisci un nome per il tuo inventario</p>
-							<input type="text" id="inventoryname"name="inventoryName" class="input-text fillrow"/>
-							<br>
-							<ol id="errorList">
-								
-							</ol>
-							<br>
-					</div>
-					
-					<div  id="footer" class="modal-footer">
-							<input type="submit"  name="inventorySubmit" class="submit submitRightButton" value="Conferma"/>
-					</div>
-					
-				</form>
-			  </div>
-			 </div>
 			<section class="responsiveGrid">
 			
 				<span id="elementGrid">
@@ -175,17 +124,6 @@
 	                </div>
 					
 				</span>
-				<!-- Trigger/Open The Modal -->
-				<div class="inventoryElem">
-					<div class="squareBox">
-						<div class="circle squareContent myModal_open">
-							<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
-						</div>
-					</div>
-					
-					<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
-					
-				</div>
 			</section>
 			
 				
