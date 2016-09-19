@@ -22,8 +22,9 @@
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/productsList.js"></script>
+			<script src="../javascript/productsListSearch.js"></script>
 			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
+			
 			
 			<script> 
 				window.onload = function(e){ 
@@ -36,10 +37,8 @@
 	</head>
 	<body>
 	<?php 
-    if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
-    {
-    	header('Location:login/');
-    }
+    	/*load session controll*/
+	    include '../php/sessionControl.php';
 	 ?>
 			<header>
 				<a href="javascript:toHome()">
@@ -90,7 +89,7 @@
 								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="checkIfSearch()" placeholder="Cerca" type="text"">
+								<input class="search" id="ricerca" onchange="startProductsList()" placeholder="Cerca" type="text"">
 							</div>
 						</div>
 						</div>
