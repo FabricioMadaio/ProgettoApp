@@ -10,6 +10,10 @@
 	function isAlphanumeric($string){
 		return preg_match("/^[A-Za-z0-9_. ]*$/",$string);
 	}
+	
+	function errorString($err,$name){
+		 return '<li class="error-li" name ="'.$name.'_e" style="display:block"><p>'.$err.'</p></li>';
+	}
 
 	function check_username($username)
 	{

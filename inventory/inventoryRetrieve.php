@@ -1,24 +1,19 @@
 <?php 
 
+	/*INVENTORY RETRIEVE*/
+
 	/*load dbConn*/
 	include '../php/DBConnection.php';
-	/*init model*/
-	include 'initInventory.php';
+	include '../php/sessionControl.php';
 	
-	if(!isset($_SESSION)){
-    session_start();
-    } 
-
     $dbconn = new DBConnection();
 	
-	if(!isset($_SESSION["username"]))
-    {
-    	header('Location:../login/');
-    }
-
+	$inventoryName =$inventoryNameErr = "";
+	
     $username =$_SESSION["username"];
     $password =$_SESSION["password"];
     $inventoryNameCheck = false;
+	
 	try
 	{
 		/*open the connection*/
@@ -67,7 +62,6 @@
 		  }
 
 		$dbconn->close();
-		//include "inventoryView.php"	;
 	}
 	catch (Exception $e) 
 		{

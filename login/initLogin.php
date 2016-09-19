@@ -1,4 +1,6 @@
 <?php 
- $username = $password ="";
- $usernameErr =$passwordErr =$dbErr ="";  
+	include "UserData.php";
+	
+	$user = new UserData();
+ 
  ?>

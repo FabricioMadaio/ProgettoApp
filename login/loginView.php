@@ -42,14 +42,14 @@
 						<ol>
 							
 							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$username"; ?>" type="text" required >
+								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$user->username"; ?>" type="text" required >
 							</li>
-							<?php if(!empty($usernameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$usernameErr.'</p></li>';?>
+							<?php echo $user->usernameErr;?>
 							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo "$password"; ?>" type="password" required>
+								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo "$user->password"; ?>" type="password" required>
 							</li>
-							<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
-							<?php if(!empty($dbErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dbErr.'</p></li>';?>
+							<?php echo $user->passwordErr;?>
+							<?php echo $user->dbErr;?>
 						</ol>
 						
 					

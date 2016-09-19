@@ -13,17 +13,17 @@
 			<![endif]-->
 
 			<title>Company inventory</title>
-			<link rel="stylesheet" type="text/css" href="../css/style.css">
-			<link rel="stylesheet" type="text/css" href="../css/singup.css">
-			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
-			<link rel="stylesheet" type="text/css" href="../css/modal.css">
+			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/singup.css">
+			<link rel="stylesheet" type="text/css" href="css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="css/modal.css">
 
 
-			<script src="../javascript/common/utils.js"></script>
-			<script src="../javascript/common/responsiveStylesheet.js"></script>
-			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/inventoryList.js"></script>
-			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
+			<script src="javascript/common/utils.js"></script>
+			<script src="javascript/common/responsiveStylesheet.js"></script>
+			<script src="javascript/common/modal.js"></script>
+			<script src="javascript/inventoryList.js"></script>
+			<script src="javascript/inventoryUtils/inventoryUtils.js"></script>
 
 			<script> 
 				window.onload = function(e){ 
@@ -44,15 +44,10 @@
 			</script>
 	</head>
 	<body>
-	<?php 
-    if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
-    {
-    	header('Location:login/');
-    }
-	 ?>
+	
 			<header>
 				<a href="javascript:toHome()">
-					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
 					<!--Font logo rockwell-->
 				</a>
 			</header>
@@ -102,7 +97,7 @@
 						<div style="margin-left: 12px;">
 						<div class="search">
 							<a class="search">
-								<img src="../img/search.png" class="product-preview" alt="formaggio" />
+								<img src="img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
 								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
@@ -179,7 +174,7 @@
 				<div class="inventoryElem">
 					<div class="squareBox">
 						<div class="circle squareContent myModal_open">
-							<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
+							<img class="imageAdd" src="img/logoAdd.png" alt="logo aggiungi prodotto">
 						</div>
 					</div>
 					
