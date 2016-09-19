@@ -1,7 +1,4 @@
 <?php
-
-	/*load dbConn*/
-	include '../php/dbConnection.php';
 	
 	/*init model*/
 	include 'initSignup.php';

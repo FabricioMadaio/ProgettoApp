@@ -17,13 +17,10 @@
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/singup.js"></script>
-			<script src="../javascript/comuni.js"></script>
-			<script src="../javascript/showPassword.js"></script>
 			
 			<script>
 				window.onload = function(){
 					initSignup();
-					initComuni();
 				}
 			</script>
 	</head>
@@ -44,35 +41,34 @@
 						<ol>
 							
 							<li>
-								<input class="input-text midrow-l" name="nome" placeholder="Nome" type="text" value="<?php echo $name;?>" required autofocus="autofocus">
-								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="<?php echo $lastname;?>" type="text" required>
+								<input class="input-text midrow-l" name="nome" placeholder="Nome" type="text" value="<?php echo $user->name;?>" required autofocus="autofocus">
+								<input class="input-text midrow-r" name="cognome" placeholder="Cognome" value="<?php echo $user->lastname;?>" type="text" required>
+								<?php echo $user->nameErr;?>
+								<?php echo $user->lastnameErr;?>
 							</li>
-							<?php if(!empty($nameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$nameErr.'</p></li>';?>
-						    <?php if(!empty($lastnameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$lastnameErr.'</p></li>';?>
+							<li>
+								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $user->username;?>" type="text" required >
+								<?php echo $user->usernameErr;?>
+							</li>
 							
 							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $username;?>" type="text" required >
-							<?php if(!empty($usernameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$usernameErr.'</p></li>';?>	
+								<input id="password" class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $user->password;?>" type="password" required>
+								<?php echo $user->passwordErr;?>
 							</li>
-							
-							<li>
-								<input id="password" class="input-text fillrow" name="password" placeholder="Password" value="<?php echo $password;?>" type="password" required>
-								<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
-							</li>
-							<li style="text-align:left;font-size:14px;font-family:Arial"> <input type="checkbox" style="float:left"  name="checkbox" onclick="showHide()"> Show password</li>
+							<li style="text-align:left;font-size:14px;font-family:Arial"> <input type="checkbox" style="float:left"  name="checkbox" onclick="showHidePassword()"> Show password</li>
 							<li>
 								<div style="display: inline-block;width: 100%;">
 								
 									<label class="littlerow">Data di nascita</label>
-									<input class="bigrow" type="date" name="bday"  value="<?php echo $date;?>" required >
+									<input class="bigrow" type="date" name="bday"  value="<?php echo $user->bday;?>" required >
 									
 								 </div>
-						    <?php if(!empty($dateErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dateErr.'</p></li>';?>
+								 <?php echo $user->bdayErr;?>
 							</li>
 							<li>
-								<input class="input-text fillrow" name="residenza" placeholder="Residenza" value="<?php echo $residence;?>" type="text" required>
+								<input class="input-text fillrow" name="residenza" placeholder="Residenza" value="<?php echo $user->residence;?>" type="text" required>
+								<?php echo $user->residenceErr;?>
 							</li>
-							<?php if(!empty($residenceErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$residenceErr.'</p></li>';?>
 							
 						</ol>
 						

@@ -17,12 +17,10 @@
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/singup.js"></script>
-			<script src="../javascript/comuni.js"></script>
 			
 			<script>
 				window.onload = function(){
 					initSignup();
-					initComuni();
 				}
 			</script>
 	</head>
@@ -57,7 +55,7 @@
 						<input type="submit" class="submit" value="Entra" > 	
 						<br>
 						<p>Oppure</p>
-						<input type="submit" class="submit" value="Registrati" style="background-color:#08a9ea">
+						<a class="submit" href="../signup" style="background-color:#08a9ea;display: block;text-decoration: none;">Registrati</a>
 						
 					</fieldset>
 					<br>

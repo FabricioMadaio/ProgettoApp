@@ -5,8 +5,8 @@
 	include '../php/inputUtils.php';
 	include '../php/DBConnection.php';
 
-	include 'Image.php';
-	include 'Item.php';
+	include '../php/models/Image.php';
+	include '../php/models/Item.php';
 	
 	
 	/*file upload*/
