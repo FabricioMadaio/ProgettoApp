@@ -12,7 +12,8 @@
  function startInventoryList(){
 	
 	var params = getSearchParams();
-	loadDoc(loadXMLInventories,"inventory/inventoryRetrieve.php");
+	console.log(params);
+	loadDoc(loadXMLInventories,"inventory/inventoryRetrieve.php",params);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
@@ -20,6 +21,8 @@
 			
 		var i;
 		var xmlDoc = xml.responseXML;
+		if(xmlDoc==null){ siteOfflineError();}
+		
 		var list = document.getElementById("elementGrid");
 		var x = xmlDoc.getElementsByTagName("inventory");
 

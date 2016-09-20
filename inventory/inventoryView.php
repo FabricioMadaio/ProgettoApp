@@ -23,7 +23,6 @@
 			<script src="javascript/common/responsiveStylesheet.js"></script>
 			<script src="javascript/common/modal.js"></script>
 			<script src="javascript/inventoryList.js"></script>
-			<script src="javascript/inventoryUtils/inventoryUtils.js"></script>
 
 			<script> 
 				window.onload = function(e){ 
@@ -100,7 +99,7 @@
 								<img src="img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
+								<input class="search" id="ricerca" onchange="startInventoryList()" placeholder="Cerca" type="text" required>
 							</div>
 						</div>
 						</div>
