@@ -152,21 +152,7 @@
 						<div class="squareBox">
 							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
 							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" style="
-										    color: #f9f9f9;
-											background-color: #406be8;
-											font-size: 19px;
-											margin-bottom: 7px;
-											margin-right: 8px;
-											padding: 1px;
-											border: 3px #dad7d7 solid;
-											border-radius: 99px;
-											width: 36px;
-											text-align: center;
-											display: block;
-											box-shadow: 2px 3px 1px #EEE;
-											padding-top: 2px;
-									"/>
+									<input type="number" value="99" />
 							</div>
 							
 						</div>
@@ -179,21 +165,7 @@
 						<div class="squareBox">
 							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
 							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" style="
-										    color: #f9f9f9;
-											background-color: #406be8;
-											font-size: 19px;
-											margin-bottom: 7px;
-											margin-right: 8px;
-											padding: 1px;
-											border: 3px #dad7d7 solid;
-											border-radius: 99px;
-											width: 36px;
-											text-align: center;
-											display: block;
-											box-shadow: 2px 3px 1px #EEE;
-											padding-top: 2px;
-									"/>
+									<input type="number" value="99" />
 							</div>
 							
 						</div>
@@ -206,26 +178,22 @@
 						<div class="squareBox">
 							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
 							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" style="
-										    color: #f9f9f9;
-											background-color: #406be8;
-											font-size: 19px;
-											margin-bottom: 7px;
-											margin-right: 8px;
-											padding: 1px;
-											border: 3px #dad7d7 solid;
-											border-radius: 99px;
-											width: 36px;
-											text-align: center;
-											display: block;
-											box-shadow: 2px 3px 1px #EEE;
-											padding-top: 2px;
-									"/>
+									<input type="number" value="99" />
 							</div>
 							
 						</div>
 						<span class="inventoryName">Vestiti con il nome lungo</span>	
 	                </div>			
+					<div class="inventoryElem">
+						<div class="squareBox">
+							<div class="circle squareContent myModal_open">
+								<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
+							</div>
+						</div>
+						
+						<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
+						
+					</div>
 			</section>
 			
 				
