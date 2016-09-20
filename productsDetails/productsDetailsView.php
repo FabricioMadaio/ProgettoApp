@@ -84,43 +84,7 @@
 					
 				</ul>
 				
-			</nav>
-			
-			<!-- The Modal -->
-			<div id="myModal" class="modal">
-		
-			  <!-- Modal content -->
-			  <div class="modal-content">
-				<form class="form" id="formNew" action="login" method="POST">
-				
-					<ul class="modal-header">
-						<li style="float:right">
-							<a class="myModal_close closeButton">×</a>
-						</li>
-						<li>
-							<p>Caricamento</p>
-						</li>
-					</ul>
-					<div class="modal-body">
-						
-							<div class="progress-container">
-							  <div id="progressBar" class="progressbar" style="width:0%">
-							  </div>
-							</div>
-
-							<p id="progressValue">0%</p>
-							
-							<div id="response" style="text-align:center">
-								
-							</div>
-							<br>
-					</div>
-					
-				</form>
-			  </div>
-			 </div>
-			  <!-- Modal test End -->
-			
+			</nav>	
 			<br>
 		
 			<section  id="section" class="sectionbox" style="max-width:800px;text-align: center;">	
@@ -142,7 +106,7 @@
 									</textarea>
 								</li>
 								<li style="margin-top: 14px;height: auto;">		
-									<input type="submit" class="submit submitRightButton" value="Carica">
+									<input type="submit" class="submit submitRightButton" value="Cancella" style="background-color:red">
 								</li>
 							</ol>
 						</fieldset>
