@@ -1,6 +1,6 @@
 <?php 
-	include "UserData.php";
+	include "../php/models/User.php";
 	
-	$user = new UserData();
+	$user = new User();
  
  ?>

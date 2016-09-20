@@ -8,14 +8,11 @@
 
 *********************************************************************/
 
-/*inizializza la pagina del carrello caricando gli elementi HTML nella tabella*/
+/*inizializza la pagina caricando gli elementi HTML nella tabella*/
  function startInventoryList(){
 	
 	var params = getSearchParams();
-	/*server code*/
-	//loadDoc(loadXMLInventories,"getInventories"+params);
- 
-	loadDoc(loadXMLInventories,"../xml/index.php");
+	loadDoc(loadXMLInventories,"inventory/inventoryRetrieve.php");
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
@@ -51,4 +48,27 @@ function inventoryString(item){
 				"</div><span class='inventoryName'>"+item.name+"</span>"+
 				"</div>";
  }
- 
+
+/* chiama il servizio di creazione nuovo inventario*/ 
+function createIventory(){
+	 
+	var str = document.getElementById("inventoryname").value;
+	loadDoc(createHandler,"inventory/inventoryNew.php","inventoryName="+str);
+
+}
+
+function createHandler(xmlhttp){
+	 
+	var responseElem = document.getElementById("response");
+	 
+	if(xmlhttp.responseText==="inserimentoRiuscito"){
+		document.getElementById("footer").style.visibility="hidden";
+		responseElem.innerHTML = "<section class='infoBox'>Inventario creato!</section>";
+	}else{
+		
+		var content = "<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";
+		content += "<p id='errorResponse'>Errore</p><ul class='errorList'><li> - "+xmlhttp.responseText+"</li></ul><br></section>";
+		responseElem.innerHTML = content; 
+		startInventoryList();
+	}
+ }

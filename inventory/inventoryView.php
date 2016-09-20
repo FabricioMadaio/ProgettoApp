@@ -32,14 +32,14 @@
 					
 					var m = new Modal("myModal",{
 						onOpen:null,
-						onClose:null
+						onClose:function(){startInventoryList();}
 					});
 					
 					document.closeModal = function(){
 						m.close();
 					}
+					
 					startInventoryList();
-
 				}
 			</script>
 	</head>
@@ -115,7 +115,7 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action="javascript:showHint()" method="POST">
+				<form class="form" id="formNew" action="javascript:createIventory()" method="POST">
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -125,16 +125,16 @@
 							<p>Nuovo Inventario</p>
 						</li>	  
 					</ul>
-					    <p id="ok" style="margin-left:3%;display:none"> Inserimento riuscito</p>
 					<div class="modal-body" id="modalBody">
 						
 							<p>Inserisci un nome per il tuo inventario</p>
 							<input type="text" id="inventoryname"name="inventoryName" class="input-text fillrow"/>
 							<br>
-							<ol id="errorList">
-								
-							</ol>
 							<br>
+							<div id="response">
+							
+							</div>
+							
 					</div>
 					
 					<div  id="footer" class="modal-footer">
@@ -189,7 +189,7 @@
 				<div class="background">
 					<div class="wrapper">
 					
-						<img src="../img/logoFooter.svg" alt="logo"/>
+						<img src="img/logoFooter.svg" alt="logo"/>
 						<label>
 							Copyright @ Webmaster
 						</label>

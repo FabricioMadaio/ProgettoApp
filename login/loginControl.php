@@ -38,12 +38,14 @@
 
 			if($usernameCheck == true && $passCheck == true)
 			{
-				if(checkUserData($user->username,$user->password,$dbconn))
+				$user->userid = checkUserData($user->username,$user->password,$dbconn);
+				if($user->userid>=0)
 				{
 
 					session_start();
 					$_SESSION["username"] = $user->username;
 					$_SESSION["password"] = $user->password;
+					$_SESSION["userid"] = $user->userid;
 					
 					//to home
 					header('Location:../');
@@ -67,7 +69,7 @@
 	/*verifica se l'utente e la password sono presenti nel DB*/
 	function checkUserData($username,$password,$dbconn)
 	{
-		$query ="SELECT username,password FROM utenti";
+		$query ="SELECT username,password,idUtente FROM utenti";
 		$result = $dbconn->query($query); 
       	if (mysqli_num_rows($result) > 0) {
    		    // output data of each row
@@ -75,10 +77,10 @@
     	  {
             if(strcmp ($row["username"] , $username) == 0 && strcmp ($row["password"] , $password) == 0  )
             {
-               return true;
+               return $row["idUtente"];
             } 
 	      }
-	      return false;
+	      return -1;
         }
    }
 	

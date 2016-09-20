@@ -9,6 +9,7 @@
 		private $password;
 		private $username;
 		private $lastname;
+		private $userid;
 		
 		private $nameErr;
 		private $emailErr;
