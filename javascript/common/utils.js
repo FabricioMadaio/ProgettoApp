@@ -95,6 +95,6 @@
 	 document.location.href = parentUrl(parentUrl(document.location.href));
  }
  function toProductList(){
-	 document.location.href = parentUrl(parentUrl(document.location.href))+"/productList/";
+	 document.location.href = parentUrl(document.location.href)+"/productList/";
  }
 

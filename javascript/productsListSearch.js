@@ -15,7 +15,7 @@
 	/*server code*/
 	//loadDoc(loadXMLInventories,"getInventories"+params);
     var search = document.getElementById("ricerca").value;
-	loadDoc(loadXMLProducts,"../productsSearch/productsSearch.php","ricerca="+search);
+	loadDoc(loadXMLProducts,"productsSearch.php","ricerca="+search);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
