@@ -1,9 +1,0 @@
-<!ELEMENT vetrina (prodotto+)>
-<!ELEMENT prodotto (id,nome,descrizione,prezzo_vendita,quantita,immagine+)>
-<!ELEMENT id (#PCDATA) >
-<!ELEMENT nome (#PCDATA) >
-<!ELEMENT descrizione (#PCDATA) >
-<!ELEMENT prezzo_vendita (#PCDATA) >
-<!ELEMENT quantita (#PCDATA) >
-<!ELEMENT immagine (#PCDATA) >
-				
