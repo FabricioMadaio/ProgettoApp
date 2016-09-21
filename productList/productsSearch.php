@@ -12,12 +12,9 @@
 		{
 			    $username =$_SESSION["username"];
 			    $password =$_SESSION["password"];
-			    $userId = getUserid($dbConn,$username,$password);
-
-				$query=$ricerca="";
-                $query="SELECT nomeProdotto,IdProdotto,immagine FROM prodotti JOIN inventari on prodotti.idInventario = inventari.idInventario JOIN immagini ON 
-				               prodotti.idImmagine= immagini.idImmagini WHERE inventari.idUtente='$userId'";
-                /*"."."."*/
+			    $userId = $_SESSION["userid"];
+			   $query=$ricerca="";
+               $query="SELECT IdProdotto,nomeProdotto,immagine FROM prodotti JOIN immagini on prodotti.idImmagine=immagini.idImmagini WHERE prodotti.idUtente='$userId' ";
 				if (!strcmp ( $_POST["ricerca"] , "") == 0 && !empty($_POST["ricerca"])) 
 				{
 					$ricerca = test_input($_POST['ricerca']);
@@ -25,7 +22,7 @@
 
 				}
 			
-
+                  
 				// Send the headers
 				header('Content-type: text/xml');
 				header('Pragma: public');
@@ -34,10 +31,10 @@
 				echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 			    echo '<productList>';
 			    $result =$dbConn->query($query);
-
+                
                 if(mysqli_num_rows($result) > 0)
 			    {
-					    // output data of each row
+				  // output data of each row
 				  while($row = mysqli_fetch_assoc($result))
 			      { 
 			      	echo "<product>";
@@ -54,7 +51,7 @@
 	    catch (Exception $e) 
 	    {
 
-		//header('Location:../errorePage.html');
+		//echo "$e";
 
 	    }
 
