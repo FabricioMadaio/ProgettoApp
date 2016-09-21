@@ -34,7 +34,7 @@
 					
 					var uploader = new ImageUploader({
 						inputElement : document.getElementById('inputImage'),
-						uploadUrl : 'ItemControl.php',
+						uploadUrl : 'ItemUpload.php',
 						onProgress : function(event) {
 							var value = ((event.currentItemDone / event.currentItemTotal) * 99).toFixed() + "%";
 							setProgressBar(value);

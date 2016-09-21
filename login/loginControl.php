@@ -1,6 +1,8 @@
 <?php 
  	/*load dbConn*/
 	include '../php/DBConnection.php';
+	include '../php/inputUtils.php';
+	
 	/*init model*/
 	include 'initLogin.php';
 
@@ -16,59 +18,58 @@
 		{
 			if (empty($_POST["password"])) 
 			{
-				$passwordErr = "Inserisci la password";
+				$user->passwordErr = errorString("Inserisci la password","pass");
 			} 
 			else 
 			{
-				$password = test_input($_POST["password"]);
+				$user->password = testInput($_POST["password"]);
 				$passCheck=true;	
 			}
 
 			if (empty($_POST["username"])) 
 			{
-				$usernameErr = "inserisci l'usename";
+				$user->usernameErr = errorString("inserisci l'usename","username");
 			} 
 			else
 			{
-				$username = test_input($_POST["username"]);
+				$user->username = testInput($_POST["username"]);
 				$usernameCheck=true;	 	
 			}
 
 			if($usernameCheck == true && $passCheck == true)
 			{
-				if(checkUserData($username,$password,$dbconn))
+				$user->userid = checkUserData($user->username,$user->password,$dbconn);
+				if($user->userid>=0)
 				{
 
 					session_start();
-					$_SESSION["username"] = $username;
-					$_SESSION["password"] = $password;
-					header('Location:../inventory/');
+					$_SESSION["username"] = $user->username;
+					$_SESSION["password"] = $user->password;
+					$_SESSION["userid"] = $user->userid;
+					
+					//to home
+					header('Location:../');
 				}
 
 				else
 				{
-					$dbErr ="Nessuna corrispondenza trovata nel database!";
+					$user->dbErr = errorString("Nessuna corrispondenza trovata nel database!","db");
 				}
 			}
 		}
 		$dbconn->close();	
 		
 	}catch (Exception $e) {
-		$dbErr ="errore nel database";
+		$user->dbErr = errorString("Errore nel database","db");
 	}
-
+	
+	//chiamo la view
 	include "loginView.php";
 
-    function test_input($data) {
-	  $data = trim($data);
-	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
-	  return $data;
-	}
-
+	/*verifica se l'utente e la password sono presenti nel DB*/
 	function checkUserData($username,$password,$dbconn)
 	{
-		$query ="SELECT username,password FROM utenti";
+		$query ="SELECT username,password,idUtente FROM utenti";
 		$result = $dbconn->query($query); 
       	if (mysqli_num_rows($result) > 0) {
    		    // output data of each row
@@ -76,10 +77,10 @@
     	  {
             if(strcmp ($row["username"] , $username) == 0 && strcmp ($row["password"] , $password) == 0  )
             {
-               return true;
+               return $row["idUtente"];
             } 
 	      }
-	      return false;
+	      return -1;
         }
    }
 	

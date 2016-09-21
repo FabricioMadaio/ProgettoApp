@@ -23,7 +23,6 @@
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/productsListSearch.js"></script>
-			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
 			
 			
 			<script> 

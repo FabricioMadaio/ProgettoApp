@@ -47,26 +47,22 @@
 	
 	var params = "";
 	if(search && search.value!=""){
-		if(params=="") params= "?";
 		params+="search="+search.value;
 	}
 	
 	if(ord && ord.value!=""){
-		if(params=="") params= "?";
-		else	params+="&";
+		if(params!="") params+="&";
 		params+="ord="+ord.value;
 	}
 	
 	if(checkStock && checkStock.checked==true){
-		if(params=="") params= "?";
-		else	params+="&";
+		if(params!="") params+="&";
 		params+="stock=1";
 	}
 	
 	if(inizioFascia && fineFascia && inizioFascia!= "" && fineFascia!=""){
 		if(parseInt(inizioFascia.value)<parseInt(fineFascia.value)){
-			if(params=="") params= "?";
-			else	params+="&";
+			if(params!="") params+="&";
 			params+="start="+inizioFascia.value+"&end="+fineFascia.value;
 		}
 	}
@@ -89,11 +85,16 @@
 	document.location.href = parentUrl(document.location.href);
  }
  
+ /*link a errore generico*/
+ function siteOfflineError(){
+	 document.location.href = parentUrl(document.location.href)+"/errorPage.html";
+ }
+ 
  /*link alla home per l'admin verso il client*/
  function toClientHome(){
 	 document.location.href = parentUrl(parentUrl(document.location.href));
  }
  function toProductList(){
-	 document.location.href = parentUrl(parentUrl(document.location.href))+"/productList/";
+	 document.location.href = parentUrl(document.location.href)+"/productList/";
  }
 

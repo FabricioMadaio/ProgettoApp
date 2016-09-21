@@ -1,8 +1,8 @@
 /******************************************************************** 
 
-	MODULO INVENTORY LIST:
+	MODULO INVENTORY CONTENT:
 	
-	carica la lista degli inventari da server
+	carica il contenuto di un inventario da server
 	
 	author: Fabricio Nicolas Madaio
 

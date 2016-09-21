@@ -17,12 +17,10 @@
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/singup.js"></script>
-			<script src="../javascript/comuni.js"></script>
 			
 			<script>
 				window.onload = function(){
 					initSignup();
-					initComuni();
 				}
 			</script>
 	</head>
@@ -42,14 +40,14 @@
 						<ol>
 							
 							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$username"; ?>" type="text" required >
+								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$user->username"; ?>" type="text" required >
 							</li>
-							<?php if(!empty($usernameErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$usernameErr.'</p></li>';?>
+							<?php echo $user->usernameErr;?>
 							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo "$password"; ?>" type="password" required>
+								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo "$user->password"; ?>" type="password" required>
 							</li>
-							<?php if(!empty($passwordErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$passwordErr.'</p></li>';?>
-							<?php if(!empty($dbErr)) echo '<li class="error-li" name ="nome_e" style="display:block"><p>'.$dbErr.'</p></li>';?>
+							<?php echo $user->passwordErr;?>
+							<?php echo $user->dbErr;?>
 						</ol>
 						
 					
@@ -57,7 +55,7 @@
 						<input type="submit" class="submit" value="Entra" > 	
 						<br>
 						<p>Oppure</p>
-						<input type="submit" class="submit" value="Registrati" style="background-color:#08a9ea">
+						<a class="submit" href="../signup" style="background-color:#08a9ea;display: block;text-decoration: none;">Registrati</a>
 						
 					</fieldset>
 					<br>

@@ -41,6 +41,17 @@ function updateSelection(checkbox){
 	
 }
 
+function showHidePassword(){
+	
+	var input = document.getElementById("password");
+	
+	if (input.getAttribute("type") === "password") {
+		input.setAttribute('type', 'text');
+	} else {
+		input.setAttribute('type', 'password');
+	}
+}
+
 
 function getCouple(name){
 	return name+"="+document.getElementsByName(name)[0].value;

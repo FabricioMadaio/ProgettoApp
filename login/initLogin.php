@@ -1,4 +1,6 @@
 <?php 
- $username = $password ="";
- $usernameErr =$passwordErr =$dbErr ="";  
+	include "../php/models/User.php";
+	
+	$user = new User();
+ 
  ?>

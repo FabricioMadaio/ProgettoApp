@@ -13,17 +13,16 @@
 			<![endif]-->
 
 			<title>Company inventory</title>
-			<link rel="stylesheet" type="text/css" href="../css/style.css">
-			<link rel="stylesheet" type="text/css" href="../css/singup.css">
-			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
-			<link rel="stylesheet" type="text/css" href="../css/modal.css">
+			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/singup.css">
+			<link rel="stylesheet" type="text/css" href="css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="css/modal.css">
 
 
-			<script src="../javascript/common/utils.js"></script>
-			<script src="../javascript/common/responsiveStylesheet.js"></script>
-			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/inventoryList.js"></script>
-			<script src="../javascript/inventoryUtils/inventoryUtils.js"></script>
+			<script src="javascript/common/utils.js"></script>
+			<script src="javascript/common/responsiveStylesheet.js"></script>
+			<script src="javascript/common/modal.js"></script>
+			<script src="javascript/inventoryList.js"></script>
 
 			<script> 
 				window.onload = function(e){ 
@@ -32,27 +31,22 @@
 					
 					var m = new Modal("myModal",{
 						onOpen:null,
-						onClose:null
+						onClose:function(){startInventoryList();}
 					});
 					
 					document.closeModal = function(){
 						m.close();
 					}
+					
 					startInventoryList();
-
 				}
 			</script>
 	</head>
 	<body>
-	<?php 
-    if(!isset($_SESSION["username"]) && isset($_SESSION["password"]))
-    {
-    	header('Location:login/');
-    }
-	 ?>
+	
 			<header>
 				<a href="javascript:toHome()">
-					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
 					<!--Font logo rockwell-->
 				</a>
 			</header>
@@ -102,10 +96,10 @@
 						<div style="margin-left: 12px;">
 						<div class="search">
 							<a class="search">
-								<img src="../img/search.png" class="product-preview" alt="formaggio" />
+								<img src="img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
+								<input class="search" id="ricerca" onchange="startInventoryList()" placeholder="Cerca" type="text" required>
 							</div>
 						</div>
 						</div>
@@ -120,7 +114,7 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action="javascript:showHint()" method="POST">
+				<form class="form" id="formNew" action="javascript:createIventory()" method="POST">
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -130,16 +124,16 @@
 							<p>Nuovo Inventario</p>
 						</li>	  
 					</ul>
-					    <p id="ok" style="margin-left:3%;display:none"> Inserimento riuscito</p>
 					<div class="modal-body" id="modalBody">
 						
 							<p>Inserisci un nome per il tuo inventario</p>
 							<input type="text" id="inventoryname"name="inventoryName" class="input-text fillrow"/>
 							<br>
-							<ol id="errorList">
-								
-							</ol>
 							<br>
+							<div id="response">
+							
+							</div>
+							
 					</div>
 					
 					<div  id="footer" class="modal-footer">
@@ -179,7 +173,7 @@
 				<div class="inventoryElem">
 					<div class="squareBox">
 						<div class="circle squareContent myModal_open">
-							<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
+							<img class="imageAdd" src="img/logoAdd.png" alt="logo aggiungi prodotto">
 						</div>
 					</div>
 					
@@ -194,7 +188,7 @@
 				<div class="background">
 					<div class="wrapper">
 					
-						<img src="../img/logoFooter.svg" alt="logo"/>
+						<img src="img/logoFooter.svg" alt="logo"/>
 						<label>
 							Copyright @ Webmaster
 						</label>
