@@ -22,26 +22,27 @@
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
 		
-			<script src="../javascript/imageUtils/exif.js"></script>
-			<script src="../javascript/imageUtils/ImageUploader.js"></script>
 			<script src="../javascript/deleteProducts.js"></script>
-			<script src="../javascript/inventoryList.js"></script>
 			
 			<script> 
+
 	        	window.onload = function(e){ 
 					/* responsiveness*/
 					startStylesheet();
 					
-					var m = new Modal("myModal",{
+					 var m = new Modal("myModal",{
 						onOpen:null,
-						//onClose:null;
+						onClose:null
 					});
 					
 					document.closeModal = function(){
 						m.close();
+					};
+
+					document.deleteElem = function(){
+						deleteProduct(<?php echo $item->id; ?>,m);
 					}
-					
-					startInventoryList();
+
 				}
 				
 			</script>
@@ -102,7 +103,7 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action=<?php echo "javascript:deleteProduct(".$item->id.")"; ?> method="POST"> 
+				<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -137,7 +138,7 @@
 
 			<h1 class="title"><?php echo $item->name; ?></h1>
 				
-				<form class="form" id="formNew" action="javascript:document.openModal();" method="POST" style="margin: 3px 2%;">	
+				<form class="form" id="formNew" method="POST" action="javascript:void(0);" style="margin: 3px 2%;">	
 					<aside class="left">
 						<div class="itemImageContainer">
 							<img src=<?php echo "'../uploads/".$item->imageUrl."'" ?> id="previewImage" class="itemImage circle" alt="Product" />
@@ -176,9 +177,5 @@
 			</footer>
 
 	</body>
-	
-	<script>
-			start();
-	</script>
 
 </html>

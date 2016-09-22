@@ -42,12 +42,15 @@
 					$item->name = $row['nomeProdotto'];
 					$item->description = $row['descrizioneProdotto'];
 					$item->imageUrl = $row["immagine"];
-			      	
+
 			      } 
-			    }
+			    }else{
+					/*page miss*/
+					header('Location:../errorePage.html');
+				}
 		    }
 			    $dbConn->close();
-			    include "productsDetailsView.php";
+			   include "productsDetailsView.php";
 	    }
 	    catch (Exception $e) 
 	    {
