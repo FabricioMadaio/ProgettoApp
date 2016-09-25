@@ -173,6 +173,7 @@
 				<form class="form" id="formNew" action="javascript:document.openModal();" method="POST" style="margin: 3px 2%;">	
 					<aside class="left">
 						<div class="itemImageContainer">
+							<img class="imageSpin" src="../img/spin.gif" id="spin" alt="logo aggiungi prodotto" style="display:none">
 							<img src="../img/prodotto1.jpg" id="previewImage" class="itemImage circle" alt="Product" />
 							<div class="fileUpload">
 								<span>Cambia Immagine</span>

@@ -39,7 +39,7 @@
 				
 			if(empty($inventoryErr)){
 				$lastid = getLastId($dbconn);
-				$query ="INSERT INTO inventari (idInventario, idUtente, nomeInventario, quantitaProdotto) VALUES ('$lastid', '$userid', '$inventoryName', '1')";
+				$query ="INSERT INTO inventari (idInventario, idUtente, nomeInventario) VALUES ('$lastid', '$userid', '$inventoryName')";
 				$result = $dbconn->query($query);
 				echo 'inserimentoRiuscito';
 			}else{

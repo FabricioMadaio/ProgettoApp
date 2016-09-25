@@ -23,7 +23,7 @@
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
-			<script src="../javascript/inventoryList.js"></script>
+			<script src="../javascript/inventoryContent.js"></script>
 			
 			<script> 
 				window.onload = function(e){ 
@@ -31,6 +31,8 @@
 					startStylesheet();
 					
 					var m = new Modal("myModal");
+					
+					loadInventoryContent(<?php echo $inventory->id ?>);
 				}
 			</script>
 	</head>
@@ -88,7 +90,7 @@
 					</li>
 					<li style="float: none;">
 							<span class="inventoryTitle">
-									Formaggi
+									<?php echo $inventory->name;?>
 							</span>
 					</li>
 				</ul>
@@ -146,44 +148,48 @@
 			
 			<section class="responsiveGrid">
 			
-					<div class="inventoryElem">
-						<a class="removeItemButton">×</a>	
-						
-						<div class="squareBox">
-							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" />
-							</div>
+					<div id="elementGrid">
+						<div class="inventoryElem">
+							<a class="removeItemButton">×</a>	
 							
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>					
-				
-				<div class="inventoryElem">
-						<a class="removeItemButton">×</a>	
-						
-						<div class="squareBox">
-							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" />
+							<div class="squareBox">
+								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+								<div style="bottom: 0;right: 0;position: absolute;">
+										<input type="number" value="99" />
+								</div>
+								
 							</div>
+							<span class="inventoryName">Vestiti con il nome lungo</span>	
+						</div>					
+					
+						<div class="inventoryElem">
+							<a class="removeItemButton">×</a>	
 							
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>			
-				
-				<div class="inventoryElem">
-						<a class="removeItemButton">×</a>	
-						
-						<div class="squareBox">
-							<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-							<div style="bottom: 0;right: 0;position: absolute;">
-									<input type="number" value="99" />
+							<div class="squareBox">
+								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+								<div style="bottom: 0;right: 0;position: absolute;">
+										<input type="number" value="99" />
+								</div>
+								
 							</div>
+							<span class="inventoryName">Vestiti con il nome lungo</span>	
+						</div>			
+					
+						<div class="inventoryElem">
+							<a class="removeItemButton">×</a>	
 							
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>			
+							<div class="squareBox">
+								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
+								<div style="bottom: 0;right: 0;position: absolute;">
+										<input type="number" value="99" />
+								</div>
+								
+							</div>
+							<span class="inventoryName">Vestiti con il nome lungo</span>	
+						</div>		
+					
+					</div>
+					
 					<div class="inventoryElem">
 						<div class="squareBox">
 							<div class="circle squareContent myModal_open">

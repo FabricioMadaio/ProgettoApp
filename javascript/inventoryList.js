@@ -43,15 +43,20 @@
  /*genera il codice HTML del singolo prodotto*/
 function inventoryString(item){
 
-	 var url ="inventory?id="+item.id;
+	 var url ="inventoryContent/content.php?inventoryId="+item.id;
 	 
 	 return "<div class='inventoryElem'>"+
 				"<div class='squareBox'>"+
-				"<div class='circle squareContent' style='background-color:"+item.color+"'></div>"+
+				"<a href='"+url+"' class='circle squareContent' style='background-color:"+item.color+"'></a>"+
 				"</div><span class='inventoryName'>"+item.name+"</span>"+
 				"</div>";
  }
 
+function resetModal(){
+	document.getElementById("footer").style.visibility="inherit";
+	document.getElementById("response").innerHTML = "";
+} 
+ 
 /* chiama il servizio di creazione nuovo inventario*/ 
 function createIventory(){
 	 

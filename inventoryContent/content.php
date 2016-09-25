@@ -1,11 +1,13 @@
 <?php
 
 	include '../php/sessionControl.php';
+	include '../php/models/Inventory.php';
 
 	/*load dbConn*/
 	include '../php/DBConnection.php';
 	
 	$dbConn = new DBConnection();
+	$inventory = new Inventory(0,"");
 	
 	/*userid from session*/
 	$userid = $_SESSION["userid"];
@@ -28,6 +30,12 @@
 		if(mysqli_num_rows($result) != 1){
 			/*access denied*/
 			header('Location:../errorPage.html');
+		}else{
+			  while($row = mysqli_fetch_assoc($result))
+			  { 
+				$inventory->id  = $row['idInventario'];
+				$inventory->name  = $row['nomeInventario'];
+			  }
 		}	
 
 		$dbConn->close();

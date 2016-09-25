@@ -12,7 +12,6 @@
     $userid = $_SESSION["userid"];
 	
 	$idInventario = 0;
-	$error = false;
 	
 	try{
 			
@@ -30,12 +29,6 @@
 			
 			if (!empty($_POST["idInventory"])){
 				$idInventario = $_POST['idInventory'];
-			}else{
-				$error=true;
-			}
-			
-			if(checkUsername($username,$dbConn)){
-				$error=true;
 			}
 		
 			$query="SELECT prodotti.*, immagini.immagine ,inventariprodotti.quantita
@@ -65,8 +58,6 @@
 				echo "<amount>".$row['quantita']."</amount>";
 				echo "</item>";
 			  }
-			}else{
-				$error=true;
 			}
 			echo '</itemList>';
 		}

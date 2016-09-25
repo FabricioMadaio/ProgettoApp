@@ -29,10 +29,16 @@
 
 			return $this;
 		}
+		
+		private function getInventoryInsertQuery($inventID,$productId){
+			$q="INSERT INTO inventariprodotti (idInventario,idProdotto, quantita)";
+			$q.=" VALUES ('".$inventID."','".$productId."','1')";
+			return $q;
+		}
 				
-		private function getInsertQuery($imageID,$inventID){
-			$q="INSERT INTO prodotti (idProdotto, idImmagine, idInventario, nomeProdotto, descrizioneProdotto)";
-			$q.=" VALUES (NULL, '".$imageID."','".$inventID."','".$this->name."','".$this->description."')";
+		private function getInsertQuery($imageID,$userID){
+			$q="INSERT INTO prodotti (idProdotto, idImmagine,idUtente,nomeProdotto, descrizioneProdotto)";
+			$q.=" VALUES (NULL, '".$imageID."','".$userID."','".$this->name."','".$this->description."')";
 			return $q;
 		}
 		
@@ -58,10 +64,13 @@
 			return true;
 		}
 		
-		public function dbInsert($inventID,$dbconn){
+		public function dbInsert($inventID,$userID,$dbconn){
 			
 			$imageID = $this->retrieveImageId($dbconn);
-			$dbconn->query($this->getInsertQuery($imageID,$inventID));
+			$dbconn->query($this->getInsertQuery($imageID,$userID));
+			
+			$productId = mysqli_insert_id($dbconn->getConnection());
+			$dbconn->query($this->getInventoryInsertQuery($inventID,$productId));
 		}
 		
 	}
