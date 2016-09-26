@@ -55,7 +55,7 @@
 	
 	function getLastId($dbconn){
 		
-    	$lastId;
+    	$lastId = 1;
     	$row;
     	$query="SELECT idInventario FROM inventari ORDER BY idInventario DESC LIMIT 1";
         $result = $dbconn->query($query);

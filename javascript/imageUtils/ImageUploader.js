@@ -59,7 +59,7 @@ var ImageUploader = function(config) {
 				This.config.onProgress(This.progressObject);
 			}
 			This.handleFileList(fileArray);
-		},1000);
+		},500);
 		
     }, false);
 
@@ -77,34 +77,34 @@ ImageUploader.prototype.handleFileList = function(fileArray) {
             This.handleFileList(fileArray);
         });
     } else if (fileArray.length === 1) {
-        this.handleFileSelection(fileArray[0],function(){This.endProcessing()});
+        this.handleFileSelection(fileArray[0],function(){console.log("lol");This.endProcessing()});
     }
 };
 
+
 ImageUploader.prototype.handleFileSelection = function(file, completionCallback) {
+	
     var img = document.createElement('img');
     this.currentFile = file;
-    var reader = new FileReader();
     var This = this;
-    reader.onload = function(e) {
-        img.src = e.target.result;
-
-        setTimeout(function() {
-            This.scaleImage(img, completionCallback);
-        }, 1);
-
-    };
-    reader.readAsDataURL(file);
-};
-
-ImageUploader.prototype.scaleImage = function(img, completionCallback) {
 	
-	var orientation = 1;
-	
-	EXIF.getData(img, function () {
-		orientation = this.exifdata.Orientation;
+	getExifOrientation(file,function(rot,src){
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			img.src = e.target.result;
+			setTimeout(function() {
+				This.scaleImage(img,rot, completionCallback);
+			}, 1);
+
+		};
+		reader.readAsDataURL(file);
 	});
 	
+};
+
+ImageUploader.prototype.scaleImage = function(img,rot, completionCallback) {
+	
+	var orientation = rot;
     var canvas = document.createElement('canvas');
 	var minsize = Math.min(img.width,img.height);
 
@@ -164,7 +164,7 @@ ImageUploader.prototype.scaleImage = function(img, completionCallback) {
     if (canvas.width > this.config.maxWidth) {
         canvas = this.scaleCanvasWithAlgorithm(canvas);
     }
-
+	
     var imageData = canvas.toDataURL('image/jpeg', this.config.quality);
 	var blobBin = atob(imageData.split(',')[1]);
 	var array = [];
