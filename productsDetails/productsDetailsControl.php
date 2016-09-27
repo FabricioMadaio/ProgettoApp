@@ -11,6 +11,7 @@
     try
     {  
     	$dbConn->open();
+		
 		if ($_SERVER["REQUEST_METHOD"] == "GET") 
 		{
 			    $username =$_SESSION["username"];
@@ -54,15 +55,6 @@
 	    }
 	    catch (Exception $e) 
 	    {
-        echo "$e";
-		//header('Location:../errorePage.html');
-
+			header('Location:../errorePage.html');
 	    }
-
-     function test_input($data) {
-	  $data = trim($data);
-	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
-	  return $data;
-	}
 ?>
