@@ -104,7 +104,7 @@
 								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startShowcase()" placeholder="Cerca" type="text" required>
+								<input class="search" id="ricerca" onchange="loadInventoryContent(<?php echo $inventory->id ?>);" placeholder="Cerca" type="text" required>
 							</div>
 						</div>
 						</div>

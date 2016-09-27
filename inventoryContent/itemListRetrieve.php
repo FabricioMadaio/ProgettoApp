@@ -46,7 +46,7 @@
 					WHERE idInventario='$idInventario'";
 			
 			if (!empty($_POST["search"])){
-				$query.=" AND nomeInventario LIKE '".testInput($_POST['search'])."%'";
+				$query.=" AND nomeProdotto LIKE '".testInput($_POST['search'])."%'";
 			}
 				
 			
