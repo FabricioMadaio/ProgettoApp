@@ -29,7 +29,7 @@
 				 $item->id = test_input($_GET['id']);
 				 
 				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
-				       immagini"."."."idImmagini"; 
+				       immagini"."."."idImmagini AND prodotti.idUtente='$userId'"; 
 				}
 			
 			    $result =$dbConn->query($query);

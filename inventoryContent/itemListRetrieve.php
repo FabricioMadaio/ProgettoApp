@@ -38,7 +38,7 @@
 						ON (inventariprodotti.idProdotto = prodotti.idProdotto)
 						JOIN immagini
 						ON (prodotti.idImmagine	= immagini.idImmagini)
-					WHERE idInventario='$idInventario'";
+					WHERE idInventario='$idInventario' AND prodotti.idUtente='$userId'";
 			
 			if (!empty($_POST["search"])){
 				$query.=" AND nomeProdotto LIKE '".testInput($_POST['search'])."%'";
