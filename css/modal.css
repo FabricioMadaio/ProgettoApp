@@ -65,6 +65,41 @@
     position: fixed;
 }
 
+.modal-button:hover {
+    transition: all 0.2s ease-in-out;
+    background-color:#2556E4;
+}
+
+.modal-button:active {
+    background-color:#2556E4;
+}
+
+.modal-button:focus {
+     outline: none;
+}
+
+
+.modal-button{
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 17px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    background: #628AFF;
+    border: 1px solid #d9d9de;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 10px 5px;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font: 15px Arial;
+    font-weight: bold;
+    
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {top: -300px; opacity: 0} 

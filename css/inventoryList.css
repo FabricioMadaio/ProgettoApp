@@ -139,6 +139,32 @@ input[type="number"] {
 	padding-top: 2px;
 }
 
+li.backButton{
+	float: left;
+} 
+
+.backButtonSpan{
+    color: white;
+    border: 1px #628aff solid;
+    background: #628AFF;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 7px;
+    margin-top: 10px;
+    margin-left: 9px;
+    display: block;
+    text-overflow: initial;
+    overflow: visible;
+    white-space: initial;
+    font-weight: normal;
+}
+
+.backButtonSpan:hover {
+	transition: all 0.2s ease-in-out;
+	background-color:black;
+	border-color:black;
+}
+
 @media screen and (max-width : 480px){
 	li.positionFix{
 		float: left;

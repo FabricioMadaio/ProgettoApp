@@ -30,10 +30,14 @@
 					/* responsiveness*/
 					startStylesheet();
 					
-					var m = new Modal("myModal");
+					var m = new Modal("myModal",{
+						onOpen:null,
+						onClose:null
+					});
 					
 					loadInventoryContent(<?php echo $inventory->id ?>);
 				}
+
 			</script>
 	</head>
 
@@ -81,8 +85,15 @@
 				</ul>
 				
 				<ul style="background-color: #4d4dcc;">
-					<li class="positionFix">
+					<!--<li class="positionFix">
+
+					</li>-->
+					<li class="backButton" style="float:left;">
+						<span class="backButtonSpan" onclick="toClientHome()">
+									Indietro
+						</span>
 					</li>
+
 					<li class="removeButton">
 						<span class="inventoryRemove">
 									Rimuovi
@@ -119,29 +130,24 @@
 		
 			  <!-- Modal content -->
 			  <div class="modal-content">
-				<form class="form" id="formNew" action="login" method="POST">
 				
 					<ul class="modal-header">
 						<li style="float:right">
 							<a class="myModal_close closeButton">×</a>
 						</li>
 						<li>
-							<p>Nuovo Inventario</p>
+							<p>Inserimento nuovo prodotto</p>
 						</li>
 					</ul>
 					<div class="modal-body">
 						
-							<p>Inserisci un nome per il tuo inventario</p>
-							<input type="text" class="input-text fillrow"/>
-							<br>
+							<p>Scegli se inserire il prodotto dalla lista dei prodotti o inserirene uno nuovo</p>
+							<button class="modal-button" onclick="toProductList()">Scegli dalla lista</button>
+							<button class="modal-button" onclick="toItemUpload()">Inserisci nuovo</button>
 							<br>
 					</div>
+					<br>
 					
-					<div class="modal-footer">
-							<input type="submit" class="submit submitRightButton" value="Conferma"/>
-					</div>
-					
-				</form>
 			  </div>
 			 </div>
 			  <!-- Modal test End -->

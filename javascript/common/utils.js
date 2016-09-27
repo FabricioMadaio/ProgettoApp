@@ -97,4 +97,8 @@
  function toProductList(){
 	 document.location.href = parentUrl(document.location.href)+"/productList/";
  }
+ function toItemUpload()
+ {
+ 	document.location.href =parentUrl(parentUrl(document.location.href))+"/itemUpload/";
+ }
 
