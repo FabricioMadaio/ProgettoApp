@@ -114,8 +114,9 @@
 						</li>	  
 					</ul>
 					<div class="modal-body" id="modalBody">
-						
-							<p>Sei sicuro/a di volerlo cancellare da tutti gli inventari?</p>
+							<div id="message">
+								<p>Sei sicuro/a di volerlo cancellare da tutti gli inventari?</p>
+							</div>
 							<br>
 							<br>
 							<div id="response">

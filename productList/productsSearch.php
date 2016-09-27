@@ -18,7 +18,7 @@
 				if (!strcmp ( $_POST["ricerca"] , "") == 0 && !empty($_POST["ricerca"])) 
 				{
 					$ricerca = test_input($_POST['ricerca']);
-					$query.=" AND nomeProdotto LIKE '%".$ricerca."'";
+					$query.=" AND nomeProdotto LIKE '".$ricerca."%'";
 
 				}
 			
