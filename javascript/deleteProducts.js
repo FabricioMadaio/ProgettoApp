@@ -13,6 +13,7 @@ function deleteHandler(xmlhttp,modal){
 	 console.log(xmlhttp);
 	if(xmlhttp.responseText==="cancellazioneRiuscita"){
 		document.getElementById("footer").style.visibility="hidden";
+		document.getElementById("message").style.visibility="hidden";
 		responseElem.innerHTML = "<section class='infoBox'>Cancellazione effettuata con successo!</section>";
 		modal.close= function(){
 			document.location.href = parentUrl(parentUrl(document.location.href)) + "/productList/";
