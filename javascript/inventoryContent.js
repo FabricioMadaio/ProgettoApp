@@ -9,47 +9,55 @@
 *********************************************************************/
 
 /*inizializza la pagina caricando gli elementi HTML nella tabella*/
- function startInventoryList(){
+ function loadInventoryContent(idInventory){
 	
 	var params = getSearchParams();
+	
+	if(params!="")	params+="&";
+	
+	params+="idInventory="+idInventory;
 	console.log(params);
-	loadDoc(loadXMLInventories,"inventory/inventoryRetrieve.php",params);
+	loadDoc(loadXMLItems,"itemListRetrieve.php",params);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
- function loadXMLInventories(xml) {
+ function loadXMLItems(xml) {
 			
 		var i;
 		var xmlDoc = xml.responseXML;
-		if(xmlDoc==null){ siteOfflineError();}
+		console.log(xml)
+		//if(xmlDoc==null){ siteOfflineError();}
 		
 		var list = document.getElementById("elementGrid");
-		var x = xmlDoc.getElementsByTagName("inventory");
+		var x = xmlDoc.getElementsByTagName("item");
 
 		list.innerHTML = "";
 		
 		for (i = 0; i <x.length; i++) { 
-			var inventory = [];
-			inventory.id = x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
-			inventory.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-			inventory.color = x[i].getElementsByTagName("color")[0].childNodes[0].nodeValue;
-	
-			list.innerHTML+=inventoryString(inventory);
+			var item = [];
+			item.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			item.imgUrl = x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue;
+			item.amount = x[i].getElementsByTagName("amount")[0].childNodes[0].nodeValue;
+			list.innerHTML+=itemString(item);
 		}
 		
 }
 
 
  /*genera il codice HTML del singolo prodotto*/
-function inventoryString(item){
+function itemString(item){
 
 	 var url ="inventory?id="+item.id;
 	 
 	 return "<div class='inventoryElem'>"+
+				"<a class='removeItemButton'>×</a>"+	
 				"<div class='squareBox'>"+
-				"<div class='circle squareContent' style='background-color:"+item.color+"'></div>"+
-				"</div><span class='inventoryName'>"+item.name+"</span>"+
-				"</div>";
+					"<div class='circle squareContent' style='background-image: url(../uploads/"+item.imgUrl+");'></div>"+
+					"<div style='bottom: 0;right: 0;position: absolute;'>"+
+						"<input type='number' value='"+item.amount+"' />"+
+				"</div></div>"+
+				"<span class='inventoryName'>"+item.name+"</span>"+	
+			"</div>";	
  }
 
 /* chiama il servizio di creazione nuovo inventario*/ 

@@ -4,6 +4,7 @@
 	
 	include '../php/inputUtils.php';
 	include '../php/DBConnection.php';
+	include '../php/sessionControl.php';
 
 	include '../php/models/Image.php';
 	include '../php/models/Item.php';
@@ -72,7 +73,7 @@
 			}
 		
 			if(empty($response)){
-				$response = $item->dbInsert(2,$dbconn);
+				$response = $item->dbInsert(2,$_SESSION["userid"],$dbconn);
 			}
 		}
 		

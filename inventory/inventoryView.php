@@ -30,8 +30,8 @@
 					startStylesheet();
 					
 					var m = new Modal("myModal",{
-						onOpen:null,
-						onClose:function(){startInventoryList();}
+						onOpen:resetModal,
+						onClose:startInventoryList
 					});
 					
 					document.closeModal = function(){

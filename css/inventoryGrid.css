@@ -70,3 +70,12 @@
     right: 0;
 
  }
+ 
+ .imageSpin{
+	position: absolute;
+    width: 46%;
+    top: 23%;
+    left: 28%;
+    bottom: 0;
+    right: 0;
+ }

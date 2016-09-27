@@ -39,7 +39,7 @@
 				
 			if(empty($inventoryErr)){
 				$lastid = getLastId($dbconn);
-				$query ="INSERT INTO inventari (idInventario, idUtente, nomeInventario, quantitaProdotto) VALUES ('$lastid', '$userid', '$inventoryName', '1')";
+				$query ="INSERT INTO inventari (idInventario, idUtente, nomeInventario) VALUES ('$lastid', '$userid', '$inventoryName')";
 				$result = $dbconn->query($query);
 				echo 'inserimentoRiuscito';
 			}else{
@@ -55,7 +55,7 @@
 	
 	function getLastId($dbconn){
 		
-    	$lastId;
+    	$lastId = 1;
     	$row;
     	$query="SELECT idInventario FROM inventari ORDER BY idInventario DESC LIMIT 1";
         $result = $dbconn->query($query);
