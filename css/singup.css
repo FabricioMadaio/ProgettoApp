@@ -111,6 +111,13 @@ input.input-text, input.bigrow, select, textarea,.amount{
     padding: 10px 17px;
 }
 
+.submitLeftButton{
+    float: left;
+    display: inline-block;
+    width: auto;
+    padding: 10px 17px;
+}
+
 fieldset label{
 	color: #0f2105;
 	font: 14px arial;

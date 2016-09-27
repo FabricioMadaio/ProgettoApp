@@ -15,7 +15,7 @@
 		{
 			    $username =$_SESSION["username"];
 			    $password =$_SESSION["password"];
-			    $userId = getUserid($dbConn,$username,$password);
+			    
 
 				$query=$productId="";
 
@@ -25,8 +25,9 @@
 				}
 				else
 				{
-				 $productId = test_input($_GET['id']);
-				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$productId ' AND  prodotti"."."."idImmagine =
+				 $item->id = test_input($_GET['id']);
+				 
+				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
 				       immagini"."."."idImmagini"; 
 				}
 			
@@ -41,12 +42,15 @@
 					$item->name = $row['nomeProdotto'];
 					$item->description = $row['descrizioneProdotto'];
 					$item->imageUrl = $row["immagine"];
-			      	
+
 			      } 
-			    }
+			    }else{
+					/*page miss*/
+					header('Location:../errorePage.html');
+				}
 		    }
 			    $dbConn->close();
-			    include "productsDetailsView.php";
+			   include "productsDetailsView.php";
 	    }
 	    catch (Exception $e) 
 	    {
@@ -61,19 +65,4 @@
 	  $data = htmlspecialchars($data);
 	  return $data;
 	}
-
-	function getUserid($dbconn,$username,$password)
-    {
-      $query="SELECT idUtente FROM utenti WHERE password ='$password' AND username ='$username'";
-       $result = $dbconn->query($query);
-        if(mysqli_num_rows($result) > 0)
-        {
-   		    // output data of each row
-    	  while($row = mysqli_fetch_assoc($result))
-	      { 
-	      	$userId = $row['idUtente'];
-	       return $userId;
-	      }
-	    }
-    }
 ?>

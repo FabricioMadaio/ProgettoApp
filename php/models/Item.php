@@ -6,6 +6,7 @@
 		private $description;
 		private $image;
 		private $imageUrl;
+		private $id;
 		
 		public static $defaultImageId = -1;
 		
