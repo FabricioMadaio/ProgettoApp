@@ -61,7 +61,13 @@
 							
 								document.getElementById("progressBar").className="progressbar";
 								document.getElementById("response").innerHTML = "";
-								uploader.tryUpload();
+								
+								var fd = new FormData();
+								fd.append("inventory",<?php echo $inventoryId; ?>);
+								fd.append("name", document.getElementById("name").value);
+								fd.append("description", document.getElementById("description").value);
+	
+								uploader.tryUpload(fd);
 								setProgressBar("0%");
 							},
 						onClose: function(){uploader.abortUpload()}

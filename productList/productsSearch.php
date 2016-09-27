@@ -1,8 +1,9 @@
 <?php
-	/*load dbConn*/
+
 	include '../php/DBConnection.php';
-	/*load session controll*/
 	include '../php/sessionControl.php';
+	include '../php/inputUtils.php';
+	
 	$dbConn = new DBConnection();
 
     try

@@ -70,8 +70,10 @@
 			$imageID = $this->retrieveImageId($dbconn);
 			$dbconn->query($this->getInsertQuery($imageID,$userID));
 			
-			$productId = mysqli_insert_id($dbconn->getConnection());
-			$dbconn->query($this->getInventoryInsertQuery($inventID,$productId));
+			if($inventID > 0){
+				$productId = mysqli_insert_id($dbconn->getConnection());
+				$dbconn->query($this->getInventoryInsertQuery($inventID,$productId));
+			}
 		}
 		
 	}
