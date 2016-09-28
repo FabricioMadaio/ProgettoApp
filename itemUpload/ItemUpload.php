@@ -26,6 +26,7 @@
 	
 	$response = '';
 	$inventory = -1;
+	$userid = $_SESSION["userid"];
 	
 	try{
 		/*open the connection*/
@@ -36,6 +37,9 @@
 			
 			if (!empty($_POST["inventory"])) {
 				$inventory = testInput($_POST["inventory"]);
+				if(!$item->inventoryExists($inventory,$userid,$dbconn)){
+					$response =  "<li>- inventario inesistente<li>";
+				}
 			}
 			
 			if (empty($_POST["name"])) {
@@ -79,7 +83,7 @@
 			}
 		
 			if(empty($response)){
-				$response = $item->dbInsert($inventory,$_SESSION["userid"],$dbconn);
+				$response = $item->dbInsert($inventory,$userid,$dbconn);
 			}
 		}
 		

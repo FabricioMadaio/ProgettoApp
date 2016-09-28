@@ -81,11 +81,14 @@
 				</ul>
 				
 				<ul style="background-color: #4d4dcc;">
-					<li class="positionFix">
-					</li>
-					<li class="removeButton">
-						<span class="inventoryRemove">
+					<li style="float:right">
+						<span class="inventoryButton specialButton" style="margin-left:0px">
 									Rimuovi
+						</span>
+					</li>
+					<li style="float:left">
+						<span class="inventoryButton" style="margin-right:0px">
+									Indietro
 						</span>
 					</li>
 					<li style="float: none;">

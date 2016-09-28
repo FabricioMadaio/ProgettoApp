@@ -65,6 +65,17 @@
 			return true;
 		}
 		
+		public function inventoryExists($inventID,$userID,$dbconn){
+			
+			$query="SELECT * FROM inventari WHERE idInventario = '$inventID' AND idUtente = '$userID'";
+			$result = $dbconn->query($query);
+			if(mysqli_num_rows($result) > 0)
+			{
+				return true;
+			}
+			return false;
+		} 
+		
 		public function dbInsert($inventID,$userID,$dbconn){
 			
 			$imageID = $this->retrieveImageId($dbconn);

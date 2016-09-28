@@ -38,6 +38,8 @@
 			list.innerHTML+=inventoryString(product);
 		}
 		
+		//aggiorno le dimensioni
+		onResize();
 }
 
 
@@ -56,17 +58,5 @@ function inventoryString(item){
 			'<span class="inventoryName">'+item.name+'</span>'+
 			'</div>'+
 			'</a>';
-
-
-
-
-
-
-
-	 /*"<div class='inventoryElem'>"+
-				"<div class='squareBox'>"+
-				"<div class='circle squareContent' style='background-color:"+item.color+"'></div>"+
-				"</div><span class='inventoryName'>"+item.name+"</span>"+
-				"</div>";*/
  }
  
