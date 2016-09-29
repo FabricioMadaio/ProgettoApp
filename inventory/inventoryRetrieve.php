@@ -7,24 +7,19 @@
 	
 	$dbConn = new DBConnection();
 	
-	$username =$_SESSION["username"];
-    $password =$_SESSION["password"];
+	$username = $_SESSION["username"];
+    $password = $_SESSION["password"];
     $userid = $_SESSION["userid"];
 	
 	try{
-			
+
+		// Send the xml headers
+		sendXmlHeaders();
+		
 		$dbConn->open();
 		
 		if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			
-			// Send the xml headers
-			header('Content-type: text/xml');
-			header('Pragma: public');
-			header('Cache-control: private');
-			header('Expires: -1');
-			
-			echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-		
 			$query="SELECT * FROM inventari WHERE idUtente='$userid'";
 			
 			if (!empty($_POST["search"])){
@@ -54,7 +49,7 @@
 		$dbConn->close();
 			
 	}catch (Exception $e){
-		echo "<error>".$e."</error>";
+		serviceDie($e);
 	}
 
 	function randomColor($seed)

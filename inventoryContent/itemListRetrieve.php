@@ -15,27 +15,22 @@
 	$error = false;
 	
 	try{
-			
+		
+		// Send the xml headers
+		sendXmlHeaders();
+		
 		$dbConn->open();
 		
 		if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			
-			// Send the xml headers
-			header('Content-type: text/xml');
-			header('Pragma: public');
-			header('Cache-control: private');
-			header('Expires: -1');
-			
-			echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-			
 			if (!empty($_POST["idInventory"])){
 				$idInventario = $_POST['idInventory'];
 			}else{
-				$error=true;
+				serviceDie("idInventory empty");
 			}
 			
 			if(checkUsername($username,$dbConn)){
-				$error=true;
+				serviceDie("access denied");
 			}
 		
 			$query="SELECT prodotti.*, immagini.immagine ,inventariprodotti.quantita
@@ -43,7 +38,7 @@
 						ON (inventariprodotti.idProdotto = prodotti.idProdotto)
 						JOIN immagini
 						ON (prodotti.idImmagine	= immagini.idImmagini)
-					WHERE idInventario='$idInventario'";
+					WHERE idInventario='$idInventario' AND prodotti.idUtente='$userId'";
 			
 			if (!empty($_POST["search"])){
 				$query.=" AND nomeProdotto LIKE '".testInput($_POST['search'])."%'";
@@ -65,8 +60,6 @@
 				echo "<amount>".$row['quantita']."</amount>";
 				echo "</item>";
 			  }
-			}else{
-				$error=true;
 			}
 			echo '</itemList>';
 		}
@@ -74,6 +67,6 @@
 		$dbConn->close();
 			
 	}catch (Exception $e){
-		echo "<error>".$e."</error>";
+		echo serviceDie($e);
 	}
 ?>
