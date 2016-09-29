@@ -1,4 +1,5 @@
 .inventoryTitle{
+	line-height:18px;
     float: none;
     font-size: 18px;
     padding-top: 13px;
@@ -15,16 +16,11 @@
     margin-right: 0px;
 }
 
-li.positionFix{
-	float: left;
-    width: 74px;
-} 
+.positionFix{
+	width:70px;
+}
 
-li.removeButton{
-	float: right;
-} 
-
-.inventoryRemove{
+.inventoryButton{
     color: white;
     border: 1px #628aff solid;
     background: #628AFF;
@@ -33,6 +29,7 @@ li.removeButton{
     padding: 5px 7px;
     margin-top: 10px;
     margin-right: 9px;
+	margin-left: 9px;
     display: block;
     text-overflow: initial;
     overflow: visible;
@@ -40,12 +37,18 @@ li.removeButton{
     font-weight: normal;
 }
 
-.inventoryRemove:hover {
+.specialButton{
+	background: #12167b;
+    border: 1px #12167b solid;
+}
+
+
+.inventoryButton:hover {
 	transition: all 0.2s ease-in-out;
 	background-color:black;
 	border-color:black;
 }
-.inventoryRemove:active {
+.inventoryButton:active {
 	position:relative;
 	top:1px;
 }
@@ -139,39 +142,12 @@ input[type="number"] {
 	padding-top: 2px;
 }
 
-li.backButton{
-	float: left;
-} 
-
-.backButtonSpan{
-    color: white;
-    border: 1px #628aff solid;
-    background: #628AFF;
-    border-radius: 4px;
-    font-size: 14px;
-    padding: 5px 7px;
-    margin-top: 10px;
-    margin-left: 9px;
-    display: block;
-    text-overflow: initial;
-    overflow: visible;
-    white-space: initial;
-    font-weight: normal;
-}
-
-.backButtonSpan:hover {
-	transition: all 0.2s ease-in-out;
-	background-color:black;
-	border-color:black;
-}
-
-@media screen and (max-width : 480px){
+@media screen and (max-width : 380px){
 	li.positionFix{
-		float: left;
 		width: 0;
 	} 
 	
-	.inventoryTitle{
+	.titleLeft{
 		text-align: left;
 		margin-left: 4px;
 	}

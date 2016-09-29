@@ -192,7 +192,7 @@ ImageUploader.prototype.abortUpload = function(){
 	}
 }
 
-ImageUploader.prototype.tryUpload = function() {
+ImageUploader.prototype.tryUpload = function(fd) {
 	
 	var This = this;
 	
@@ -200,7 +200,7 @@ ImageUploader.prototype.tryUpload = function() {
 		
 		if(!This.processing){
 			This.abortUpload();
-			This.performUpload();
+			This.performUpload(fd);
 			console.log("upload");
 			clearInterval(handle);
 		}
@@ -213,7 +213,7 @@ ImageUploader.prototype.tryUpload = function() {
 	},10000);
 }
 
-ImageUploader.prototype.performUpload = function() {
+ImageUploader.prototype.performUpload = function(fd) {
 	
     var xhr = new XMLHttpRequest();
 	this.xhr = xhr;
@@ -243,10 +243,6 @@ ImageUploader.prototype.performUpload = function() {
             }
         });
     }
-	
-	var fd = new FormData();
-    fd.append("name", document.getElementById("name").value);
-    fd.append("description", document.getElementById("description").value);
 	
 	if(This.images.length>0){
 		fd.append("image", This.images[0]);

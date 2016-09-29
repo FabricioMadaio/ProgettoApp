@@ -28,17 +28,13 @@
 			}else{
 				serviceDie("idInventory empty");
 			}
-			
-			if(checkUsername($username,$dbConn)){
-				serviceDie("access denied");
-			}
 		
 			$query="SELECT prodotti.*, immagini.immagine ,inventariprodotti.quantita
 					FROM inventariprodotti JOIN prodotti 
 						ON (inventariprodotti.idProdotto = prodotti.idProdotto)
 						JOIN immagini
 						ON (prodotti.idImmagine	= immagini.idImmagini)
-					WHERE idInventario='$idInventario' AND prodotti.idUtente='$userId'";
+					WHERE idInventario='$idInventario' AND prodotti.idUtente='$userid'";
 			
 			if (!empty($_POST["search"])){
 				$query.=" AND nomeProdotto LIKE '".testInput($_POST['search'])."%'";

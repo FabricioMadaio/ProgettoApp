@@ -25,6 +25,8 @@
 	$sizes = array(150 => 150);
 	
 	$response = '';
+	$inventory = -1;
+	$userid = $_SESSION["userid"];
 	
 	try{
 		/*open the connection*/
@@ -32,6 +34,14 @@
 	
 		/* manage post method */
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+			if (!empty($_POST["inventory"])) {
+				$inventory = testInput($_POST["inventory"]);
+				if(!$item->inventoryExists($inventory,$userid,$dbconn)){
+					$response =  "<li>- inventario inesistente<li>";
+				}
+			}
+			
 			if (empty($_POST["name"])) {
 				$response = "<li>- Inserire un nome</li>";
 			} else {
@@ -73,7 +83,7 @@
 			}
 		
 			if(empty($response)){
-				$response = $item->dbInsert(2,$_SESSION["userid"],$dbconn);
+				$response = $item->dbInsert($inventory,$userid,$dbconn);
 			}
 		}
 		

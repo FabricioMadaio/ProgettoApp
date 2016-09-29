@@ -16,6 +16,7 @@
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryList.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/common/utils.js"></script>
@@ -61,7 +62,13 @@
 							
 								document.getElementById("progressBar").className="progressbar";
 								document.getElementById("response").innerHTML = "";
-								uploader.tryUpload();
+								
+								var fd = new FormData();
+								fd.append("inventory",<?php echo $inventory->id; ?>);
+								fd.append("name", document.getElementById("name").value);
+								fd.append("description", document.getElementById("description").value);
+	
+								uploader.tryUpload(fd);
 								setProgressBar("0%");
 							},
 						onClose: function(){uploader.abortUpload()}
@@ -127,6 +134,22 @@
 					
 				</ul>
 				
+				<?php if($inventory->id!=-1): ?>
+				<ul style="background-color: #4d4dcc;">
+					<li style="float:right" class="positionFix">
+					</li>
+					<li style="float:left">
+						<span class="inventoryButton" style="margin-right:0px">
+									Indietro
+						</span>
+					</li>
+					<li style="float: none;">
+							<span class="inventoryTitle titleLeft">
+									<?php echo $inventory->name;?>
+							</span>
+					</li>
+				</ul>
+				<?php endif; ?>
 			</nav>
 			
 			<!-- The Modal -->

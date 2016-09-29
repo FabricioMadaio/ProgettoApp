@@ -1,8 +1,8 @@
 <?php
-	/*load dbConn*/
+
 	include '../php/DBConnection.php';
-	/*load session controll*/
 	include '../php/sessionControl.php';
+	include '../php/inputUtils.php';
 	/*load item class*/
 	include '../php/models/Item.php';
 	$dbConn = new DBConnection();
@@ -26,7 +26,7 @@
 				}
 				else
 				{
-				 $item->id = test_input($_GET['id']);
+				 $item->id = testInput($_GET['id']);
 				 
 				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
 				       immagini"."."."idImmagini AND prodotti.idUtente='$userId'"; 

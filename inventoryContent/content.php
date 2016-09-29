@@ -13,7 +13,7 @@
 	$userid = $_SESSION["userid"];
 	
 	if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET["inventoryId"])){
-		$inventoryId = $_GET['inventoryId'];
+		$inventory->id = $_GET['inventoryId'];
 	}else{
 		/*missed data*/
 		header('Location:../errorPage.html');
@@ -23,20 +23,7 @@
 			
 		$dbConn->open();
 		
-		/*check if inventoryid matches the user*/
-		$query="SELECT * FROM inventari WHERE idUtente='$userid' AND idInventario = '$inventoryId'";
-		$result =$dbConn->query($query);
-		
-		if(mysqli_num_rows($result) != 1){
-			/*access denied*/
-			header('Location:../errorPage.html');
-		}else{
-			  while($row = mysqli_fetch_assoc($result))
-			  { 
-				$inventory->id  = $row['idInventario'];
-				$inventory->name  = $row['nomeInventario'];
-			  }
-		}	
+		$inventory->checkUserOwner($userid,$dbConn);
 
 		$dbConn->close();
 			
