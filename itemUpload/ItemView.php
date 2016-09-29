@@ -139,7 +139,7 @@
 					<li style="float:right" class="positionFix">
 					</li>
 					<li style="float:left">
-						<span class="inventoryButton" style="margin-right:0px">
+						<span class="inventoryButton" style="margin-right:0px" onclick="toInventory(<?php echo "'content.php?inventoryId=".$inventory->id."'" ?>)">
 									Indietro
 						</span>
 					</li>

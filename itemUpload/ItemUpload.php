@@ -95,7 +95,7 @@
 	
 	if(empty($response)){
 		$response = "<section class='infoBox'>Caricamento Completato!</section>";
-		$response .= "<a class='myButton' onclick='javascript:toClientHome()'>Torna alla Home</a>";
+		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventoryId=".$inventory.'"'.")'>Torna all'inventario</a>";
 	}else{
 		$error = $response;
 		$response ="<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";
