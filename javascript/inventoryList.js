@@ -37,6 +37,8 @@
 			list.innerHTML+=inventoryString(inventory);
 		}
 		
+		//aggiorno le dimensioni
+		onResize();
 }
 
 

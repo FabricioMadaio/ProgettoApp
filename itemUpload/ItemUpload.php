@@ -25,6 +25,8 @@
 	$sizes = array(150 => 150);
 	
 	$response = '';
+	$inventory = -1;
+	$userid = $_SESSION["userid"];
 	
 	try{
 		/*open the connection*/
@@ -32,6 +34,14 @@
 	
 		/* manage post method */
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+			if (!empty($_POST["inventory"])) {
+				$inventory = testInput($_POST["inventory"]);
+				if(!$item->inventoryExists($inventory,$userid,$dbconn)){
+					$response =  "<li>- inventario inesistente<li>";
+				}
+			}
+			
 			if (empty($_POST["name"])) {
 				$response = "<li>- Inserire un nome</li>";
 			} else {
@@ -73,7 +83,7 @@
 			}
 		
 			if(empty($response)){
-				$response = $item->dbInsert(2,$_SESSION["userid"],$dbconn);
+				$response = $item->dbInsert($inventory,$userid,$dbconn);
 			}
 		}
 		
@@ -85,7 +95,7 @@
 	
 	if(empty($response)){
 		$response = "<section class='infoBox'>Caricamento Completato!</section>";
-		$response .= "<a class='myButton' onclick='javascript:toClientHome()'>Torna alla Home</a>";
+		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventoryId=".$inventory.'"'.")'>Torna all'inventario</a>";
 	}else{
 		$error = $response;
 		$response ="<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";

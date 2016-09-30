@@ -41,6 +41,8 @@
 			list.innerHTML+=itemString(item);
 		}
 		
+		//aggiorno le dimensioni
+		onResize();
 }
 
 

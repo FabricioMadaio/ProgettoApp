@@ -18,7 +18,24 @@
 	function errorString($err,$name){
 		 return '<li class="error-li" name ="'.$name.'_e" style="display:block"><p>'.$err.'</p></li>';
 	}
-
+	
+	/*sends the xml headers*/
+	function sendXmlHeaders(){
+		
+		header('Content-type: text/xml');
+		header('Pragma: public');
+		header('Cache-control: private');
+		header('Expires: -1');
+		
+		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+	}
+	
+	/*error handler for xml services, ends script*/
+	function serviceDie($e){
+		echo "<error>".$e."</error>";
+		die();
+	}
+	
 	function checkUsername($username,$dbconn)
 	{
 		$query ="SELECT username FROM utenti";
