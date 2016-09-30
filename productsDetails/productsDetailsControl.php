@@ -14,8 +14,9 @@
 		
 		if ($_SERVER["REQUEST_METHOD"] == "GET") 
 		{
-			    $username =$_SESSION["username"];
-			    $password =$_SESSION["password"];
+			    $username = $_SESSION["username"];
+			    $password = $_SESSION["password"];
+				$userid = $_SESSION["userid"];
 			    
 
 				$query=$productId="";
@@ -29,7 +30,7 @@
 				 $item->id = testInput($_GET['id']);
 				 
 				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
-				       immagini"."."."idImmagini AND prodotti.idUtente='$userId'"; 
+				       immagini"."."."idImmagini AND prodotti.idUtente='$userid'"; 
 				}
 			
 			    $result =$dbConn->query($query);

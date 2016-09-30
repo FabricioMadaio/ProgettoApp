@@ -30,7 +30,12 @@
 					/* responsiveness*/
 					startStylesheet();
 					
-					var m = new Modal("myModal",{
+					var mNew = new Modal("modalNew",{
+						onOpen:null,
+						onClose:null
+					});
+					
+					var mRemove = new Modal("modalRemove",{
 						onOpen:null,
 						onClose:null
 					});
@@ -86,7 +91,7 @@
 				
 				<ul style="background-color: #4d4dcc;">
 					<li style="float:right">
-						<span class="inventoryButton specialButton" style="margin-left:0px">
+						<span class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
 									Rimuovi
 						</span>
 					</li>
@@ -118,35 +123,6 @@
 					</li>
 				</ul>
 			</nav>
-			
-			
-
-			<!-- The Modal -->
-			<div id="myModal" class="modal">
-		
-			  <!-- Modal content -->
-			  <div class="modal-content">
-				
-					<ul class="modal-header">
-						<li style="float:right">
-							<a class="myModal_close closeButton">×</a>
-						</li>
-						<li>
-							<p>Inserimento nuovo prodotto</p>
-						</li>
-					</ul>
-					<div class="modal-body">
-						
-							<p>Scegli se inserire il prodotto dalla lista dei prodotti o inserirene uno nuovo</p>
-							<button class="modal-button" onclick="toProductList()">Scegli dalla lista</button>
-							<button class="modal-button" onclick="toItemUpload(<?php echo "'index.php?inventory=".$inventory->id."'" ?>)">Inserisci nuovo</button>
-							<br>
-					</div>
-					<br>
-					
-			  </div>
-			 </div>
-			  <!-- Modal test End -->
 			
 			<section class="responsiveGrid">
 			
@@ -194,7 +170,7 @@
 					
 					<div class="inventoryElem">
 						<div class="squareBox">
-							<div class="circle squareContent myModal_open">
+							<div class="circle squareContent modalNew_open">
 								<img class="imageAdd" src="../img/logoAdd.png" alt="logo aggiungi prodotto">
 							</div>
 						</div>
@@ -204,7 +180,70 @@
 					</div>
 			</section>
 			
+			<div id="modalNew" class="modal" style="display: none;">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content" style="max-width: 380px;">
 				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="modalNew_close closeButton">×</a>
+						</li>
+						<li style="float: none;">
+							<p class="modalTitle">Inserimento prodotto</p>
+						</li>
+					</ul>
+					<div class="modal-body">
+						
+						<div class="modalButtonBox">
+							<button class="modal-button" onclick="toProductList()">Scegli dalla lista</button>
+							<p>oppure</p>
+							<button class="modal-button" onclick="toItemUpload('index.php?inventory=1')" style="background-color: #08a9ea;">Inserisci nuovo</button>
+							<br>
+						</div>
+					</div>
+				<br>
+					
+				</div>
+			 </div>	
+			
+			<div id="modalRemove" class="modal" style="display: none;">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content">
+				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="modalRemove_close closeButton">×</a>
+						</li>
+						<li style="float: none;">
+							<p class="modalTitle">Cancella inventario</p>
+						</li>
+					</ul>
+					<div class="modal-body" id="modalBody">
+							<div id="message">
+								<p>Sei sicuro di voler eliminare l'inventario?</p>
+							</div>
+							<br>
+							<br>
+							<div id="response">
+							
+							</div>
+							
+					</div>
+					
+					<div  id="footer" class="modal-footer">
+					
+							<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
+								<input type="submit"  name="inventorySubmit" class="submit submitLeftButton" value="Si"/>
+								<input type="button" name="cancelButton" class="submit submitRightButton modalRemove_close " value="No" >
+								<input type="button" name="cancelButton" style="display:none;" class="submit submitRightButton modalRemove_close " value="Chiudi" >
+							</form>
+					
+					</div>
+					
+				</div>
+			 </div>	
 			
 			<footer style="text-align:center">
 				<div class="background">
