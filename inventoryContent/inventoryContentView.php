@@ -24,6 +24,7 @@
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/inventoryContent.js"></script>
+			<script src="../javascript/deleteInventory.js"></script>
 			
 			<script> 
 				window.onload = function(e){ 
@@ -39,8 +40,15 @@
 						onOpen:null,
 						onClose:null
 					});
+
+					document.deleteInv=function()
+					{
+						deleteInventory(<?php echo $inventory->id;?>,mRemove);
+					}
 					
 					loadInventoryContent(<?php echo $inventory->id ?>);
+
+					
 				}
 
 			</script>
@@ -234,7 +242,7 @@
 					
 					<div  id="footer" class="modal-footer">
 					
-							<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
+							<form class="form" id="formNew" action="javascript:document.deleteInv()" method="POST"> 
 								<input type="submit"  name="inventorySubmit" class="submit submitLeftButton" value="Si"/>
 								<input type="button" name="cancelButton" class="submit submitRightButton modalRemove_close " value="No" >
 								<input type="button" name="cancelButton" style="display:none;" class="submit submitRightButton modalRemove_close " value="Chiudi" >
