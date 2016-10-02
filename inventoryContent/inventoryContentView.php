@@ -26,6 +26,7 @@
 			<script src="../javascript/inventoryContent.js"></script>
 			<script src="../javascript/deleteInventory.js"></script>
 			<script src="../javascript/deleteProductsFromInventory.js"></script>
+			<script src="../javascript/updateAmount.js"></script>
 
 			
 			<script> 

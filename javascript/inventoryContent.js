@@ -58,7 +58,7 @@ function itemString(item){
 				"<div class='squareBox'>"+
 					"<div class='circle squareContent' style='background-image: url(../uploads/"+item.imgUrl+");'></div>"+
 					"<div style='bottom: 0;right: 0;position: absolute;'>"+
-						"<input type='number' value='"+item.amount+"' />"+
+						"<input id='amount"+item.idProdotto+"' onChange=updateAmount("+item.idProdotto+","+item.idInventario+") type='number' value='"+item.amount+"' />"+
 				"</div></div>"+
 				"<span class='inventoryName'>"+item.name+"</span>"+	
 			"</div>";	
