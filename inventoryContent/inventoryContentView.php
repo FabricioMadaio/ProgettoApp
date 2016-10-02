@@ -25,6 +25,8 @@
 			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/inventoryContent.js"></script>
 			<script src="../javascript/deleteInventory.js"></script>
+			<script src="../javascript/deleteProductsFromInventory.js"></script>
+
 			
 			<script> 
 				window.onload = function(e){ 
@@ -45,7 +47,7 @@
 					{
 						deleteInventory(<?php echo $inventory->id;?>,mRemove);
 					}
-					
+
 					loadInventoryContent(<?php echo $inventory->id ?>);
 
 					

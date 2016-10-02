@@ -29,7 +29,7 @@
 				serviceDie("idInventory empty");
 			}
 		
-			$query="SELECT prodotti.*, immagini.immagine ,inventariprodotti.quantita
+			$query="SELECT prodotti.*, immagini.immagine ,inventariprodotti.quantita,inventariprodotti.idInventario
 					FROM inventariprodotti JOIN prodotti 
 						ON (inventariprodotti.idProdotto = prodotti.idProdotto)
 						JOIN immagini
@@ -51,6 +51,8 @@
 			  while($row = mysqli_fetch_assoc($result))
 			  { 
 				echo "<item>";
+				echo "<idProdotto>".$row['idProdotto']."</idProdotto>";
+				echo "<idInventario>".$row['idInventario']."</idInventario>";
 				echo "<name>".$row['nomeProdotto']."</name>";
 				echo "<img>".$row['immagine']."</img>";
 				echo "<amount>".$row['quantita']."</amount>";

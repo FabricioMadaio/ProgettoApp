@@ -35,6 +35,8 @@
 		
 		for (i = 0; i <x.length; i++) { 
 			var item = [];
+			item.idProdotto =x[i].getElementsByTagName("idProdotto")[0].childNodes[0].nodeValue;
+            item.idInventario =x[i].getElementsByTagName("idInventario")[0].childNodes[0].nodeValue;
 			item.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			item.imgUrl = x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue;
 			item.amount = x[i].getElementsByTagName("amount")[0].childNodes[0].nodeValue;
@@ -52,7 +54,7 @@ function itemString(item){
 	 var url ="inventory?id="+item.id;
 	 
 	 return "<div class='inventoryElem'>"+
-				"<a class='removeItemButton'>×</a>"+	
+				"<a class='removeItemButton' onClick=deleteProductFromInventory("+item.idProdotto+","+item.idInventario+")>×</a>"+	
 				"<div class='squareBox'>"+
 					"<div class='circle squareContent' style='background-image: url(../uploads/"+item.imgUrl+");'></div>"+
 					"<div style='bottom: 0;right: 0;position: absolute;'>"+
