@@ -102,7 +102,7 @@
 			<div id="myModal" class="modal">
 		
 			  <!-- Modal content -->
-			  <div class="modal-content">
+			  <div class="modal-content" style="max-width: 400px;">
 				<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
 				
 					<ul class="modal-header">
@@ -110,18 +110,18 @@
 							<a class="myModal_close closeButton">×</a>
 						</li>
 						<li>
-							<p>Nuovo Inventario</p>
+							<p>Rimozione Prodotto</p>
 						</li>	  
 					</ul>
 					<div class="modal-body" id="modalBody">
 							<div id="message">
 								<p>Sei sicuro/a di volerlo cancellare da tutti gli inventari?</p>
 							</div>
-							<br>
-							<br>
 							<div id="response">
 							
 							</div>
+							<br>
+							<br>
 							
 					</div>
 					

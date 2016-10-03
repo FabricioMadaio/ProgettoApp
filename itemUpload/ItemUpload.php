@@ -97,6 +97,7 @@
 	
 	if(empty($response)){
 		$response = "<section class='infoBox'>Caricamento Completato!</section>";
+		if($inventoryId!=-1)
 		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventory=".$inventoryId.'"'.")'>Torna all'inventario</a>";
 	}else{
 		$error = $response;

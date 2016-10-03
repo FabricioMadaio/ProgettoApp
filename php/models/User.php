@@ -18,6 +18,7 @@
 		private $passwordErr;
 		private $usernameErr;
 		private $lastnameErr;
+		private $dbErr;
 		
 		// Assigning the values
 		public function __construct() {
@@ -36,6 +37,7 @@
 			$this->passwordErr = "";
 			$this->usernameErr = "";
 			$this->lastnameErr = "";
+			$this->dbErr = "";
 		}
 		
 		public function __get($property) {

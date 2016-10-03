@@ -49,7 +49,7 @@
 	function formatArray($key){
 		
 		$i=0;
-		$array = [];
+		$array = array();
 		
 		foreach($_POST[$key] as $elem){
 			$array[++$i]=intval($elem);
