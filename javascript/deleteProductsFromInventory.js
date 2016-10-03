@@ -3,10 +3,10 @@ function deleteProductFromInventory(productId,inventoryId)
   var id = productId;
   var idInv =inventoryId;
   loadDoc(function(xmlhttp){
-  			deleteHandler(xmlhttp,inventoryId);
+  			deleteProductFromInventoryHandler(xmlhttp,inventoryId);
   			},"deleteProductsFromInventory.php","productId="+id+"&"+"inventoryId="+idInv);
 }
-function deleteHandler(xmlhttp,inventoryId)
+function deleteProductFromInventoryHandler(xmlhttp,inventoryId)
 {
 	 
 	var responseElem = document.getElementById("response");

@@ -3,17 +3,18 @@ function deleteInventory(inventoryId,modal)
   var id = inventoryId;
   console.log("sono qui");
   loadDoc(function(xmlhttp){
-  			deleteHandler(xmlhttp,modal);
+  			deleteInventoryHandler(xmlhttp,modal);
   			},"inventoryDelete.php","inventoryId="+id);
 }
 
-function deleteHandler(xmlhttp,modal){
+function deleteInventoryHandler(xmlhttp,modal){
 	 
-	var responseElem = document.getElementById("response");
+	var responseElem = document.getElementById("responseRemove");
 	 console.log(xmlhttp);
-	if(xmlhttp.responseText==="cancellazioneRiuscita"){
-		document.getElementById("footer").style.visibility="hidden";
-		document.getElementById("message").style.visibility="hidden";
+	if(xmlhttp.responseText==="cancellazioneRiuscita")
+    {
+		document.getElementById("footerRemove").style.display="none";
+		document.getElementById("messageRemove").style.display="none";
 		responseElem.innerHTML = "<section class='infoBox'>Cancellazione effettuata con successo!</section>";
 		modal.close= function(){
 			document.location.href = parentUrl(parentUrl(document.location.href));

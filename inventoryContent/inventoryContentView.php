@@ -231,19 +231,19 @@
 							<p class="modalTitle">Cancella inventario</p>
 						</li>
 					</ul>
-					<div class="modal-body" id="modalBody">
-							<div id="message">
+					<div class="modal-body" id="modalBodyRemove">
+							<div id="messageRemove">
 								<p>Sei sicuro di voler eliminare l'inventario?</p>
 							</div>
 							<br>
 							<br>
-							<div id="response">
+							<div id="responseRemove">
 							
 							</div>
 							
 					</div>
 					
-					<div  id="footer" class="modal-footer">
+					<div  id="footerRemove" class="modal-footer">
 					
 							<form class="form" id="formNew" action="javascript:document.deleteInv()" method="POST"> 
 								<input type="submit"  name="inventorySubmit" class="submit submitLeftButton" value="Si"/>
