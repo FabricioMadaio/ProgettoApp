@@ -138,44 +138,7 @@
 			<section class="responsiveGrid">
 			
 					<div id="elementGrid">
-						<div class="inventoryElem">
-							<a class="removeItemButton">×</a>	
-							
-							<div class="squareBox">
-								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-								<div style="bottom: 0;right: 0;position: absolute;">
-										<input type="number" value="99" />
-								</div>
-								
-							</div>
-							<span class="inventoryName">Vestiti con il nome lungo</span>	
-						</div>					
-					
-						<div class="inventoryElem">
-							<a class="removeItemButton">×</a>	
-							
-							<div class="squareBox">
-								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-								<div style="bottom: 0;right: 0;position: absolute;">
-										<input type="number" value="99" />
-								</div>
-								
-							</div>
-							<span class="inventoryName">Vestiti con il nome lungo</span>	
-						</div>			
-					
-						<div class="inventoryElem">
-							<a class="removeItemButton">×</a>	
-							
-							<div class="squareBox">
-								<div class="circle squareContent" style="background-image: url(../img/prodotto1.jpg);"></div>
-								<div style="bottom: 0;right: 0;position: absolute;">
-										<input type="number" value="99" />
-								</div>
-								
-							</div>
-							<span class="inventoryName">Vestiti con il nome lungo</span>	
-						</div>		
+						
 					
 					</div>
 					
@@ -221,7 +184,7 @@
 			<div id="modalRemove" class="modal" style="display: none;">
 		
 			  <!-- Modal content -->
-			  <div class="modal-content">
+			  <div class="modal-content" style="max-width: 420px;">
 				
 					<ul class="modal-header">
 						<li style="float:right">
@@ -235,12 +198,11 @@
 							<div id="messageRemove">
 								<p>Sei sicuro di voler eliminare l'inventario?</p>
 							</div>
-							<br>
-							<br>
 							<div id="responseRemove">
 							
 							</div>
-							
+							<br>
+							<br>
 					</div>
 					
 					<div  id="footerRemove" class="modal-footer">

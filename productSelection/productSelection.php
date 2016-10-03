@@ -37,8 +37,6 @@
 				$amounts = formatArray("amounts");
 			
 				$dbConn->query($inventory->productsInsertQuery($indices,$amounts));
-				//echo $inventory->productsInsertQuery($indices,$amounts);
-				
 				
 				$dbConn->close();
 			}			

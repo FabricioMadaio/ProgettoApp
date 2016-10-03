@@ -146,27 +146,7 @@
 			<section class="responsiveGrid">
 			
 				<span id="elementGrid">
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-					<div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
+	                
 					
 				</span>
 				<!-- Trigger/Open The Modal -->

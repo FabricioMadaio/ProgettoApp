@@ -158,7 +158,7 @@
 							</li>
 						</ul>
 						<div class="modal-body">
-							<div id="response">
+							<div id="response" style="text-align: center;margin-top: 28px;">
 								<p>Caricamento</p>
 							</div>
 						</div>
