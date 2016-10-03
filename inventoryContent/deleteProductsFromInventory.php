@@ -4,13 +4,15 @@
 
 	$dbconn = new DBConnection();
 	$inventoryIdError = $inventoryId ="";
+	$productIdError = $productId ="";
+
 
 	try{
 		
 		/*open the connection*/
 		$dbconn->open();
 		if ($_SERVER["REQUEST_METHOD"] == "POST") 
-		 {
+    	 {
 				if (empty($_POST["inventoryId"]))
 					{
 	              	 $inventoryIdError="Errore! per favore riprova";
@@ -20,24 +22,25 @@
 						$inventoryId = $_POST["inventoryId"];
 					}
 
-				if (empty($productIdError)) 
-				{
-					$queryToInventory = "DELETE FROM inventari WHERE idInventario ='$inventoryId'";
-					$resultToInventory = $dbconn->query($queryToInventory);
-
-					if(!empty($resultToInventory))
+				if (empty($_POST["productId"]))
 					{
-						$queryToProductInventory="DELETE FROM inventariprodotti WHERE idInventario ='$inventoryId'";
-						$resultToProductInventory = $dbconn->query($queryToProductInventory);
+	              	 $productIdError="Errore! per favore riprova";
+					}
+				else
+					{
+						$productId = $_POST["productId"];
+					}
 
-							if (!empty($resultToProductInventory)) 
-							{
-								echo "cancellazioneRiuscita";
-							}
-						    else
-						    {
-							 echo "$inventoryIdError";
-						    }
+
+
+				if (empty($productIdError) && empty($inventoryIdError) ) 
+				{
+					$query = "DELETE FROM inventariprodotti WHERE idInventario ='$inventoryId' AND idProdotto='$productId'";
+					$result = $dbconn->query($query);
+
+					if(!empty($result))
+					{
+						echo "cancellazioneRiuscita";		
 					}
 					else
 					{

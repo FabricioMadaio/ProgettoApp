@@ -24,6 +24,10 @@
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/inventoryContent.js"></script>
+			<script src="../javascript/deleteInventory.js"></script>
+			<script src="../javascript/deleteProductsFromInventory.js"></script>
+			<script src="../javascript/updateAmount.js"></script>
+
 			
 			<script> 
 				window.onload = function(e){ 
@@ -39,8 +43,15 @@
 						onOpen:null,
 						onClose:null
 					});
-					
+
+					document.deleteInv=function()
+					{
+						deleteInventory(<?php echo $inventory->id;?>,mRemove);
+					}
+
 					loadInventoryContent(<?php echo $inventory->id ?>);
+
+					
 				}
 
 			</script>
@@ -220,21 +231,21 @@
 							<p class="modalTitle">Cancella inventario</p>
 						</li>
 					</ul>
-					<div class="modal-body" id="modalBody">
-							<div id="message">
+					<div class="modal-body" id="modalBodyRemove">
+							<div id="messageRemove">
 								<p>Sei sicuro di voler eliminare l'inventario?</p>
 							</div>
 							<br>
 							<br>
-							<div id="response">
+							<div id="responseRemove">
 							
 							</div>
 							
 					</div>
 					
-					<div  id="footer" class="modal-footer">
+					<div  id="footerRemove" class="modal-footer">
 					
-							<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
+							<form class="form" id="formNew" action="javascript:document.deleteInv()" method="POST"> 
 								<input type="submit"  name="inventorySubmit" class="submit submitLeftButton" value="Si"/>
 								<input type="button" name="cancelButton" class="submit submitRightButton modalRemove_close " value="No" >
 								<input type="button" name="cancelButton" style="display:none;" class="submit submitRightButton modalRemove_close " value="Chiudi" >

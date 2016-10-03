@@ -51,6 +51,8 @@
 			  while($row = mysqli_fetch_assoc($result))
 			  { 
 				echo "<item>";
+				echo "<idProdotto>".$row['idProdotto']."</idProdotto>";
+				echo "<idInventario>".$idInventario."</idInventario>";
 				echo "<name>".$row['nomeProdotto']."</name>";
 				echo "<img>".$row['immagine']."</img>";
 				echo "<amount>".$row['quantita']."</amount>";
