@@ -9,17 +9,21 @@
 *********************************************************************/
 
 /*inizializza la pagina del carrello caricando gli elementi HTML nella tabella*/
- function startProductsList(){
+ function startProductsList(selectionMode){
 	
 	var params = getSearchParams();
 	/*server code*/
 	//loadDoc(loadXMLInventories,"getInventories"+params);
     var search = document.getElementById("ricerca").value;
-	loadDoc(loadXMLProducts,"productsSearch.php","ricerca="+search);
+	
+	loadDoc(function(xml){
+		loadXMLProducts(xml,selectionMode);
+		}
+	,"../productList/productsSearch.php","ricerca="+search);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
- function loadXMLProducts(xml) {
+ function loadXMLProducts(xml,selectionMode) {
 			
 		var i;
 		 xmlDoc = xml.responseXML;
@@ -35,7 +39,7 @@
 			product.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			product.image = x[i].getElementsByTagName("image")[0].childNodes[0].nodeValue;
 	
-			list.innerHTML+=inventoryString(product);
+			list.innerHTML+=inventoryString(product,selectionMode);
 		}
 		
 		//aggiorno le dimensioni
@@ -44,19 +48,26 @@
 
 
  /*genera il codice HTML del singolo prodotto*/
-function inventoryString(item){
+function inventoryString(item,selectionMode){
 
-	 var url ="../productsDetails/productsDetailsControl.php?id="+item.id;
-	 
-	 return '<a href="'+url+'">'+
-	        '<div class="inventoryElem">'+
-			'<div class="squareBox">'+
-			'<div class="circle squareContent" style="background-image: url(../uploads/'+item.image+');"></div>'+
-			'<div style="bottom: 0;right: 0;position: absolute;">'+
-			'</div>'+
-			'</div>'+
-			'<span class="inventoryName">'+item.name+'</span>'+
-			'</div>'+
-			'</a>';
+	var url ="../productsDetails/productsDetailsControl.php?id="+item.id;
+	
+	var itemString = "";
+	
+	if (selectionMode){
+		itemString = "<a onclick='document.selectItem(this)' class='notSelected' pid="+item.id+">";
+	}else{
+		itemString = "<a href='"+url+"'>";
+	}
+
+	itemString = "<div class='inventoryElem'>"+
+				"<div class='squareBox'>"+
+					itemString+"<div class='circle squareContent' style='background-image: url(../uploads/"+item.image+");'></div></a>"+
+					"<div style='bottom: 0;right: 0;position: absolute;margin-right: 27px;'>"+
+						"<input type='number' class='itemCounter' value='1' />"+
+				"</div></div>"+
+				"<span class='inventoryName'>"+item.name+"</span>"+	
+			"</div>";
+			
+	return itemString;
  }
- 

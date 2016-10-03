@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	include '../php/sessionControl.php';
 	include '../php/models/Inventory.php';
@@ -32,5 +32,5 @@
 	}		
 		
 	/*load view*/
-	include 'inventoryContentView.php';
-?>
+	include 'productSelectionView.php';
+ ?>

@@ -5,8 +5,9 @@
 	include '../php/inputUtils.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
-
+	
 	include '../php/models/Image.php';
+	include '../php/models/Inventory.php';
 	include '../php/models/Item.php';
 	
 	
@@ -25,7 +26,7 @@
 	$sizes = array(150 => 150);
 	
 	$response = '';
-	$inventory = -1;
+	$inventoryId = -1;
 	$userid = $_SESSION["userid"];
 	
 	try{
@@ -36,8 +37,9 @@
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			
 			if (!empty($_POST["inventory"])) {
-				$inventory = testInput($_POST["inventory"]);
-				if(!$item->inventoryExists($inventory,$userid,$dbconn)){
+				$inventoryId = testInput($_POST["inventory"]);
+				$inventory = new Inventory($inventoryId,"");
+				if(!$inventory->exists($userid,$dbconn)){
 					$response =  "<li>- inventario inesistente<li>";
 				}
 			}
@@ -83,7 +85,7 @@
 			}
 		
 			if(empty($response)){
-				$response = $item->dbInsert($inventory,$userid,$dbconn);
+				$response = $item->dbInsert($inventoryId,$userid,$dbconn);
 			}
 		}
 		
@@ -95,7 +97,7 @@
 	
 	if(empty($response)){
 		$response = "<section class='infoBox'>Caricamento Completato!</section>";
-		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventoryId=".$inventory.'"'.")'>Torna all'inventario</a>";
+		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventory=".$inventoryId.'"'.")'>Torna all'inventario</a>";
 	}else{
 		$error = $response;
 		$response ="<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";

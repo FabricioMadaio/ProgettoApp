@@ -94,6 +94,11 @@
  function toClientHome(){
 	 document.location.href = parentUrl(parentUrl(document.location.href));
  }
+ 
+ function toProductSelection(append){
+	 document.location.href = parentUrl(parentUrl(document.location.href))+"/productSelection/"+append;
+ }
+ 
  function toProductList(){
 	 document.location.href = parentUrl(document.location.href)+"/productList/";
  }

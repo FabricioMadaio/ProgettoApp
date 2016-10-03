@@ -42,7 +42,6 @@
     border: 1px #12167b solid;
 }
 
-
 .inventoryButton:hover {
 	transition: all 0.2s ease-in-out;
 	background-color:black;
@@ -52,6 +51,13 @@
 	position:relative;
 	top:1px;
 }
+
+.inventoryButton:disabled{
+	background: #8899ca;
+    color: #d8d7d7;
+    border-color: #8899ca;
+}
+
 
 .listRow{
 	float: left;
@@ -120,7 +126,7 @@
 	top:1px;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
+itemAmount::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -131,15 +137,17 @@ input[type="number"] {
 	background-color: #406be8;
 	font-size: 19px;
 	margin-bottom: 7px;
-	margin-right: 8px;
 	padding: 1px;
 	border: 3px #dad7d7 solid;
 	border-radius: 99px;
-	width: 36px;
 	text-align: center;
-	display: block;
 	box-shadow: 2px 3px 1px #EEE;
 	padding-top: 2px;
+}
+
+.smallInputNumber{
+	margin-right: 8px;
+	width: 36px;
 }
 
 @media screen and (max-width : 380px){

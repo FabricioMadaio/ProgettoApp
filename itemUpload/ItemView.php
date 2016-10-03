@@ -139,9 +139,9 @@
 					<li style="float:right" class="positionFix">
 					</li>
 					<li style="float:left">
-						<span class="inventoryButton" style="margin-right:0px" onclick="toInventory(<?php echo "'content.php?inventoryId=".$inventory->id."'" ?>)">
+						<button class="inventoryButton" style="margin-right:0px" onclick="toInventory(<?php echo "'content.php?inventory=".$inventory->id."'" ?>)">
 									Indietro
-						</span>
+						</button>
 					</li>
 					<li style="float: none;">
 							<span class="inventoryTitle titleLeft">

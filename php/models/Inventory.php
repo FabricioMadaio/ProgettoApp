@@ -41,5 +41,39 @@
 				  }
 			}	
 		}
+		
+		/*aggiunge un singolo prodotto all'inventario */
+		public function productInsertQuery($productId){
+			$q="INSERT INTO inventariprodotti (idInventario,idProdotto, quantita) VALUES ";
+			$q.=" ('".$this->id."','".$productId."','1')";
+			return $q;
+		}
+		
+		/*aggiunge un array di prodotti all'inventario*/
+		public function productsInsertQuery($indices,$amount){
+			
+			$q="INSERT INTO inventariprodotti (idInventario,idProdotto, quantita) VALUES ";
+			
+			for($i=1;$i<=count($indices);$i++){
+				
+				$q.=" ('".$this->id."','".$indices[$i]."','".$amount[$i]."')";
+				if($i!=count($indices))	$q.=",";
+			}
+			
+			$q.=" ON DUPLICATE KEY UPDATE quantita = VALUES(quantita) + quantita";
+			
+			return $q;
+		}
+		
+		public function exists($userID,$dbconn){
+			
+			$query="SELECT * FROM inventari WHERE idInventario = '$this->id' AND idUtente = '$userID'";
+			$result = $dbconn->query($query);
+			if(mysqli_num_rows($result) > 0)
+			{
+				return true;
+			}
+			return false;
+		} 		
 	}
 ?>

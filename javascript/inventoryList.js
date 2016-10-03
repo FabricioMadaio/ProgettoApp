@@ -45,7 +45,7 @@
  /*genera il codice HTML del singolo prodotto*/
 function inventoryString(item){
 
-	 var url ="inventoryContent/content.php?inventoryId="+item.id;
+	 var url ="inventoryContent/content.php?inventory="+item.id;
 	 
 	 return "<div class='inventoryElem'>"+
 				"<div class='squareBox'>"+
