@@ -98,6 +98,7 @@
 
 
 .modal-button{
+	display: block;
     cursor: pointer;
     box-sizing: border-box;
     line-height: 17px;

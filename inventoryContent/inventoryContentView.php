@@ -24,6 +24,10 @@
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/inventoryContent.js"></script>
+			<script src="../javascript/deleteInventory.js"></script>
+			<script src="../javascript/deleteProductsFromInventory.js"></script>
+			<script src="../javascript/updateAmount.js"></script>
+
 			
 			<script> 
 				window.onload = function(e){ 
@@ -39,8 +43,15 @@
 						onOpen:null,
 						onClose:null
 					});
-					
+
+					document.deleteInv=function()
+					{
+						deleteInventory(<?php echo $inventory->id;?>,mRemove);
+					}
+
 					loadInventoryContent(<?php echo $inventory->id ?>);
+
+					
 				}
 
 			</script>
@@ -91,14 +102,14 @@
 				
 				<ul style="background-color: #4d4dcc;">
 					<li style="float:right">
-						<span class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
+						<button class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
 									Rimuovi
-						</span>
+						</button>
 					</li>
 					<li style="float:left">
-						<span class="inventoryButton" style="margin-right:0px" onclick="toClientHome()">
+						<button class="inventoryButton" style="margin-right:0px" onclick="toClientHome()">
 									Indietro
-						</span>
+						</button>
 					</li>
 					<li style="float: none;">
 							<span class="inventoryTitle">
@@ -196,9 +207,9 @@
 					<div class="modal-body">
 						
 						<div class="modalButtonBox">
-							<button class="modal-button" onclick="toProductList()">Scegli dalla lista</button>
+							<a class="modal-button" onclick="toProductSelection(<?php echo "'index.php?inventory=".$inventory->id."'" ?>)">Scegli dalla lista</a>
 							<p>oppure</p>
-							<button class="modal-button" onclick="toItemUpload('index.php?inventory=1')" style="background-color: #08a9ea;">Inserisci nuovo</button>
+							<a class="modal-button" onclick="toItemUpload(<?php echo "'index.php?inventory=".$inventory->id."'" ?>)" style="background-color: #08a9ea;">Inserisci nuovo</a>
 							<br>
 						</div>
 					</div>
@@ -220,21 +231,21 @@
 							<p class="modalTitle">Cancella inventario</p>
 						</li>
 					</ul>
-					<div class="modal-body" id="modalBody">
-							<div id="message">
+					<div class="modal-body" id="modalBodyRemove">
+							<div id="messageRemove">
 								<p>Sei sicuro di voler eliminare l'inventario?</p>
 							</div>
 							<br>
 							<br>
-							<div id="response">
+							<div id="responseRemove">
 							
 							</div>
 							
 					</div>
 					
-					<div  id="footer" class="modal-footer">
+					<div  id="footerRemove" class="modal-footer">
 					
-							<form class="form" id="formNew" action="javascript:document.deleteElem()" method="POST"> 
+							<form class="form" id="formNew" action="javascript:document.deleteInv()" method="POST"> 
 								<input type="submit"  name="inventorySubmit" class="submit submitLeftButton" value="Si"/>
 								<input type="button" name="cancelButton" class="submit submitRightButton modalRemove_close " value="No" >
 								<input type="button" name="cancelButton" style="display:none;" class="submit submitRightButton modalRemove_close " value="Chiudi" >

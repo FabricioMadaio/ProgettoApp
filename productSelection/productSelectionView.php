@@ -16,11 +16,13 @@
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryList.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 
 
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
+			<script src="../javascript/common/modal.js"></script>
 			<script src="../javascript/productsListSearch.js"></script>
 			<script src="../javascript/productSelection.js"></script>
 			
@@ -29,9 +31,33 @@
 				window.onload = function(e){ 
 					/* responsiveness*/
 					startStylesheet();
-					startProductsList();
+					startProductsList(true);
 					
+					var ps = new Selection(document.getElementById("submit"));
+					
+					var m = new Modal("modalSubmit",{
+						onOpen:function(){
+							ps.submit(m,<?php echo $inventory->id ?>);
+						},
+						onClose:null
+					});
+					
+					document.selectItem = function(item){
+						
+						var amountCounter = item.nextSibling.childNodes[0];
+	 
+						if(item.className != "selectedItem"){	
+							item.className = "selectedItem";
+							amountCounter.className="itemCounterSelected";
+							ps.addItem(item);
+						}else{
+							item.className = "notSelected";
+							amountCounter.className="itemCounter";
+							ps.dropItem(item);
+						}
+					}
 				}
+				
 			</script>
 	</head>
 	<body>
@@ -78,7 +104,23 @@
 					</li>
 					
 				</ul>
-				
+				<ul style="background-color: #4d4dcc;">
+					<li style="float:right">
+						<button id="submit" class="inventoryButton modalSubmit_open" style="margin-left:0px" disabled>
+									Conferma
+						</button>
+					</li>
+					<li style="float:left">
+						<button class="inventoryButton" style="margin-right:0px" onclick="toInventory(<?php echo "'content.php?inventory=".$inventory->id."'" ?>)">
+									Indietro
+						</button>
+					</li>
+					<li style="float: none;">
+							<span class="inventoryTitle">
+									Seleziona
+							</span>
+					</li>
+				</ul>
 				<ul class="searchBar">
 					
 					<li class="search">
@@ -88,7 +130,7 @@
 								<img src="../img/search.png" class="product-preview" alt="formaggio" />
 							</a>
 							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startProductsList()" placeholder="Cerca" type="text"">
+								<input class="search" id="ricerca" onchange="startProductsList(true)" placeholder="Cerca" type="text"">
 							</div>
 						</div>
 						</div>
@@ -99,32 +141,31 @@
 			<section class="responsiveGrid">
 			
 				<span id="elementGrid">
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-					<div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-					
+
 				</span>
 			</section>
 			
-				
+			<div id="modalSubmit" class="modal" style="display: none;">
+				<!-- Modal content -->
+				<div class="modal-content" style="max-width: 380px;">
+					
+						<ul class="modal-header">
+							<li style="float:right">
+								<a class="modalSubmit_close closeButton">×</a>
+							</li>
+							<li style="float: none;">
+								<p class="modalTitle">Selezione</p>
+							</li>
+						</ul>
+						<div class="modal-body">
+							<div id="response">
+								<p>Caricamento</p>
+							</div>
+						</div>
+					<br>
+						
+				</div>	
+			</div>
 			
 			<footer style="text-align:center">
 				<div class="background">
