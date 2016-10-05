@@ -77,7 +77,7 @@ ImageUploader.prototype.handleFileList = function(fileArray) {
             This.handleFileList(fileArray);
         });
     } else if (fileArray.length === 1) {
-        this.handleFileSelection(fileArray[0],function(){console.log("lol");This.endProcessing()});
+        this.handleFileSelection(fileArray[0],function(){This.endProcessing()});
     }
 };
 
@@ -116,20 +116,19 @@ ImageUploader.prototype.scaleImage = function(img,rot, completionCallback) {
 	
 	var ctx = canvas.getContext('2d');
 
+	ctx.translate(minsize/2, minsize/2);
+	
     switch (orientation) {
       case 2:
         // horizontal flip
-        ctx.translate(img.width, 0)
         ctx.scale(-1, 1)
         break
       case 3:
         // 180° rotate left
-        ctx.translate(img.width, img.height)
         ctx.rotate(Math.PI)
         break
       case 4:
         // vertical flip
-        ctx.translate(0, img.height)
         ctx.scale(1, -1)
         break
       case 5:
@@ -140,22 +139,21 @@ ImageUploader.prototype.scaleImage = function(img,rot, completionCallback) {
       case 6:
         // 90° rotate right
         ctx.rotate(0.5 * Math.PI)
-        ctx.translate(0, -img.height)
         break
       case 7:
         // horizontal flip + 90 rotate right
         ctx.rotate(0.5 * Math.PI)
-        ctx.translate(img.width, -img.height)
         ctx.scale(-1, 1)
         break
       case 8:
         // 90° rotate left
-        ctx.rotate(-0.5 * Math.PI)
-        ctx.translate(-img.width, 0)
+        ctx.rotate(-0.5 * Math.PI);
         break
     }
 	
-    ctx.drawImage(img, -x, 0, img.width, img.height);
+	ctx.translate(-img.width/2, -img.height/2)
+	
+    ctx.drawImage(img, 0,0, img.width, img.height);
 
     while (canvas.width >= (2 * this.config.maxWidth)) {
         canvas = this.getHalfScaleCanvas(canvas);
