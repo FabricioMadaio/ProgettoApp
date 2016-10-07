@@ -1,3 +1,5 @@
 <?php 
- include "productListView.php";
+	
+	include "../php/config.php";
+	include "productListView.php";
  ?>

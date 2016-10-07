@@ -49,54 +49,11 @@
 			
 	</head>
 
-	<body>
-	
-			<header>
-				<a href="javascript:toHome()">
-					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
-				</a>
-			</header>
-			
-			<nav>
-
-				<ul>
-					<li class="menu-dropdown">
-						
-							<div class="menu-icon" onclick="menuMobile();">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</div>
-							
-							<div class="menu-content" onclick="blockReset();">
-							<ul>
-								<li>
-									<a  href="javascript:toHome()"> Prodotti </a>
-								</li>
-								<li>
-									<a href = "UserCart"> Carrello </a>
-								</li>
-								<li>
-									<a href="UserSignupForm"> Registrazione </a>
-								</li>
-							</ul>
-						  </div>
-						
-					</li>
-					
-					<li class = "fullmenu">
-						<a href="javascript:toHome()"> Prodotti </a>
-					</li>
-					<li class = "fullmenu">
-						<a href = "UserCart"> Carrello </a>
-					</li>
-					<li class = "fullmenu">
-						<a href="UserSignupForm"> Registrazione </a>
-					</li>
-					
-				</ul>
-				
-			</nav>	
+	<body class="fullPage">
+		<div class="content">
+		
+			<?php include "../php/components/headerStart.php" ?>
+			<?php include "../php/components/headerEnd.php" ?>
 			<br>
 		    <!-- The Modal -->
 			<div id="myModal" class="modal">
@@ -165,17 +122,9 @@
 			<br>
 			<br>	
 			
-			<footer style="text-align:center">
-				<div class="background">
-					<div class="wrapper">
-					
-						<img src="../img/logoFooter.svg" alt="logo"/>
-						<label>
-							Copyright @ Webmaster
-						</label>
-					</div>
-				</div>
-			</footer>
+			</div>
+		
+		<?php include "../php/components/footer.php" ?>
 
 	</body>
 

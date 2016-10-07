@@ -3,6 +3,7 @@
 <?php
 
 	/*load dbConn*/
+	include '../php/config.php';
 	include '../php/DBConnection.php';
 	include '../php/inputUtils.php';
 	

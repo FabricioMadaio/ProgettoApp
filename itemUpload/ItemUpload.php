@@ -2,6 +2,7 @@
 
 	/*CONTROLLER MODULE*/
 	
+	include '../php/config.php';
 	include '../php/inputUtils.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';

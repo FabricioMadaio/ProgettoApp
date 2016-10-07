@@ -9,8 +9,9 @@
 	if(!isset($_SESSION["username"]))
     {
     	header('Location:login/');
-    }	 
-	
+    }
+
+	include 'php/config.php';
 	/*load view*/
 	include 'inventory/inventoryView.php';
  ?>

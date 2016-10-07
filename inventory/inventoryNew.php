@@ -3,6 +3,7 @@
 	/*INVENTORY RETRIEVE*/
 
 	/*load dbConn*/
+	include '../php/config.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
 	include '../php/inputUtils.php';

@@ -48,68 +48,33 @@
 					{
 						deleteInventory(<?php echo $inventory->id;?>,mRemove);
 					}
-
-					loadInventoryContent(<?php echo $inventory->id ?>);
-
+					
+					document.search = function(){
+						loadInventoryContent(<?php echo $inventory->id ?>);
+					}
+					
+					document.search();
 					
 				}
 
 			</script>
 	</head>
 
-	<body>
-	
-			<header>
-				<a href="javascript:toHome()">
-					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
-					<!--Font logo rockwell-->
-				</a>
-			</header>
-			
-			<nav>
-
-				<ul>
-					<li class="menu-dropdown">
-						
-							<div class="menu-icon" onclick="menuMobile();">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</div>
-							
-							<div class="menu-content" onclick="blockReset();">
-							<ul>
-								<li>
-									<a  href="javascript:toHome()"> Info </a>
-								</li>
-								<li>
-									<a href="UserSignupForm"> Il tuo profilo </a>
-								</li>
-							</ul>
-							
-						  </div>
-						
-					</li>
-					
-					<li class = "fullmenu">
-						<a href="javascript:toHome()"> Info </a>
-					</li>
-					<li class = "fullmenu">
-						<a href="UserSignupForm"> Il tuo profilo </a>
-					</li>
-					
-				</ul>
+	<body class="fullPage">
+		<div class="content">
+		
+			<?php include "../php/components/headerStart.php" ?>
 				
-				<ul style="background-color: #4d4dcc;">
+				<ul class="navbar" style="background-color: #4d4dcc;">
 					<li style="float:right">
-						<button class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
+						<a class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
 									Rimuovi
-						</button>
+						</a>
 					</li>
 					<li style="float:left">
-						<button class="inventoryButton" style="margin-right:0px" onclick="toClientHome()">
+						<a class="inventoryButton" style="margin-right:0px" href="<?php echo ROOT; ?>">
 									Indietro
-						</button>
+						</a>
 					</li>
 					<li style="float: none;">
 							<span class="inventoryTitle">
@@ -118,22 +83,8 @@
 					</li>
 				</ul>
 				
-				<ul class="searchBar">
-					
-					<li class="search">
-						<div style="margin-left: 12px;">
-						<div class="search">
-							<a class="search">
-								<img src="../img/search.png" class="product-preview" alt="formaggio" />
-							</a>
-							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="loadInventoryContent(<?php echo $inventory->id ?>);" placeholder="Cerca" type="text" required>
-							</div>
-						</div>
-						</div>
-					</li>
-				</ul>
-			</nav>
+				
+			<?php include "../php/components/headerEnd.php" ?>
 			
 			<section class="responsiveGrid">
 			
@@ -217,18 +168,11 @@
 					
 				</div>
 			 </div>	
-			
-			<footer style="text-align:center">
-				<div class="background">
-					<div class="wrapper">
-					
-						<img src="../img/logoFooter.svg" alt="logo"/>
-						<label>
-							Copyright @ Webmaster
-						</label>
-					</div>
-				</div>
-			</footer>
+		
+		</div>
+		
+		
+		<?php include "../php/components/footer.php" ?>
 
 	</body>
 
