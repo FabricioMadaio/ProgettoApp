@@ -38,77 +38,18 @@
 						m.close();
 					}
 					
+					document.search = startInventoryList;
+					
 					startInventoryList();
 				}
 			</script>
 	</head>
-	<body>
-	
-			<header>
-				<a href="javascript:toHome()">
-					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
-					<!--Font logo rockwell-->
-				</a>
-			</header>
-			
-			<nav>
-
-				<ul>
-					<li class="menu-dropdown">
-						
-							<div class="menu-icon" onclick="menuMobile();">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</div>
-							
-							<div class="menu-content" onclick="blockReset();">
-							<ul>
-								<li>
-									<a  href="javascript:toHome()"> Info </a>
-								</li>
-								<li>
-									<a href="UserSignupForm"> Il tuo profilo </a>
-								</li>
-								<li>
-									<a  href="javascript:toProductList()"> Cerca un prodotto </a>
-								</li>
-							</ul>
-						  </div>
-						
-					</li>
-					
-					<li class = "fullmenu">
-						<a href="javascript:toHome()"> Info </a>
-					</li>
-					<li class = "fullmenu">
-						<a href="UserSignupForm"> Il tuo profilo </a>
-					</li>
-					<li class = "fullmenu">
-						<a  href="javascript:toProductList()"> Cerca un prodotto </a>
-					</li>
-					
-				</ul>
-				
-				<ul class="searchBar">
-					
-					<li class="search">
-						<div style="margin-left: 12px;">
-						<div class="search">
-							<a class="search">
-								<img src="img/search.png" class="product-preview" alt="formaggio" />
-							</a>
-							<div style="overflow: hidden;">
-								<input class="search" id="ricerca" onchange="startInventoryList()" placeholder="Cerca" type="text" required>
-							</div>
-						</div>
-						</div>
-					</li>
-				</ul>
-			</nav>
-			
-			
-
+	<body class="fullPage">
+		<div class="content">
+		
+			<?php include "php/components/headerStart.php" ?>
+			<?php include "php/components/headerEnd.php" ?>
+		
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
 		
@@ -146,27 +87,7 @@
 			<section class="responsiveGrid">
 			
 				<span id="elementGrid">
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-	                <div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
-					<div class="inventoryElem">
-						<div class="squareBox">
-							<div class="circle squareContent">
-							</div>
-						</div>
-						<span class="inventoryName">Vestiti con il nome lungo</span>	
-	                </div>
+	                
 					
 				</span>
 				<!-- Trigger/Open The Modal -->
@@ -182,20 +103,10 @@
 				</div>
 			</section>
 			
-				
-			
-			<footer style="text-align:center">
-				<div class="background">
-					<div class="wrapper">
-					
-						<img src="img/logoFooter.svg" alt="logo"/>
-						<label>
-							Copyright @ Webmaster
-						</label>
-					</div>
-				</div>
-			</footer>
-
+		</div>
+		
+		<?php include "php/components/footer.php" ?>
+	
 	</body>
 
 </html>

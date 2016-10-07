@@ -1,4 +1,23 @@
 
+html {
+	height: 100%;
+}
+body.fullPage{
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color:#F2F3F7;
+}
+
+nav{
+	margin-bottom:5px;
+}
+
+.content {
+	flex: 1;
+}
 
 div.description{
 	float:left;
@@ -185,12 +204,7 @@ img.product-preview{
 	width: 100%;
 }
 
-body{
-	background-color:#F2F3F7;
-}
-
-
-ul {
+ul.navbar {
 	height:46px;
 	list-style-type: none;
 	margin: 0;
@@ -200,7 +214,6 @@ ul {
 	box-shadow: 4px 4px 1px #EEE;
 	border: 1px solid #DDD;
 	position: relative;
-	width: 100%;
 }
 
 ul.searchBar{
@@ -257,7 +270,6 @@ table{
 }
 
 .responsiveGrid{
-		width: 100%;
 		border: 1px solid #DDD;
 		border-radius: 3px;
 		background-color: white;
@@ -324,23 +336,13 @@ a.thumbnail:hover {
 	border:1px solid #888888;
 }
 
-footer {
-	position: fixed;
-	left:0;
-	bottom: 0px;
-	background-color:F2F3F7;
-	clear:both;
-	width:100%;	 
-	text-align:center;	
-}
 
 footer div.background{
 	margin: 0px 0px 0px 0px;
-	margin-left: 8px;
-    margin-right: 8px;
-	text-align:center;
-	background-color: #507BF8;
+	text-align:left;
+	color: #4e5467;
 	box-shadow: 4px 0px 1px #EEE;
+	font-size: 15px;
 }
 
 footer div.wrapper{
@@ -357,6 +359,10 @@ footer img{
 footer label{
 	float:left;
 	margin-top: 9px;
+}
+
+.noWrap{
+	white-space:nowrap;
 }
 
 /* form di login su navbar*/			
@@ -731,16 +737,10 @@ img.itemImage{
 		padding: 15px 12px;
 	}
 	li.search{
-		float: right;
 		width: 100%;	
+		float: none;
 	}
 	
-	
-	ul.searchBar{
-		height:auto;
-		display:inline-block;
-		width: 100%;
-	}
 	.fileUploadInput{
 		max-width: none;
 		margin-bottom:10px;

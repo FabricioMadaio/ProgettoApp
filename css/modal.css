@@ -48,6 +48,15 @@
 
 /* Modal Header */
 .modal-header {
+
+	height: 46px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #507BF8;
+    position: relative;
+    width: 100%;
+	
     border-radius: 0px;
     box-shadow: none;
     border: none;

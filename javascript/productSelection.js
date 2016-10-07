@@ -35,7 +35,7 @@ Selection.prototype.submit = function(modal,inventoryId){
 	var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-		  selectionHandler(xhttp,modal);
+		  selectionHandler(xhttp,modal,inventoryId);
 		}
 	  };
 	  
@@ -44,16 +44,14 @@ Selection.prototype.submit = function(modal,inventoryId){
 	
 }
 
-function selectionHandler(xmlhttp,modal){
+function selectionHandler(xmlhttp,modal,inventoryId){
 	 
 	var responseElem = document.getElementById("response");
 	 console.log(xmlhttp);
-	if(xmlhttp.responseText==="cancellazioneRiuscita"){
+	if(xmlhttp.responseText===""){
 		
 		responseElem.innerHTML = "<section class='infoBox'>Prodotti aggiunti!</section>";
-		modal.close= function(){
-			document.location.href = parentUrl(parentUrl(document.location.href)) + "/productList/";
-		}
+		responseElem.innerHTML +="<a class='myButton' href='" +parentUrl(parentUrl(document.location.href)) + "/inventoryContent/content.php?inventory="+inventoryId+"'>Torna all'inventario</a>";
 	}else{
 		
 		var content = "<section class='infoBox' style='background:#f9d0d0;border-color:#f7a7a2;color:red;'>";

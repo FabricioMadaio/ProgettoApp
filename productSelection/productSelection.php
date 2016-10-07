@@ -1,5 +1,6 @@
 <?php
 
+	include '../php/config.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
 	include '../php/inputUtils.php';
@@ -37,8 +38,6 @@
 				$amounts = formatArray("amounts");
 			
 				$dbConn->query($inventory->productsInsertQuery($indices,$amounts));
-				//echo $inventory->productsInsertQuery($indices,$amounts);
-				
 				
 				$dbConn->close();
 			}			
@@ -51,7 +50,7 @@
 	function formatArray($key){
 		
 		$i=0;
-		$array = [];
+		$array = array();
 		
 		foreach($_POST[$key] as $elem){
 			$array[++$i]=intval($elem);

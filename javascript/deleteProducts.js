@@ -12,9 +12,9 @@ function deleteHandler(xmlhttp,modal){
 	var responseElem = document.getElementById("response");
 	 console.log(xmlhttp);
 	if(xmlhttp.responseText==="cancellazioneRiuscita"){
-		document.getElementById("footer").style.visibility="hidden";
-		document.getElementById("message").style.visibility="hidden";
-		responseElem.innerHTML = "<section class='infoBox'>Cancellazione effettuata con successo!</section>";
+		document.getElementById("footer").style.display="none";
+		document.getElementById("message").style.display="none";
+		responseElem.innerHTML = "<br><section class='infoBox'>Cancellazione effettuata con successo!</section>";
 		modal.close= function(){
 			document.location.href = parentUrl(parentUrl(document.location.href)) + "/productList/";
 		}

@@ -1,8 +1,10 @@
 <?php
 
+	include '../php/config.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
 	include '../php/inputUtils.php';
+	
 	/*load item class*/
 	include '../php/models/Item.php';
 	$dbConn = new DBConnection();

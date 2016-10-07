@@ -2,6 +2,7 @@
 
 	/*CONTROLLER MODULE*/
 	
+	include '../php/config.php';
 	include '../php/inputUtils.php';
 	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
@@ -97,6 +98,7 @@
 	
 	if(empty($response)){
 		$response = "<section class='infoBox'>Caricamento Completato!</section>";
+		if($inventoryId!=-1)
 		$response .= "<a class='myButton' onclick='javascript:toInventory(".'"'."content.php?inventory=".$inventoryId.'"'.")'>Torna all'inventario</a>";
 	}else{
 		$error = $response;

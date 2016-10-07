@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+	include '../php/config.php';
  	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
 

@@ -15,7 +15,7 @@ function deleteInventoryHandler(xmlhttp,modal){
     {
 		document.getElementById("footerRemove").style.display="none";
 		document.getElementById("messageRemove").style.display="none";
-		responseElem.innerHTML = "<section class='infoBox'>Cancellazione effettuata con successo!</section>";
+		responseElem.innerHTML = "<br><section class='infoBox'>Cancellazione effettuata con successo!</section>";
 		modal.close= function(){
 			document.location.href = parentUrl(parentUrl(document.location.href));
 		}

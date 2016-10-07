@@ -2,11 +2,6 @@
  //define data to connect to the database
 	class DBConnection {
 		
-		public static $DB_USER ='root';
-		public static $DB_PSW  ='';
-		public static $DB_HOST ='localhost';
-		public static $DB_NAME ='my_companyinventory';
-		
 		private $conn;
 		
 		public function __construct() {
@@ -16,7 +11,7 @@
 		public function open(){
 	
 			error_reporting(E_ALL ^ E_WARNING);
-			$this->conn = mysqli_connect(self::$DB_HOST,self::$DB_USER,self::$DB_PSW,self::$DB_NAME);
+			$this->conn = mysqli_connect(DB_HOST,DB_USER,DB_PSW,DB_NAME);
 
 			// Check connection
 			if (!$this->conn){

@@ -87,61 +87,19 @@
 			
 	</head>
 
-	<body>
-	
-			<header>
-				<a href="javascript:toHome()">
-					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
-				</a>
-			</header>
-			
-			<nav>
-
-				<ul>
-					<li class="menu-dropdown">
-						
-							<div class="menu-icon" onclick="menuMobile();">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</div>
-							
-							<div class="menu-content" onclick="blockReset();">
-							<ul>
-								<li>
-									<a  href="javascript:toHome()"> Prodotti </a>
-								</li>
-								<li>
-									<a href = "UserCart"> Carrello </a>
-								</li>
-								<li>
-									<a href="UserSignupForm"> Registrazione </a>
-								</li>
-							</ul>
-						  </div>
-						
-					</li>
-					
-					<li class = "fullmenu">
-						<a href="javascript:toHome()"> Prodotti </a>
-					</li>
-					<li class = "fullmenu">
-						<a href = "UserCart"> Carrello </a>
-					</li>
-					<li class = "fullmenu">
-						<a href="UserSignupForm"> Registrazione </a>
-					</li>
-					
-				</ul>
+	<body class="fullPage">
+		<div class="content">
+		
+			<?php include "../php/components/headerStart.php" ?>
 				
 				<?php if($inventory->id!=-1): ?>
-				<ul style="background-color: #4d4dcc;">
+				<ul class="navbar" style="background-color: #4d4dcc;">
 					<li style="float:right" class="positionFix">
 					</li>
 					<li style="float:left">
-						<button class="inventoryButton" style="margin-right:0px" onclick="toInventory(<?php echo "'content.php?inventory=".$inventory->id."'" ?>)">
+						<a class="inventoryButton" style="margin-right:0px" href=<?php echo "'".ROOT."inventoryContent/content.php?inventory=".$inventory->id."'" ?>>
 									Indietro
-						</button>
+						</a>
 					</li>
 					<li style="float: none;">
 							<span class="inventoryTitle titleLeft">
@@ -226,17 +184,10 @@
 			<br>
 			<br>	
 			
-			<footer style="text-align:center">
-				<div class="background">
-					<div class="wrapper">
-					
-						<img src="../img/logoFooter.svg" alt="logo"/>
-						<label>
-							Copyright @ Webmaster
-						</label>
-					</div>
-				</div>
-			</footer>
+		</div>
+		
+		
+		<?php include "../php/components/footer.php" ?>
 
 	</body>
 	

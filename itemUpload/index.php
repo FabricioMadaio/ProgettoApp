@@ -4,6 +4,7 @@
 	include '../php/inputUtils.php';
 	include '../php/models/Inventory.php';
 	/*load dbConn*/
+	include '../php/config.php';
 	include '../php/DBConnection.php';
 	
 	$dbConn = new DBConnection();
