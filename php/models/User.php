@@ -51,5 +51,9 @@
 			  $this->$property = $value;
 			}
 		}
+		
+		public function hashPass(){
+			return md5($this->password);
+		}
 	}
 ?>

@@ -17,6 +17,7 @@
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/singup.js"></script>
+			<script src="../javascript/utils.js"></script>
 			
 			<script>
 				window.onload = function(){
@@ -34,30 +35,28 @@
 			</header>
 			
 			<section class="sectionbox">
-				<h1 class="title"> Login </h1>
-				<form action="loginControl.php" method="post" style="margin-left: 10%;margin-right: 10%;">
+				<h1 class="title"> Cambia password </h1>
+				<form action="reset.php" method="post" style="margin-left: 10%;margin-right: 10%;">
 					<fieldset>
+						<?php if(!empty($tokenErr)): ?>
+							<p><?php echo $tokenErr ?></p>
+							<a class="submit" style ="display: block;text-decoration: none;" href="<?php echo ROOT ?>" >Torna alla Home</a>
+						<?php else: ?>
+						<p style="text-align: left;">
+							Inserisci qui la tua nuova password
+						</p>
 						<ol>
-							
-							<li>
-								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$user->username"; ?>" type="text" required >
-							</li>
-							<?php echo $user->usernameErr;?>
 							<li style="height: 40px;">
 								<input class="input-text fillrow" name="password" placeholder="Password" value="" type="password" required="">
+								<?php echo $passwordErr;?>
 							</li>
-							<?php echo $user->passwordErr;?>
-							<?php echo $user->dbErr;?>
-							<li style="text-align: right;height: 30px;">
-								<a href=<?php echo ROOT."passwordReset.html"; ?> class="simple"">Hai dimenticato la password?</a>
-							</li>
+								<input name="token" placeholder="token" value=<?php echo "'".$token."'"; ?> type="text" hidden>
 						</ol>
 						
-						<input type="submit" class="submit" value="Entra" > 	
+						<input type="submit" class="submit" value="Invia" style="float: right;width: 100px;"> 	
+						<?php endif; ?>
 						<br>
-						<p>Oppure</p>
-						<a class="submit" href="../signup" style="background-color:#08a9ea;display: block;text-decoration: none;">Registrati</a>
-						
+						<br>
 					</fieldset>
 					<br>
 				</form>

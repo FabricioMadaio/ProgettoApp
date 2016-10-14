@@ -9,6 +9,8 @@
 
 
 	$passCheck=$usernameCheck=false;
+	
+	$hashedPass = "";
 	$dbconn = new DBConnection();
 	
 	try{
@@ -39,50 +41,54 @@
 
 			if($usernameCheck == true && $passCheck == true)
 			{
-				$user->userid = checkUserData($user->username,$user->password,$dbconn);
-				if($user->userid>=0)
+				$hashedPass = $user->hashPass();
+				
+				$row = checkUserData($user->username,$hashedPass,$dbconn);
+				
+				if($row!=null)
 				{
-
-					session_start();
-					$_SESSION["username"] = $user->username;
-					$_SESSION["password"] = $user->password;
-					$_SESSION["userid"] = $user->userid;
 					
-					//to home
-					header('Location:../');
-				}
+					if(strcmp($row["active"],"yes")==0){
+						
+						$user->userid = $row["idUtente"];
 
-				else
-				{
-					$user->dbErr = errorString("Nessuna corrispondenza trovata nel database!","db");
+						session_start();
+						$_SESSION["username"] = $user->username;
+						$_SESSION["password"] = $hashedPass;
+						$_SESSION["userid"] = $user->userid;
+						
+						//to home
+						header('Location:../');
+					}else{
+						$user->dbErr = errorString("Account non attivo","db");
+					}
+				}else{
+					$user->dbErr = errorString("Username o password errati","db");
 				}
 			}
 		}
 		$dbconn->close();	
 		
 	}catch (Exception $e) {
+		
 		$user->dbErr = errorString("Errore nel database","db");
 	}
-	
 	//chiamo la view
 	include "loginView.php";
 
 	/*verifica se l'utente e la password sono presenti nel DB*/
 	function checkUserData($username,$password,$dbconn)
 	{
-		$query ="SELECT username,password,idUtente FROM utenti";
+		$query ="SELECT username,password,idUtente,active FROM utenti WHERE username = '$username' AND password='$password'";
 		$result = $dbconn->query($query); 
       	if (mysqli_num_rows($result) > 0) {
    		    // output data of each row
     	while($row = mysqli_fetch_assoc($result)) 
     	  {
-            if(strcmp ($row["username"] , $username) == 0 && strcmp ($row["password"] , $password) == 0  )
-            {
-               return $row["idUtente"];
-            } 
+            return $row;
 	      }
-	      return -1;
         }
+		return null;
    }
 	
  ?>

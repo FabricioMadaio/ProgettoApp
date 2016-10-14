@@ -16,6 +16,7 @@
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryList.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
 			<script src="../javascript/common/utils.js"></script>
@@ -53,7 +54,23 @@
 		<div class="content">
 		
 			<?php include "../php/components/headerStart.php" ?>
-			<?php include "../php/components/headerEnd.php" ?>
+				<?php if($inventory->id!=-1): ?>
+					<ul class="navbar" style="background-color: #4d4dcc;">
+						<li style="float:right" class="positionFix">
+						</li>
+						<li style="float:left">
+							<a class="inventoryButton" style="margin-right:0px" href=<?php echo "'".ROOT."inventoryContent/content.php?inventory=".$inventory->id."'" ?>>
+										Indietro
+							</a>
+						</li>
+						<li style="float: none;">
+								<span class="inventoryTitle titleLeft">
+										<?php echo $inventory->name;?>
+								</span>
+						</li>
+					</ul>
+				<?php endif; ?>
+			</nav>
 			<br>
 		    <!-- The Modal -->
 			<div id="myModal" class="modal">
@@ -106,9 +123,7 @@
 						<fieldset>
 							<ol class="Item">
 									<li style="height: 153px">		
-									<textarea class="fillrow" style="height: 100%;"  id="description" name="descrizione" readonly>
-										<?php echo $item->description; ?>
-									</textarea>
+									<textarea class="fillrow" style="height: 100%;" id="description" name="descrizione" readonly><?php echo $item->description; ?></textarea>
 								</li>
 								<li style="margin-top: 14px;height: auto;">		
 									<input type="submit" class="submit submitRightButton myModal_open" value="Cancella" style="background-color:red">

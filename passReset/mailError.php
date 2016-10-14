@@ -13,10 +13,10 @@
 			<![endif]-->
 
 			<title>Sito E-Commerce	</title>
-			<link rel="stylesheet" type="text/css" href="css/style.css">
-			<link rel="stylesheet" type="text/css" href="css/singup.css">
+			<link rel="stylesheet" type="text/css" href="../css/style.css">
+			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
-			<script src="javascript/singup.js"></script>
+			<script src="../javascript/singup.js"></script>
 			
 			<script>
 				window.onload = function(){
@@ -29,15 +29,15 @@
 	
 			<header class="bigHeader">
 				<a href="javascript:toHome()">
-					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
+					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 				</a>
 			</header>
 			
 			<section class="sectionbox">
-				<h1 class="title"> Registrazione Completata! </h1>
-				<form action="login/" method="post" style="margin-left: 10%;margin-right: 10%;">
+				<h1 class="title"> Recupero Password </h1>
+				<form action="../login/" method="post" style="margin-left: 10%;margin-right: 10%;">
 					<fieldset>
-					<p>Controlla la tua posta, ti abbiamo mandato una mail con il codice di attivazione
+					<p><?php echo $emailErr; ?>
 					</p>
 						<br>
 						<input type="submit" class="submit" value="Torna alla Home" > 	

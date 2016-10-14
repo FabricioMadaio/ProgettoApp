@@ -54,5 +54,51 @@
 		  }
 		}
 	}
+	
+	function mailExists($email,$dbconn){
+		
+    	$row;
+    	$query="SELECT email FROM utenti WHERE email = '$email'";
+        $result = $dbconn->query($query);
+        if(mysqli_num_rows($result) > 0)
+        {
+   		    // output data of each row
+    	  while($row = mysqli_fetch_assoc($result))
+	      { 
+	       return true;
+	      }
+        }
+		return false;
+	}
+	
+	//verifica se il token di reset password è valido
+	function tokenCheck($token,$dbconn){
+		
+		$invalidTokenMessage = errorString('Codice non valido, per favore usa il link che hai ricevuto tramite email.',"name");
+	
+		if (empty($token)){
+			return $invalidTokenMessage;
+		}
+		//create the activation code
+		$query = "SELECT resetToken, resetComplete FROM utenti WHERE resetToken = '$token'";
+		
+		$result = $dbconn->query($query);
+		
+		if(mysqli_num_rows($result) > 0)
+		{
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result))
+			{ 
+				if(!empty($row['resetToken'])){
+					if($row['resetComplete'] == 'yes')
+						return 'La tua password è gia stata cambiata!';
+					else
+						return "";
+				}
+			}
+		}
+		
+		return $invalidTokenMessage;
+	}
 
  ?>

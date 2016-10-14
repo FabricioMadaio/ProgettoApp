@@ -6,11 +6,13 @@
 	include '../php/config.php';
 	include '../php/DBConnection.php';
 	include '../php/inputUtils.php';
+	include '../php/phpmailer/mail.php';
 	
 	/*load model*/
 	include 'initSignup.php';
 
 	$noErrors = true;
+	$hashedPass = "";
 	
 	$dbconn = new DBConnection();
 	
@@ -47,6 +49,21 @@
 					$noErrors = false;
 				}
 			}
+			
+			if (empty($_POST["email"])){
+				$user->emailErr = errorString("Email is required","nome");
+				$noErrors = false;
+			}
+			else 
+			{
+				$user->email = testInput($_POST["email"]);
+				
+				// check if mail is well formatted
+				if (mailExists($user->email,$dbconn)) {
+					$user->emailErr = errorString("Email provided already Exists","nome"); 
+					$noErrors = false;
+				}
+			}
 
 			if (empty($_POST["password"])){
 				$user->passwordErr = errorString("Password is required","nome");
@@ -57,6 +74,10 @@
 				if (!isAlphanumeric($user->password)){
 					$user->passwordErr = errorString("Only letters,white space and number allowed in password","nome"); 
 					$noErrors = false;
+				
+				}else{
+					//md5 hashing
+					$hashedPass = $user->hashPass();
 				}
 			}
 
@@ -100,9 +121,12 @@
 
 			if($noErrors==true)
 			{
+				//create the activation code
+				$activasion = md5(uniqid(rand(),true));
+		
 				$lastId = getLastId($dbconn);
-				$query = "INSERT INTO utenti (idUtente, username, password,nome,cognome,dataDiNascita,residenza)";
-				$query .= "VALUES ('$lastId', '$user->username', '$user->password', '$user->name', '$user->lastname', '$user->bday', '$user->residence')";
+				$query = "INSERT INTO utenti (idUtente, username, password, email, nome, cognome, dataDiNascita, residenza,active)";
+				$query .= "VALUES ('$lastId', '$user->username', '$hashedPass','$user->email','$user->name', '$user->lastname', '$user->bday', '$user->residence','$activasion')";
 				
 				if(!$dbconn->query($query))
 				{
@@ -110,6 +134,10 @@
 				}
 				else
 				{
+					$user->userid = $lastId;
+					//then send mail
+					sendActivationMail($activasion,$user);
+					
 					header('Location:../registrationSuccessfulPage.html');
 				}
 				
@@ -120,7 +148,49 @@
 	}catch (Exception $e) {
 		header('Location:../registrationErrorPage.html');
 	}
+	
 	include "signupView.php";
+	
+	function sendActivationMail($activasion,$user){
+		
+		$url = ROOT."signup/";
+		$id = $user->userid;
+		$to = $user->email;
+		$subject = "Company Inventory";
+		$body = "<p>Ciao $user->name,</p>
+		<p>Grazie per esserti registrato a Company Inventory.<br>
+		Per attivare il tuo account clicca qui: <a href='".$url."activate.php?x=$id&y=$activasion'>".$url."activate.php?x=$id&y=$activasion</a></p>
+		<p> I tuoi dati di accesso</p>
+		<p>
+			Username: $user->username<br>
+			Password: $user->password
+		</p>		
+		<p>Grazie,<br>
+		Staff Company Inventory</p>";
+
+		$mail = new Mail();
+		$mail->setFrom(SITEEMAIL,"Company Inventory");
+		$mail->addAddress($to);
+		$mail->subject($subject);
+		$mail->body($body);
+		$mail->send();
+	}
+	
+	function mailExists($email,$dbconn){
+		
+    	$row;
+    	$query="SELECT email FROM utenti WHERE email = '$email'";
+        $result = $dbconn->query($query);
+        if(mysqli_num_rows($result) > 0)
+        {
+   		    // output data of each row
+    	  while($row = mysqli_fetch_assoc($result))
+	      { 
+	       return true;
+	      }
+        }
+		return false;
+	}
   	
     function getLastId($dbconn)
     {
