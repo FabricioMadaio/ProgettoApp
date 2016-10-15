@@ -3,6 +3,8 @@
 	//define('ROOT',"http://localhost/ProgettoApp/");
 	define('ROOT',"http://companyinventory.altervista.org/");
 	
+	define('UPLOAD_FOLDER',"/membri/companyinventory");
+	
 	define('SITEEMAIL','iscrizione@companyinventory.altervista.org');
 	
 	define('DB_USER','root');
