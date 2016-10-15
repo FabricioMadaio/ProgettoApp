@@ -430,6 +430,10 @@ footer label{
     border-radius: 1px;
 }
 
+.paragraph-header
+{
+  display: none;
+}
 /* menu mobile*/
 
 
@@ -676,6 +680,23 @@ img.itemImage{
 /*adattamento a schermi mobile*/
 
 @media screen and (max-width : 760px){
+
+	.logo{
+		display: none;
+	}
+
+	.paragraph-header
+	{
+	    display: block;
+		margin:0px;
+		font-weight: bold;
+		color: white;
+		text-align: center;
+		padding: 10px 14px;
+		text-decoration: none;
+		font-size:22px;
+		font-family: Rockwell;
+	}
 
 	.fullmenu{
 		display:none;
