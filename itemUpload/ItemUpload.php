@@ -24,7 +24,7 @@
 	$valid_typs = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
 
 	// thumbnail sizes
-	$sizes = array(150 => 150);
+	$sizes = array(150 => 150,20 => 20);
 	
 	$response = '';
 	$inventoryId = -1;
@@ -70,12 +70,23 @@
 					
 					// get file type
 					$typ = $_FILES['image']['type'];
-
+					
+					$bigpath = UPLOAD_FOLDER.'/uploads/150x150/';
+						
+					/* new random file name */
+					while (true) {
+						$filename = uniqid('', false);
+						$search = glob($bigpath.$filename);
+						if (!$search || count($search)<=0) break;
+					}
 					
 					if (in_array($typ, $valid_typs)) {
 						/* resize image */
 						foreach ($sizes as $w => $h) {
-							$item->imageUrl = resize($w, $h);
+							
+							/* file upload folder*/
+							$path = UPLOAD_FOLDER.'/uploads/'.$w.'x'.$h.'/';
+							$item->imageUrl = resize($w, $h,$filename,$path);
 						}
 					} else {
 					  $response .= '<li>- Immagine non supportata</li>';

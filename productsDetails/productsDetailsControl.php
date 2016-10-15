@@ -7,8 +7,12 @@
 	
 	/*load item class*/
 	include '../php/models/Item.php';
+	include '../php/models/Inventory.php';
+	
 	$dbConn = new DBConnection();
 	$item = new Item("","","");
+	
+	$inventory = new Inventory(-1,"");
 
     try
     {  
@@ -22,6 +26,11 @@
 			    
 
 				$query=$productId="";
+				
+				if(!empty($_GET["inventory"])){
+					$inventory->id = testInput($_GET["inventory"]);
+					$inventory->checkUserOwner($userid,$dbConn);
+				} 
 
 				if(empty($_GET["id"])) 
 				{

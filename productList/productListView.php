@@ -28,7 +28,7 @@
 			<script> 
 				window.onload = function(e){ 
 					/* responsiveness*/
-					startStylesheet();
+					startStylesheet(true);
 					startProductsList();
 					
 					document.search = startProductsList;

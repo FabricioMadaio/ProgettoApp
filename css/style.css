@@ -238,6 +238,17 @@ li a {
 	text-decoration: none;
 }
 
+a.simple{
+	text-decoration: underline;
+    padding: initial;
+    font-weight: initial;
+    color: -webkit-link;
+    display: initial;
+    text-align: left;
+    color: #3572b0;
+    text-decoration: none;
+}
+
 li p{
 	margin:0px;
 	font-weight: bold;
@@ -253,9 +264,16 @@ li a.menubutton {
 	background-color: #E2E2E2;
 }
 
+li a.simple:hover{
+	background-color: inherit;
+}
+
+
 li a:hover,.menu-icon:hover {
 	background-color: #111;
 }
+
+
 li a.menubutton:hover {
 	background-color: #D2D2D2;
 }

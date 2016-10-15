@@ -17,11 +17,16 @@
 	
 	params+="idInventory="+idInventory;
 	console.log(params);
-	loadDoc(loadXMLItems,"itemListRetrieve.php",params);
+	
+	loadDoc(
+		function(xml){
+			loadXMLItems(xml,idInventory);
+		}
+	,"itemListRetrieve.php",params);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
- function loadXMLItems(xml) {
+ function loadXMLItems(xml,inventory) {
 			
 		var i;
 		var xmlDoc = xml.responseXML;
@@ -40,7 +45,7 @@
 			item.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			item.imgUrl = x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue;
 			item.amount = x[i].getElementsByTagName("amount")[0].childNodes[0].nodeValue;
-			list.innerHTML+=itemString(item);
+			list.innerHTML+=itemString(item,inventory);
 		}
 		
 		//aggiorno le dimensioni
@@ -49,14 +54,17 @@
 
 
  /*genera il codice HTML del singolo prodotto*/
-function itemString(item){
+function itemString(item,inventory){
 
-	 var url ="inventory?id="+item.id;
-	 
-	 return "<div class='inventoryElem'>"+
+	var detailsUrl ="../productsDetails/productsDetailsControl.php?id="+item.idProdotto+"&inventory="+inventory;
+	
+	return "<div class='inventoryElem'>"+
 				"<a class='removeItemButton' onClick=deleteProductFromInventory("+item.idProdotto+","+item.idInventario+")>×</a>"+	
 				"<div class='squareBox'>"+
-					"<div class='circle squareContent' style='background-image: url(../uploads/"+item.imgUrl+");'></div>"+
+					"<a href='"+detailsUrl+"'>"+
+						"<div class='circle squareContent' style='background-color: initial;background-image: url(../uploads/20x20/"+item.imgUrl+");'>"+
+							"<div class='circle squareContent' style='margin: 0;border: none;background-color: initial;background-image: url(../uploads/150x150/"+item.imgUrl+");'></div>"+
+						"</div><a>"+
 					"<div style='bottom: 0;right: 0;position: absolute;'>"+
 						"<input id='amount"+item.idProdotto+"' onChange=updateAmount("+item.idProdotto+","+item.idInventario+") type='number' class='smallInputNumber' value='"+item.amount+"' />"+
 				"</div></div>"+

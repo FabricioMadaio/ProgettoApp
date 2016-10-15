@@ -46,6 +46,12 @@
 								<?php echo $user->nameErr;?>
 								<?php echo $user->lastnameErr;?>
 							</li>
+							
+							<li>
+								<input class="input-text fillrow" name="email" placeholder="Email" value="<?php echo $user->email;?>" type="email" required >
+								<?php echo $user->emailErr;?>
+							</li>
+							
 							<li>
 								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo $user->username;?>" type="text" required >
 								<?php echo $user->usernameErr;?>

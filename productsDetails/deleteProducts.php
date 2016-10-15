@@ -3,9 +3,13 @@
 	include '../php/config.php';
  	include '../php/DBConnection.php';
 	include '../php/sessionControl.php';
+	
+	include '../php/models/Image.php';
 
 	$dbconn = new DBConnection();
 	$productIdError = $productId ="";
+	
+	$userid = $_SESSION["userid"];
 
 	try{
 		
@@ -24,7 +28,8 @@
 
 				if (empty($productIdError)) 
 				{
-					$queryToProduct = "DELETE FROM prodotti WHERE idProdotto ='$productId'";
+					
+					$queryToProduct = "DELETE FROM prodotti WHERE idProdotto ='$productId' AND idUtente = '$userid'";
 					$resultToProduct = $dbconn->query($queryToProduct);
 
 					if(!empty($resultToProduct))
@@ -34,6 +39,9 @@
 
 							if (!empty($resultToProductInventory)) 
 							{
+								$img = new Image(null,null);
+								$img->getFromProduct($productId,$userid,$dbconn);
+								$img->dbDrop($dbconn);
 								echo "cancellazioneRiuscita";
 							}
 						    else

@@ -4,7 +4,7 @@
 	* @param int $width
 	* @param int $height
 	*/
-	function resize($width, $height){
+	function resize($width, $height,$name,$path){
 
 		/* Get original image x y*/
 		list($w, $h) = getimagesize($_FILES['image']['tmp_name']);
@@ -15,24 +15,14 @@
 		$x = ($w - $width / $ratio) / 2;
 		$w = ceil($width / $ratio);
 
-		/* file upload folder*/
-		$root = "/membri/companyinventory";
-		$path = $root.'/uploads/';
-
-		/* new random file name */
-		while (true) {
-			$filename = uniqid('', false);
-			$search = glob($path.$filename);
-			if (!$search || count($search)<=0) break;
-		}
-
+		$filename = $name;
+		
 		/* read binary data from image file */
 		$imgString = file_get_contents($_FILES['image']['tmp_name']);
 		
 		/* create image from string */
 		$image = imagecreatefromstring($imgString);
 		$tmp = imagecreatetruecolor($width, $height);
-				$tmp = $image;
 		/* crop and resize image*/
 		imagecopyresampled(	$tmp, $image,
 							0, 0,

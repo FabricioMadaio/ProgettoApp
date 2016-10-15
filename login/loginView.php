@@ -43,15 +43,16 @@
 								<input class="input-text fillrow" name="username" placeholder="Username" value="<?php echo "$user->username"; ?>" type="text" required >
 							</li>
 							<?php echo $user->usernameErr;?>
-							<li>
-								<input class="input-text fillrow" name="password" placeholder="Password" value="<?php echo "$user->password"; ?>" type="password" required>
+							<li style="height: 40px;">
+								<input class="input-text fillrow" name="password" placeholder="Password" value="" type="password" required="">
 							</li>
 							<?php echo $user->passwordErr;?>
 							<?php echo $user->dbErr;?>
+							<li style="text-align: right;height: 30px;">
+								<a href=<?php echo ROOT."passwordReset.html"; ?> class="simple"">Hai dimenticato la password?</a>
+							</li>
 						</ol>
 						
-					
-						<br>
 						<input type="submit" class="submit" value="Entra" > 	
 						<br>
 						<p>Oppure</p>

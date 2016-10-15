@@ -12,16 +12,18 @@
 var elementStartWidth = 140;
 var marginCloseButton = 6;
 
+var resizeTimeout;
+
 /*funzione di inizio (da chiamare nella onload)*/
-function startStylesheet(){ 
+function startStylesheet(extra){ 
 
 	/*chiudo tutti i menu cliccando sul body*/
 	document.body.onclick = reset;
 	window.onclick = reset;
-	var timeout;
+	var timeout,resizeTimeout;
 	
 	/*inserisco il listener del resize*/
-	window.addEventListener("resize", onResize);
+	window.addEventListener("resize",onResize);
 	
 	/*carico i dati della local storage*/
 	onResize();
@@ -123,12 +125,16 @@ function blockReset(){
 }
 
 /*ridimensionamento schermo*/
-function onResize(){
+function onResize(lock){
 	
 	/*aggiusto la dimensione dei riquadri in modo da riempire il contenitore*/
 	
 	var container = document.getElementsByClassName("responsiveGrid")[0];
 	var elms = document.getElementsByClassName('inventoryElem');
+	
+	var containerStartWidth = container.clientWidth;
+	var refresh = false;
+	clearTimeout(resizeTimeout);
 	
 	if(elms.length>0){
 		
@@ -139,12 +145,14 @@ function onResize(){
 		var containerWidth = container.clientWidth;
 		
 		var capacity = parseInt(containerWidth/elementStartWidth)+1;
+		
 		var newWidth = (containerWidth/capacity);
 		
 		//sottraggo il 20 percento di un singolo rettangolo a tutta la serie
 		newWidth-= (newWidth/20)/capacity;
 		
 		var margin = 0;
+		var rowY = 0;
 		
 		if(elms.length<capacity){
 			newWidth = elementStartWidth;
@@ -153,12 +161,41 @@ function onResize(){
 			
 		/*aggiorna le dimensioni finali*/
 		for (var i = 0; i < elms.length; i++) {
+			
 			elms[i].style.width = ""+newWidth+"px";
+			//first element of row
+			if(i%capacity == 0){ 
+				elms[i].style.clear="left";
+				rowY = elms[i].getBoundingClientRect().top;
+			}else{
+				if(rowY!= elms[i].getBoundingClientRect().top)
+					refresh = true;
+				elms[i].style.clear="none";
+			}
+			
 			var itemButton = elms[i].getElementsByClassName("removeItemButton");
 			if(itemButton && itemButton.lenght>0)
 				itemButton[0].style.marginRight = ""+margin+"px";
 		}
 		
+		//adapt height
+		for (var i = 0; i < elms.length; i++) {
+			//first element of row
+			if(i%capacity == 0){ 
+				rowY = elms[i].getBoundingClientRect().top;
+			}else{
+				if(rowY!= elms[i].getBoundingClientRect().top)
+					refresh = true;
+				
+			}
+		}
 	}
 	
+	if(refresh && lock!==true){
+		console.log("di qua");
+		//lock prevent infinite loop
+		resizeTimeout = setTimeout(function(){
+		onResize(true);
+		},200);
+	}
 }
