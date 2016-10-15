@@ -44,7 +44,7 @@
 					
 					document.selectItem = function(item){
 						
-						var amountCounter = item.nextSibling.childNodes[0];
+						var amountCounter = item.nextSibling.childNodes[0].childNodes[0];
 	 
 						if(item.className != "selectedItem"){	
 							item.className = "selectedItem";

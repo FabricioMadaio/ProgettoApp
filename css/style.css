@@ -660,6 +660,7 @@ img.itemImage{
 	margin-top: 8px;
     margin-bottom: 3px;
 	background-color:initial;
+	display: block;
 	border: 1px solid #d0caca;
 }
 

@@ -116,7 +116,8 @@
 				<form class="form" id="formNew" method="POST" action="javascript:void(0);" style="margin: 3px 2%;">	
 					<aside class="left">
 						<div class="itemImageContainer">
-							<img src=<?php echo "'../uploads/".$item->imageUrl."'" ?> id="previewImage" class="itemImage circle" alt="Product" />
+							<img src=<?php echo "'../uploads/20x20/".$item->imageUrl."'" ?> id="previewImage" class="itemImage circle" alt="Product" />
+							<img src=<?php echo "'../uploads/150x150/".$item->imageUrl."'" ?> id="previewImage" style="background-color: inherit;position: absolute;top: 0;"class="itemImage circle" alt="Product" />
 						</div>
 					</aside>
 					<aside>

@@ -155,7 +155,7 @@
 					<aside class="left">
 						<div class="itemImageContainer">
 							<img class="imageSpin" src="../img/spin.gif" id="spin" alt="logo aggiungi prodotto" style="display:none">
-							<img src="../img/prodotto1.jpg" id="previewImage" class="itemImage circle" alt="Product" />
+							<img src="../img/prodotto1.jpg" style="display: inline-block;" id="previewImage" class="itemImage circle" alt="Product" />
 							<div class="fileUpload">
 								<span>Cambia Immagine</span>
 								<input type="file" id="inputImage" class="upload" name="file" accept="image/*">

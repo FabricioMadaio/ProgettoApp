@@ -132,9 +132,7 @@ function onResize(lock){
 	var container = document.getElementsByClassName("responsiveGrid")[0];
 	var elms = document.getElementsByClassName('inventoryElem');
 	
-	var containerStartWidth = container.clientWidth;
 	var refresh = false;
-	clearTimeout(resizeTimeout);
 	
 	if(elms.length>0){
 		
@@ -166,10 +164,7 @@ function onResize(lock){
 			//first element of row
 			if(i%capacity == 0){ 
 				elms[i].style.clear="left";
-				rowY = elms[i].getBoundingClientRect().top;
 			}else{
-				if(rowY!= elms[i].getBoundingClientRect().top)
-					refresh = true;
 				elms[i].style.clear="none";
 			}
 			
@@ -192,10 +187,7 @@ function onResize(lock){
 	}
 	
 	if(refresh && lock!==true){
-		console.log("di qua");
 		//lock prevent infinite loop
-		resizeTimeout = setTimeout(function(){
 		onResize(true);
-		},200);
 	}
 }
