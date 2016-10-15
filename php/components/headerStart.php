@@ -20,7 +20,7 @@
 				<ul class="navbar">
 				
 					<li>
-						<a href="UserSignupForm"> Il tuo profilo </a>
+						<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 					</li>
 					<li>
 						<a href="UserSignupForm"> Contatti </a>
@@ -39,7 +39,7 @@
 		
 
 		<li class = "fullmenu">
-			<a href="UserSignupForm"> Il tuo profilo </a>
+			<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 		</li>
 		<li class = "fullmenu">
 			<a href="UserSignupForm"> Contatti </a>
