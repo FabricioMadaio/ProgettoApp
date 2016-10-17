@@ -1,6 +1,6 @@
 <header>
 	<a href=<?php echo "'".ROOT."'"; ?> >
-		<img src=<?php echo "'".ROOT."img/LogoFinal.png'"; ?> class="logo" alt="Company Inventory" />
+		<img src=<?php echo "'".ROOT."img/LogoFinal.png'"; ?> class="navbarLogo" alt="Company Inventory" />
 		<!--Font logo rockwell-->
 	</a>
 </header>

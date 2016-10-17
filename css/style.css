@@ -82,7 +82,7 @@ p.subtotal{
 	margin:4px;
 }
 
-.logo{
+.logo , .navbarLogo{
 	width:100%;
 	max-width:304px;
 	cursor:pointer;
@@ -699,7 +699,7 @@ img.itemImage{
 
 @media screen and (max-width : 760px){
 
-	.logo{
+	.navbarLogo{
 		display: none;
 	}
 
