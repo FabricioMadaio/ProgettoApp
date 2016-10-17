@@ -40,20 +40,23 @@ function retriveUserInfo(){
 function profileInfoString(user)
 {
 
-var str = '<p class="littlerow">Nome</p>'+
-'			<p class="bigrow">'+user.nome+'</p>	'+
-'			<p class="littlerow">Cognome</p>'+
-'			<p class="bigrow">'+user.cognome+'</p>	'+
-'			<p class="littlerow">Username</p>'+
-'			<p class="bigrow">'+user.username+'</p>	'+
-'			<p class="littlerow">Password</p>'+
-'			<a class="bigrow" href="../passwordReset.html">Cambia Password</a>'+
-'			<p class="littlerow">Data di nascita</p>'+
-'			<p class="bigrow">'+user.bDay+'</p>	'+
-'			<p class="littlerow">Email</p>'+
-'			<p class="bigrow">'+user.email+'</p>'
-'			<p class="littlerow">Residenza</p>'+
-'			<p class="bigrow">'+user.residenza+'</p>';
+var str = '<table id="dataList" style="box-shadow: none;">'+
+			'<tbody><tr>'+
+			'<td style="font-weight: bold;">Nome:</td>'+
+			'<td>'+user.nome+'</td></tr>'+
+			'<td style="font-weight: bold;">Cognome:</td>'+
+			'<td>'+user.cognome+'</td></tr>'+
+			'<td style="font-weight: bold;">Username:</td>'+
+			'<td>'+user.username+'</td></tr>'+
+			'<td style="font-weight: bold;">Password:</td>'+
+			'<td><a class="bigrow" href="../passwordReset.html">Cambia Password</a></td></tr>'+
+			'<td style="font-weight: bold;">Data di nascita:</td>'+
+			'<td>'+user.bDay+'</td></tr>'+
+			'<td style="font-weight: bold;">Email:</td>'+
+			'<td>'+user.email+'</td></tr>'+
+			'<td style="font-weight: bold;">Residenza:</td>'+
+			'<td>'+user.residenza+'</td></tr>'+
+			'</tbody></table>';
 
 return str;
 	

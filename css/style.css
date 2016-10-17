@@ -286,6 +286,11 @@ table{
 		box-shadow: 4px 4px 1px #EEE;
 }
 
+.contacts{
+		border: none;
+		box-shadow: none;
+}
+
 .responsiveGrid{
 		border: 1px solid #DDD;
 		border-radius: 3px;
@@ -303,6 +308,13 @@ td,th{
 		text-align:left;
 		padding: 8px;
 		border-bottom: 1px solid #ddd;
+}
+
+.contacts td{
+		text-align: left;
+		padding: 8px 0px;
+		width: 50%;
+		border-bottom: none;
 }
 
 h1{
