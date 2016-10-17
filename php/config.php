@@ -1,7 +1,7 @@
 <?php
 
-	//define('ROOT',"http://localhost/ProgettoApp/");
-	define('ROOT',"http://companyinventory.altervista.org/");
+	define('ROOT',"http://localhost/ProgettoApp/");
+	//define('ROOT',"http://companyinventory.altervista.org/");
 	
 	define('UPLOAD_FOLDER',"/membri/companyinventory");
 	
