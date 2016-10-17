@@ -20,8 +20,13 @@
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
 			<script src="../javascript/common/modal.js"></script>
-		
-			<script src="../javascript/deleteProducts.js"></script>
+			<script src="../javascript/retriveUserInfo.js"></script>
+			<script type="text/javascript">
+				window.onload = function()
+				{
+					retriveUserInfo();
+				}
+			</script>
 			
 	</head>
 
@@ -29,23 +34,14 @@
 		<div class="content">
 		
 			<?php include "../php/components/headerStart.php" ?>
-			<?php include "../php/components/headerEnd.php" ?>
+			</nav>
 			<br>
 		    <!-- The Modal -->
 			
 			<section  id="section" class="sectionbox" style="max-width:800px;text-align: center;">
 			<br>
 
-			<label class="littlerow">Nome</label>
-			<p class="bigrow"><?php echo $user->name; ?></p>	
-			<label class="littlerow">Cognome</label>
-			<p class="bigrow">prova</p>
-			<label class="littlerow">Username</label>
-			<p class="bigrow">prova</p>
-			<label class="littlerow">Data di nascita</label>
-			<p class="bigrow">prova</p>
-			<label class="littlerow">Email</label>
-			<p class="bigrow">prova</p>
+			
 
 			<br>
 			</section>

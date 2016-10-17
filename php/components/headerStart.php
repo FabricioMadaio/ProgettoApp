@@ -1,6 +1,6 @@
 <header>
 	<a href=<?php echo "'".ROOT."'"; ?> >
-		<img src=<?php echo "'".ROOT."img/LogoFinal.png'"; ?> class="logo" alt="Company Inventory" />
+		<img src=<?php echo "'".ROOT."img/LogoFinal.png'"; ?> class="navbarLogo" alt="Company Inventory" />
 		<!--Font logo rockwell-->
 	</a>
 </header>
@@ -20,7 +20,7 @@
 				<ul class="navbar">
 				
 					<li>
-						<a href="UserSignupForm"> Il tuo profilo </a>
+						<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 					</li>
 					<li>
 						<a href="UserSignupForm"> Contatti </a>
@@ -39,7 +39,7 @@
 		
 
 		<li class = "fullmenu">
-			<a href="UserSignupForm"> Il tuo profilo </a>
+			<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 		</li>
 		<li class = "fullmenu">
 			<a href="UserSignupForm"> Contatti </a>
