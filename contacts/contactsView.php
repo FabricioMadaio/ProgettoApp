@@ -12,7 +12,7 @@
 			</script>
 			<![endif]-->
 
-			<title>Company inventory</title>
+			<title>Company Inventory </title>
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
@@ -41,8 +41,22 @@
 			
 			<section   class="sectionbox" style="text-align: center;">
 			<div style="margin:21px">
-				<h2> Profilo </h2>
-				<div id="section">
+				<h2> Contatti </h2>
+				<div style="text-align: left;color: #655757;">
+					<h3>Black Studios</h3>
+					<hr style="border-style: ridge;">
+					<table class="contacts">
+						<tbody>
+						<tr>
+							<td> Giovanni Leo</td>
+							<td>Mail: giovannileo595@gmail.com</td>
+						</tr>
+						<tr>
+							<td> Fabricio N. Madaio</td>
+							<td>Mail: fabricio.madaio@gmail.com</td>
+						</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 

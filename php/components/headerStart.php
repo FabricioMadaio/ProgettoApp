@@ -23,7 +23,7 @@
 						<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 					</li>
 					<li>
-						<a href="UserSignupForm"> Contatti </a>
+						<a href=<?php echo "'".ROOT."contacts/'"; ?>> Contatti </a>
 					</li>
 					<li>
 						<a  href=<?php echo "'".ROOT."productList/'"; ?>> Cerca un prodotto </a>
@@ -42,7 +42,7 @@
 			<a href=<?php echo "'".ROOT."profileInfo/'"; ?>> Il tuo profilo </a>
 		</li>
 		<li class = "fullmenu">
-			<a href="UserSignupForm"> Contatti </a>
+			<a href=<?php echo "'".ROOT."contacts/'"; ?>> Contatti </a>
 		</li>
 		<li class = "fullmenu">
 			<a  href=<?php echo "'".ROOT."productList/'"; ?>> Cerca un prodotto </a>

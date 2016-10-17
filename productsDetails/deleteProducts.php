@@ -29,6 +29,10 @@
 				if (empty($productIdError)) 
 				{
 					
+					$img = new Image(null,null);
+					$img->getFromProduct($productId,$userid,$dbconn);
+					$img->dbDrop($dbconn);
+					
 					$queryToProduct = "DELETE FROM prodotti WHERE idProdotto ='$productId' AND idUtente = '$userid'";
 					$resultToProduct = $dbconn->query($queryToProduct);
 
@@ -39,9 +43,6 @@
 
 							if (!empty($resultToProductInventory)) 
 							{
-								$img = new Image(null,null);
-								$img->getFromProduct($productId,$userid,$dbconn);
-								$img->dbDrop($dbconn);
 								echo "cancellazioneRiuscita";
 							}
 						    else

@@ -29,8 +29,8 @@
 			$result = $dbconn->query($query);
 			if(!empty($result))
 			{				
-				unlink(ROOT.'uploads/150x150/'.$this->url);
-				unlink(ROOT.'uploads/20x20/'.$this->url);
+				unlink(UPLOAD_FOLDER.'/uploads/150x150/'.$this->url);
+				unlink(UPLOAD_FOLDER.'/uploads/20x20/'.$this->url);
 			}
 			
 		}

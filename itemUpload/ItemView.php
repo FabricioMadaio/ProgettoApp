@@ -12,7 +12,7 @@
 			</script>
 			<![endif]-->
 
-			<title>Sito E-Commerce	</title>
+			<title>Company inventory</title>
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
@@ -93,7 +93,7 @@
 			<?php include "../php/components/headerStart.php" ?>
 				
 				<?php if($inventory->id!=-1): ?>
-				<ul class="navbar" style="background-color: #4d4dcc;">
+				<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc">
 					<li style="float:right" class="positionFix">
 					</li>
 					<li style="float:left">
@@ -109,6 +109,9 @@
 				</ul>
 				<?php endif; ?>
 			</nav>
+			
+			<div class="barSpace"></div>
+			<div class="barSpace"></div>
 			
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
@@ -155,7 +158,7 @@
 					<aside class="left">
 						<div class="itemImageContainer">
 							<img class="imageSpin" src="../img/spin.gif" id="spin" alt="logo aggiungi prodotto" style="display:none">
-							<img src="../img/prodotto1.jpg" id="previewImage" class="itemImage circle" alt="Product" />
+							<img src="../img/prodotto1.jpg" style="display: inline-block;" id="previewImage" class="itemImage circle" alt="Product" />
 							<div class="fileUpload">
 								<span>Cambia Immagine</span>
 								<input type="file" id="inputImage" class="upload" name="file" accept="image/*">

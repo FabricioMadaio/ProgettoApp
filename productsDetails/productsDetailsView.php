@@ -12,7 +12,7 @@
 			</script>
 			<![endif]-->
 
-			<title>Sito E-Commerce	</title>
+			<title>Company inventory</title>
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
@@ -55,7 +55,7 @@
 		
 			<?php include "../php/components/headerStart.php" ?>
 				<?php if($inventory->id!=-1): ?>
-					<ul class="navbar" style="background-color: #4d4dcc;">
+					<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc;">
 						<li style="float:right" class="positionFix">
 						</li>
 						<li style="float:left">
@@ -71,6 +71,13 @@
 					</ul>
 				<?php endif; ?>
 			</nav>
+			
+			<div class="barSpace"></div>
+			
+			<?php if($inventory->id!=-1): ?>
+				<div class="barSpace"></div>
+			<?php endif; ?>
+			
 			<br>
 		    <!-- The Modal -->
 			<div id="myModal" class="modal">
@@ -116,7 +123,8 @@
 				<form class="form" id="formNew" method="POST" action="javascript:void(0);" style="margin: 3px 2%;">	
 					<aside class="left">
 						<div class="itemImageContainer">
-							<img src=<?php echo "'../uploads/".$item->imageUrl."'" ?> id="previewImage" class="itemImage circle" alt="Product" />
+							<img src=<?php echo "'../uploads/20x20/".$item->imageUrl."'" ?> id="previewImage" class="itemImage circle" alt="Product" />
+							<img src=<?php echo "'../uploads/150x150/".$item->imageUrl."'" ?> id="previewImage" style="background-color: inherit;position: absolute;top: 0;"class="itemImage circle" alt="Product" />
 						</div>
 					</aside>
 					<aside>

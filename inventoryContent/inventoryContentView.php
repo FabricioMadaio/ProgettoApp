@@ -65,7 +65,7 @@
 		
 			<?php include "../php/components/headerStart.php" ?>
 				
-				<ul class="navbar" style="background-color: #4d4dcc;">
+				<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc">
 					<li style="float:right">
 						<a class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
 									Rimuovi
@@ -85,6 +85,8 @@
 				
 				
 			<?php include "../php/components/headerEnd.php" ?>
+			
+			<div class="barSpace"></div>
 			
 			<section class="responsiveGrid">
 			

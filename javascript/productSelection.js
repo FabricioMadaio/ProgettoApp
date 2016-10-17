@@ -29,7 +29,7 @@ Selection.prototype.submit = function(modal,inventoryId){
 	
 	for(var i=0;i<this.items.length;i++){
 		fd.append("indices[]", this.items[i].getAttribute("pid"));
-		fd.append("amounts[]", this.items[i].nextSibling.childNodes[0].value);
+		fd.append("amounts[]", this.items[i].nextSibling.childNodes[0].childNodes[0].value);
 	}
 	
 	var xhttp = new XMLHttpRequest();
