@@ -6,8 +6,7 @@ body.fullPage{
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
-	margin-top: 0;
-	margin-bottom: 0;
+	margin: 0;
 	background-color:#F2F3F7;
 }
 
@@ -210,14 +209,14 @@ ul.navbar {
 	margin: 0;
 	padding: 0;
 	background-color: #507BF8;
-	border-radius: 4px;
-	box-shadow: 4px 4px 1px #EEE;
-	border: 1px solid #DDD;
+	box-shadow: 4px 4px 1px rgba(123, 123, 123, 0.17);
+	border: 1px solid #507BF8;
 	position: relative;
 }
 
 ul.searchBar{
 	background-color:white;
+	border: 1px solid #DDD;
 }
 
 li.search{
@@ -290,6 +289,7 @@ table{
 .responsiveGrid{
 		border: 1px solid #DDD;
 		border-radius: 3px;
+		margin: 0px 8px;
 		background-color: white;
 		box-shadow: 4px 4px 1px #EEE;
 }
@@ -356,7 +356,7 @@ a.thumbnail:hover {
 
 
 footer div.background{
-	margin: 0px 0px 0px 0px;
+	margin: 0px 8px;
 	text-align:left;
 	color: #4e5467;
 	box-shadow: 4px 0px 1px #EEE;
@@ -788,5 +788,19 @@ img.itemImage{
 	}
 	aside.left{
 		float: none;
+	}
+	
+	nav{
+		position: fixed;
+		width: 100%;
+		z-index: 2;
+	}
+	.responsiveGrid{
+		margin-top: 100px;
+	}
+	
+	div.barSpace {
+		height:46px;
+		display:block;
 	}
 }

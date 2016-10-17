@@ -55,7 +55,7 @@
 		
 			<?php include "../php/components/headerStart.php" ?>
 				<?php if($inventory->id!=-1): ?>
-					<ul class="navbar" style="background-color: #4d4dcc;">
+					<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc;">
 						<li style="float:right" class="positionFix">
 						</li>
 						<li style="float:left">
@@ -71,6 +71,13 @@
 					</ul>
 				<?php endif; ?>
 			</nav>
+			
+			<div class="barSpace"></div>
+			
+			<?php if($inventory->id!=-1): ?>
+				<div class="barSpace"></div>
+			<?php endif; ?>
+			
 			<br>
 		    <!-- The Modal -->
 			<div id="myModal" class="modal">
