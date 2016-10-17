@@ -34,7 +34,7 @@
 		<div class="content">
 		
 			<?php include "../php/components/headerStart.php" ?>
-			<?php include "../php/components/headerEnd.php" ?>
+			</nav>
 			<br>
 		    <!-- The Modal -->
 			

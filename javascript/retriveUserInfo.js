@@ -47,7 +47,7 @@ var str = '<p class="littlerow">Nome</p>'+
 '			<p class="littlerow">Username</p>'+
 '			<p class="bigrow">'+user.username+'</p>	'+
 '			<p class="littlerow">Password</p>'+
-'			<a class="bigrow" href=<?php echo ROOT."passwordReset.html"; ?>Cambia Password</a>'+
+'			<a class="bigrow" href="../passwordReset.html">Cambia Password</a>'+
 '			<p class="littlerow">Data di nascita</p>'+
 '			<p class="bigrow">'+user.bDay+'</p>	'+
 '			<p class="littlerow">Email</p>'+
