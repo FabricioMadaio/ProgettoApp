@@ -441,7 +441,7 @@ footer label{
 
 /* icona menu mobile*/
 .menu-icon {
-	margin: 6px 9px 9px 9px;
+	margin: 12px 9px 9px 9px;
     padding: 4px 6px 8px 6px;
     border-radius: 3px;
     background: #628AFF;
@@ -482,6 +482,7 @@ footer label{
     min-width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 0px;
+	margin-top: 7px;
     z-index: 1;
 	
 }
@@ -723,7 +724,7 @@ img.itemImage{
 		font-weight: bold;
 		color: white;
 		text-align: center;
-		padding: 10px 14px;
+		padding: 17px 14px;
 		text-decoration: none;
 		font-size:22px;
 		font-family: Rockwell;
@@ -807,12 +808,22 @@ img.itemImage{
 		width: 100%;
 		z-index: 2;
 	}
+	
+	ul.mobileResize{
+		height:58px;
+	}
+	
 	.responsiveGrid{
-		margin-top: 100px;
+		margin-top: 116px;
 	}
 	
 	div.barSpace {
 		height:46px;
+		display:block;
+	}
+	
+	div.barTitleSpace {
+		height:58px;
 		display:block;
 	}
 }

@@ -62,8 +62,8 @@ function itemString(item,inventory){
 				"<a class='removeItemButton' onClick=deleteProductFromInventory("+item.idProdotto+","+item.idInventario+")>×</a>"+	
 				"<div class='squareBox'>"+
 					"<a href='"+detailsUrl+"'>"+
-						"<div class='circle squareContent' style='background-color: initial;background-image: url(../uploads/20x20/"+item.imgUrl+");'>"+
-							"<div class='circle squareContent' style='margin: 0;border: none;background-color: initial;background-image: url(../uploads/150x150/"+item.imgUrl+");'></div>"+
+						"<div class='circle squareContent' style='background-color: #99a8c1;background-image: url(../uploads/20x20/"+item.imgUrl+");'>"+
+							"<div class='circle squareContent' style='margin: 0;border: none;background-color: transparent;background-image: url(../uploads/150x150/"+item.imgUrl+");'></div>"+
 						"</div><a>"+
 					"<div style='bottom: 0;right: 0;position: absolute;'>"+
 						"<input id='amount"+item.idProdotto+"' onChange=updateAmount("+item.idProdotto+","+item.idInventario+") type='number' class='smallInputNumber' value='"+item.amount+"' />"+

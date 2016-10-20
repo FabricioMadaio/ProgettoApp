@@ -63,7 +63,7 @@ function inventoryString(item,selectionMode){
 	itemString = "<div class='inventoryElem'>"+
 				"<div class='squareBox'>"+
 					itemString+
-					"<div class='circle squareContent' style='background-color: initial;background-image: url(../uploads/20x20/"+item.image+");'>"+
+					"<div class='circle squareContent' style='background-color: #99a8c1;background-image: url(../uploads/20x20/"+item.image+");'>"+
 							"<div class='circle squareContent' style='margin: 0;border: none;background-color: initial;background-image: url(../uploads/150x150/"+item.image+");'></div>"+
 						"</div><a>"+
 					"<div style='bottom: 0;right: 0;position: absolute;margin-right: 27px;'>"+
