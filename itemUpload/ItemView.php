@@ -13,6 +13,7 @@
 			<![endif]-->
 
 			<title>Company inventory</title>
+			<link rel="icon" href="../icon.ico" />
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
