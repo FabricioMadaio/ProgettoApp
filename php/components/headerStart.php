@@ -7,7 +7,7 @@
 
 <nav>
 
-	<ul class="navbar">
+	<ul class="navbar mobileResize">
 		<li class="menu-dropdown">
 			
 				<div class="menu-icon" onclick="menuMobile();">
@@ -35,7 +35,7 @@
 			  </div>
 			
 		</li>
-		<li ><p class="paragraph-header">Company Inventory</p></li>
+		<li ><a href=<?php echo "'".ROOT."'"; ?> style="background-color:inherit"class="paragraph-header">Company Inventory</p></li>
 		
 
 		<li class = "fullmenu">

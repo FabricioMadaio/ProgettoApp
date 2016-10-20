@@ -46,10 +46,13 @@
 function inventoryString(item){
 
 	 var url ="inventoryContent/content.php?inventory="+item.id;
-	 
 	 return "<div class='inventoryElem'>"+
 				"<div class='squareBox'>"+
-				"<a href='"+url+"' class='circle squareContent' style='background-color:"+item.color+"'></a>"+
+				"<a href='"+url+"'>"+
+					"<div class='circle squareContent' style='background-color: initial;'>"+
+					"<div class='circle squareContent' style='margin: 0;border: none;background-color:"+item.color+";background-image:url(img/inventoryIcon.png);'>"+
+					"</div></div></a>"+
+				"</a>"+
 				"</div><span class='inventoryName'>"+item.name+"</span>"+
 				"</div>";
  }
