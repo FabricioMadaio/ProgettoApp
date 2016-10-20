@@ -13,6 +13,7 @@
 			<![endif]-->
 
 			<title>Company Inventory </title>
+			<link rel="icon" href="../icon.ico" />
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
@@ -54,6 +55,18 @@
 						<tr>
 							<td> Fabricio N. Madaio</td>
 							<td>Mail: fabricio.madaio@gmail.com</td>
+						</tr>
+						</tbody>
+					</table>
+					
+					<br>
+					<br>
+					<h3>Contatta il supporto al Cliente</h3>
+					<hr style="border-style: ridge;">
+					<table class="contacts">
+						<tbody>
+						<tr>
+							<td> Mail: blueinventory@hotmail.com</td>
 						</tr>
 						</tbody>
 					</table>
