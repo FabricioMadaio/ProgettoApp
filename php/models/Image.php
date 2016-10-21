@@ -23,6 +23,7 @@
 		public function dbDrop($dbconn){
 			
 			if($this->id == null) return;
+			if($this->id<0) return;
 			
 			$query="DELETE FROM immagini WHERE idImmagini ='$this->id'";
 			
