@@ -175,22 +175,6 @@
 		$mail->body($body);
 		$mail->send();
 	}
-	
-	function mailExists($email,$dbconn){
-		
-    	$row;
-    	$query="SELECT email FROM utenti WHERE email = '$email'";
-        $result = $dbconn->query($query);
-        if(mysqli_num_rows($result) > 0)
-        {
-   		    // output data of each row
-    	  while($row = mysqli_fetch_assoc($result))
-	      { 
-	       return true;
-	      }
-        }
-		return false;
-	}
   	
     function getLastId($dbconn)
     {

@@ -64,10 +64,10 @@
    		    // output data of each row
     	  while($row = mysqli_fetch_assoc($result)){ 
 	      	$lastId = $row['idInventario'] +1;
-	       return $lastId;
+	       
 	      }
         }
-
+		return $lastId;
     }
 
 	function check_inventoryName($inventoryName,$dbconn){

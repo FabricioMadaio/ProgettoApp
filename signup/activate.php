@@ -26,10 +26,13 @@
 			
 				if($dbconn->query($query)){	
 					header('Location:../activationSuccess.html');
+				}else{
+					header('Location:../activationError.html');
 				}
 			}
+		}else{
+			header('Location:../activationError.html');
 		}
-		header('Location:../activationError.html');
 		
 		$dbconn->close();	
 		
