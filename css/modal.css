@@ -1,0 +1,146 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modalTitle{
+	text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0px;
+}
+
+.modalButtonBox{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 280px;
+	width: 85%;
+	margin-top: 24px;
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+/* The Close Button */
+.closeButton {
+    padding-top: 7px;
+	padding-bottom: 7px;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Modal form Footer */
+.modal-formFooter {
+    display: inline-block;
+    width: 100%;
+}
+
+
+/* Modal Header */
+.modal-header {
+
+	height: 46px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #507BF8;
+    position: relative;
+    width: 100%;
+	
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    /*background-color: #5cb85c;
+    color: white;*/
+	margin-bottom:50px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    max-width:500px;
+	width: 85%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+	left: 50%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    position: fixed;
+}
+
+.modal-button:hover {
+    transition: all 0.2s ease-in-out;
+    background-color:#2556E4;
+}
+
+.modal-button:active {
+    background-color:#2556E4;
+}
+
+.modal-button:focus {
+     outline: none;
+}
+
+
+.modal-button{
+	display: block;
+    cursor: pointer;
+    box-sizing: border-box;
+    line-height: 17px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    background: #628AFF;
+    border: 1px solid #d9d9de;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 10px 5px;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font: 15px Arial;
+    font-weight: bold;
+    
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 50%; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 50%; opacity: 1}
+}
+
+@media screen and ( max-height: 600px ){
+    .modal-content{
+		top: 50%;
+	}
+}
