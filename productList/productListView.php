@@ -56,4 +56,6 @@
 
 	</body>
 
+    <?php include "../php/components/barcodeInsert.php" ?>
+
 </html>

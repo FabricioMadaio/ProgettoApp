@@ -38,8 +38,10 @@
 					WHERE idInventario='$idInventario' AND prodotti.idUtente='$userid'";
 			
 			if (!empty($_POST["search"])){
-				$query.=" AND nomeProdotto LIKE '".testInput($_POST['search'])."%'";
-			}
+                $ricerca = testInput($_POST['search']);
+                $query.=" AND (nomeProdotto LIKE '".$ricerca."%' OR barcode LIKE '%".$ricerca."%')";
+
+            }
 				
 			
 			$result =$dbConn->query($query);
