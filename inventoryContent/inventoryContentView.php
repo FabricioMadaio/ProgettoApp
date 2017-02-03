@@ -90,12 +90,6 @@
 			<div class="barSpace"></div>
 			
 			<section class="responsiveGrid">
-			
-					<div id="elementGrid">
-						
-					
-					</div>
-					
 					<div class="inventoryElem">
 						<div class="squareBox">
 							<div class="circle squareContent modalNew_open">
@@ -105,6 +99,10 @@
 						
 						<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
 						
+					</div>
+					<div id="elementGrid">
+						
+					
 					</div>
 			</section>
 			

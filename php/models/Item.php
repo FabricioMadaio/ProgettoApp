@@ -4,6 +4,7 @@
 		
 		private $name;
 		private $description;
+		private $barcode;
 		private $image;
 		private $imageUrl;
 		private $id;
@@ -32,8 +33,8 @@
 		}
 		
 		private function getInsertQuery($imageID,$userID){
-			$q="INSERT INTO prodotti (idProdotto, idImmagine,idUtente,nomeProdotto, descrizioneProdotto)";
-			$q.=" VALUES (NULL, '".$imageID."','".$userID."','".$this->name."','".$this->description."')";
+			$q="INSERT INTO prodotti (idProdotto, idImmagine,idUtente,nomeProdotto, descrizioneProdotto,barcode)";
+			$q.=" VALUES (NULL, '".$imageID."','".$userID."','".$this->name."','".$this->description."','".$this->barcode."')";
 			return $q;
 		}
 		

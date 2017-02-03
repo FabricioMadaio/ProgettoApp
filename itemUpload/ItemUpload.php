@@ -64,6 +64,12 @@
 			} else {
 				$item->description = testInput($_POST["description"]);
 			}
+			
+			if (empty($_POST["barcode"])) {
+				$item->barcode = "";
+			} else {
+				$item->barcode = testInput($_POST["barcode"]);
+			}
 		  
 			if(isset($_FILES['image'])) {
 				if( $_FILES['image']['size'] < $max_file_size ){

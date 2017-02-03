@@ -131,9 +131,19 @@
 					<aside>
 						<fieldset>
 							<ol class="Item">
-									<li style="height: 153px">		
+								<li style="height: 153px">		
 									<textarea class="fillrow" style="height: 100%;" id="description" name="descrizione" readonly><?php echo $item->description; ?></textarea>
 								</li>
+								<li style="margin-top: 20px;">
+										<div style="float: right;
+													width: 100%;
+													line-height: 16px;
+													border-radius: 6px;
+													border: 1px solid #507bf8;">
+											<input class="input-text" id="codice" name="codice" style="float: right;width: 100%;border: none;line-height: 16px;" placeholder="Codice" type="text" readonly value="<?php echo $item->barcode; ?>">	
+										</div>
+								</li>
+								
 								<li style="margin-top: 14px;height: auto;">		
 									<input type="submit" class="submit submitRightButton myModal_open" value="Cancella" style="background-color:red">
 								</li>
