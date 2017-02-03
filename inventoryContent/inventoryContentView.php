@@ -12,7 +12,7 @@
 			</script>
 			<![endif]-->
 
-			<title>Company inventory</title>
+			<title>Inventarium</title>
 			<link rel="icon" href="../icon.ico" />
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
