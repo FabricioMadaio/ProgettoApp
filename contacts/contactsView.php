@@ -56,6 +56,14 @@
 							<td> Fabricio N. Madaio</td>
 							<td>Mail: fabricio.madaio@gmail.com</td>
 						</tr>
+						<tr>
+							<td> Luigi Durso</td>
+							<td>Mail: durso.luigi933@gmail.com</td>
+						</tr>
+						<tr>
+							<td> Raffaele Ceruso</td>
+							<td>Mail: raffaeleceruso@gmail.com</td>
+						</tr>
 						</tbody>
 					</table>
 					
