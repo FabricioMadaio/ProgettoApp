@@ -40,7 +40,7 @@
 				{
 				 $item->id = testInput($_GET['id']);
 				 
-				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
+				 $query="SELECT nomeProdotto,immagine,descrizioneProdotto,barcode FROM prodotti,immagini WHERE  idProdotto='$item->id' AND  prodotti"."."."idImmagine =
 				       immagini"."."."idImmagini AND prodotti.idUtente='$userid'"; 
 				}
 			
@@ -55,6 +55,7 @@
 					$item->name = $row['nomeProdotto'];
 					$item->description = $row['descrizioneProdotto'];
 					$item->imageUrl = $row["immagine"];
+					$item->barcode = $row["barcode"];
 
 			      } 
 			    }else{

@@ -25,6 +25,21 @@
 			return $this;
 		}
 		
+		public function getName($dbConn){
+			$query="SELECT * FROM inventari WHERE idInventario = '".$this->id."'";
+			$result =$dbConn->query($query);
+			
+			if(mysqli_num_rows($result) != 1){
+				/*access denied*/
+				header('Location:../errorPage.html');
+			}else{
+				  while($row = mysqli_fetch_assoc($result))
+				  { 
+					$this->name  = $row['nomeInventario'];
+				  }
+			}	
+		}
+		
 		/*check if inventoryid matches the user*/
 		public function checkUserOwner($userid,$dbConn){
 			

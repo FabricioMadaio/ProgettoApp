@@ -27,14 +27,28 @@ var ImageUploader = function(config) {
 	
 	This.startProcessing = function(){
 		This.processing = true;
-		preview.style.opacity = 0.5;
-		spin.style.display="block";
+		
+		if(preview!=null)
+			preview.style.opacity = 0.5;
+		if(spin!=null)
+			spin.style.display="block";
+		
+		if (This.config.onStart) {
+            This.config.onStart();
+        }
 	}
 	
 	This.endProcessing = function(){
 		This.processing = false;
-		preview.style.opacity = 1;
-		spin.style.display="none";
+		
+		if(preview!=null)
+			preview.style.opacity = 1;
+		if(spin!=null)
+			spin.style.display="none";
+		
+		if (This.config.onProcessingEnd) {
+            This.config.onProcessingEnd();
+        }
 	}
 	
     this.config.inputElement.addEventListener('change', function(event) {
@@ -175,8 +189,12 @@ ImageUploader.prototype.scaleImage = function(img,rot, completionCallback) {
 	file.lastModifiedDate = new Date();
     file.name = "fileName.jpeg";
 	
-	document.getElementById('previewImage').src = imageData;
+	var preview = document.getElementById('previewImage');
+	if(preview!=null)
+		preview.src = imageData;
 	this.images.push(file);
+	
+	this.imageData = imageData;
 	
 	if(completionCallback){
 		completionCallback();

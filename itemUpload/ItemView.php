@@ -29,6 +29,8 @@
 			
 			<script src="../javascript/inventoryList.js"></script>
 			
+			<script src="../javascript/quagga.js" type="text/javascript"></script>
+			
 			<script> 
 				function start(){ 
 					/* responsiveness*/
@@ -68,6 +70,7 @@
 								fd.append("inventory",<?php echo $inventory->id; ?>);
 								fd.append("name", document.getElementById("name").value);
 								fd.append("description", document.getElementById("description").value);
+								fd.append("barcode", document.getElementById("codice").value);
 	
 								uploader.tryUpload(fd);
 								setProgressBar("0%");
@@ -172,14 +175,35 @@
 								<li>
 									<input class="input-text bigrow" id="name" name="nome" style="float: left;" placeholder="Nome" type="text" value="" required="">
 								</li>
-								
 								<li style="height: 153px">		
 									<textarea class="fillrow" style="height: 100%;"  id="description" name="descrizione" placeholder="Descrizione" required=""></textarea>
 								</li>
+								<li style="margin-top: 20px;">
+										<div style="float: right;
+													width: 100%;
+													line-height: 16px;
+													border-radius: 6px;
+													border: 1px solid #507bf8;">
+													
+											<div style="overflow: hidden;">
+												<div class="fileUpload" style="float:right;padding: 7px 24px;border: none;">
+													<span>Scan</span>
+													<input type="file" id="barcodeImage" class="upload" accept="image/*">
+												</div>	
+												<div style="overflow: hidden;">
+													<input class="input-text" id="codice" name="codice" style="float: right;width: 100%;border: none;line-height: 16px;" placeholder="Codice" type="text" value="">
+												</div>
+											</div>
+										</div>
+								</li>
+								
+								<li class="error-li" id="codice_e" style="display:none"><p>Codice non trovato, riprova</p></li>
+								
 								<li style="margin-top: 14px;height: auto;">		
 									<input type="submit" class="submit submitRightButton" value="Carica">
 								</li>
 							</ol>
+
 						</fieldset>
 					</aside>
 				</form>
@@ -197,6 +221,50 @@
 	
 	<script>
 			start();
+	</script>
+	
+	<script>
+	var Quagga = window.Quagga;
+	var App = {
+		_scanner: null,
+		init: function() {
+			this.attachListeners();
+		},
+		decode: function(file) {
+			Quagga
+				.decoder({readers: ["upc_reader", "code_128_reader", "code_39_reader", "code_39_vin_reader", "ean_8_reader", "ean_reader", "upc_e_reader", "codabar_reader"] // List of active readers
+										})
+				.locator({patchSize: 'medium'})
+				.fromSource(file, {size: 800})
+				.toPromise()
+				.then(function(result) {
+					document.getElementById('codice').value = result.codeResult.code;
+					document.getElementById("codice_e").style.display="none";
+				})
+				.catch(function() {
+					document.getElementById('codice').value = "";
+					document.getElementById("codice_e").style.display="block";
+				})
+				.then(function() {
+					this.attachListeners();
+				}.bind(this));
+		},
+		attachListeners: function() {
+			var self = this,
+				fileInput = document.getElementById('barcodeImage');
+
+			fileInput.addEventListener("change", function onChange(e) {
+				e.preventDefault();
+				document.getElementById("codice_e").style.display="none";
+				fileInput.removeEventListener("change", onChange);
+				if (e.target.files && e.target.files.length) {
+					self.decode(e.target.files[0]);
+				}
+			});
+		}
+	};
+	App.init();
+		
 	</script>
 
 </html>

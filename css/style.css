@@ -518,6 +518,24 @@ li.search-settings div{
 	float:left;
 }
 
+a.barcode-search{
+    width: 26px;
+    float: right;
+    display: block;
+    padding-top: 3px;
+    padding-bottom: 1px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+    border-bottom-left-radius: 1px;
+    border-top-left-radius: 1px;
+    background-color: #eae8e8;
+}
+
+a.barcode-search:hover {
+	background-color: #d9e0f9;
+}
+
 a.search{
 	width: 20px;
     float: right;

@@ -85,11 +85,6 @@
 			  </div>
 			 </div>
 			<section class="responsiveGrid">
-			
-				<span id="elementGrid">
-	                
-					
-				</span>
 				<!-- Trigger/Open The Modal -->
 				<div class="inventoryElem">
 					<div class="squareBox">
@@ -101,6 +96,10 @@
 					<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
 					
 				</div>
+				<span id="elementGrid">
+	                
+					
+				</span>
 			</section>
 			
 		</div>
@@ -108,5 +107,7 @@
 		<?php include "php/components/footer.php" ?>
 	
 	</body>
+
+    <?php include "php/components/barcodeInsert.php" ?>
 
 </html>

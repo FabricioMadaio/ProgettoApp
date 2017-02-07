@@ -12,45 +12,70 @@
 			</script>
 			<![endif]-->
 
-			<title>InventarIUM</title>
-			<link rel="icon" href="<?php echo ROOT; ?>/icon.ico" />
+			<title>Company inventory</title>
+			<link rel="icon" href="../icon.ico" />
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
+			<link rel="stylesheet" type="text/css" href="../css/inventoryList.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
 
 
 			<script src="../javascript/common/utils.js"></script>
 			<script src="../javascript/common/responsiveStylesheet.js"></script>
-			<script src="../javascript/productsListSearch.js"></script>
-			<script src="../javascript/productSelection.js"></script>
-			
+			<script src="../javascript/common/modal.js"></script>
+			<script src="../javascript/inventoryContent.js"></script>
+
 			
 			<script> 
 				window.onload = function(e){ 
 					/* responsiveness*/
-					startStylesheet(true);
-					startProductsList();
+					startStylesheet();
+	
+					document.search = function(){
+						loadInventoryContent(<?php echo $inventory->id ?>,true);
+					}
 					
-					document.search = startProductsList;
+					document.search();
 					
 				}
+
 			</script>
 	</head>
+
 	<body class="fullPage">
 		<div class="content">
 		
-			<?php include "../php/components/headerStart.php" ?>
+			<header>
+				<a href=<?php echo "'".ROOT."'"; ?> >
+					<img src=<?php echo "'".ROOT."img/LogoFinal.png'"; ?> class="navbarLogo" alt="Company Inventory" />
+					<!--Font logo rockwell-->
+				</a>
+			</header>
+
+			<nav>				
+				<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc">
+					
+					<li style="float: none;">
+							<span class="inventoryTitle">
+									<?php echo $inventory->name;?>
+							</span>
+					</li>
+				</ul>
+				
+				
 			<?php include "../php/components/headerEnd.php" ?>
 			
+			<div class="barSpace"></div>
+			
 			<section class="responsiveGrid">
-			
-				<span id="elementGrid">
-	                
-				</span>
-			</section>
-			
+					
+					<div id="elementGrid">
+						
+					</div>
+			</section>	
 		</div>
+		
 		
 		<?php include "../php/components/footer.php" ?>
 

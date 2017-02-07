@@ -27,7 +27,7 @@
 				if (!strcmp ( $_POST["ricerca"] , "") == 0 && !empty($_POST["ricerca"])) 
 				{
 					$ricerca = testInput($_POST['ricerca']);
-					$query.=" AND nomeProdotto LIKE '".$ricerca."%'";
+					$query.=" AND (nomeProdotto LIKE '".$ricerca."%' OR barcode LIKE '%".$ricerca."%')";
 				}
 			
 			    echo '<productList>';

@@ -19,6 +19,9 @@
 			<link rel="stylesheet" type="text/css" href="../css/inventoryGrid.css">
 			<link rel="stylesheet" type="text/css" href="../css/inventoryList.css">
 			<link rel="stylesheet" type="text/css" href="../css/modal.css">
+			
+			<link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.css">
+			<link rel="stylesheet" type="text/css" href="../css/share.css">
 
 
 			<script src="../javascript/common/utils.js"></script>
@@ -44,6 +47,11 @@
 						onOpen:null,
 						onClose:null
 					});
+					
+					var mShare = new Modal("modalShare",{
+						onOpen:null,
+						onClose:null
+					});
 
 					document.deleteInv=function()
 					{
@@ -55,11 +63,18 @@
 					}
 					
 					document.search();
-					
+				
 				}
-
+				
+				document.showOptions = function(){
+					updateVisibility("menu-option");
+				}
+				
 			</script>
 	</head>
+
+	
+	<?php $shareUrl = ROOT."inventoryShare/content.php?inventory=".$inventory->id;?>
 
 	<body class="fullPage">
 		<div class="content">
@@ -67,10 +82,21 @@
 			<?php include "../php/components/headerStart.php" ?>
 				
 				<ul class="navbar" style="background-color: #4d4dcc;border-color:#4d4dcc">
-					<li style="float:right">
-						<a class="inventoryButton specialButton modalRemove_open" style="margin-left:0px">
-									Rimuovi
+					<li style="float:right;position:relative">
+						<a class="inventoryButton specialButton" onclick="document.showOptions()" style="margin-left:0px">
+									Opzioni
 						</a>
+						<div class="menu-option menu-content" style="display: block;right: 0;background: #12167b;min-width:110px;margin-top: 5px;display:none;">
+						<ul class="navbar">
+						
+							<li>
+								<a class="modalRemove_open"> Rimuovi </a>
+							</li>
+							<li>
+								<a class="modalShare_open"> Condividi </a>
+							</li>
+						</ul>
+					</div>
 					</li>
 					<li style="float:left">
 						<a class="inventoryButton" style="margin-right:0px" href="<?php echo ROOT; ?>">
@@ -90,12 +116,6 @@
 			<div class="barSpace"></div>
 			
 			<section class="responsiveGrid">
-			
-					<div id="elementGrid">
-						
-					
-					</div>
-					
 					<div class="inventoryElem">
 						<div class="squareBox">
 							<div class="circle squareContent modalNew_open">
@@ -105,6 +125,10 @@
 						
 						<span class="inventoryName" style="visibility: hidden;" >lorem</span><!--This span is for verical allignamet of the div elements-->
 						
+					</div>
+					<div id="elementGrid">
+						
+					
 					</div>
 			</section>
 			
@@ -173,10 +197,56 @@
 			 </div>	
 		
 		</div>
+		<div id="modalShare" class="modal" style="display: none;">
+		
+			  <!-- Modal content -->
+			  <div class="modal-content" style="max-width: 420px;">
+				
+					<ul class="modal-header">
+						<li style="float:right">
+							<a class="modalShare_close closeButton">×</a>
+						</li>
+						<li style="float: none;">
+							<p class="modalTitle">Condividi inventario</p>
+						</li>
+					</ul>
+					<div class="modal-body" id="modalBodyShare" style="margin-top: 10px;text-align: center;">
+						<br>
+						<br>
+						<a href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $shareUrl ?>" target="_blank" class="share-btn facebook"
+							onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0')";>
+								<i class="fa fa-facebook"></i>
+						</a>
+						<a href="http://twitter.com/share?url=<URL>&text=Dai uno sguardo il mio inventario! - <?php echo $shareUrl ?>" target="_blank" class="share-btn twitter"
+							onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0')";>
+								<i class="fa fa-twitter"></i>
+						</a>
+						<a href="https://plus.google.com/share?url=<?php echo $shareUrl ?>" target="_blank" class="share-btn google-plus"
+							onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0')";>
+							<i class="fa fa-google-plus"></i>
+						</a>	
+						<a href="http://reddit.com/submit?url=<?php echo $shareUrl ?>" target="_blank" class="share-btn reddit"
+							onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0')";>
+							<i class="fa fa-reddit"></i>
+						</a>
+						<br>
+						<br>
+					</div>
+					
+					<div  id="footerShare" class="modal-footer">
+					
+					</div>
+					
+				</div>
+			 </div>	
+		
+		</div>
 		
 		
 		<?php include "../php/components/footer.php" ?>
 
 	</body>
+
+    <?php include "../php/components/barcodeInsert.php" ?>
 
 </html>
