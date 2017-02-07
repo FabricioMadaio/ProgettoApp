@@ -11,10 +11,8 @@
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
 			</script>
 			<![endif]-->
-
-			<title>Company inventory</title>
-			
-			<link rel="icon" href="../icon.ico" />
+			<title>InventarIUM</title>
+			<link rel="icon" href="<?php echo ROOT; ?>/icon.ico" />
 			<link rel="stylesheet" type="text/css" href="css/style.css">
 			<link rel="stylesheet" type="text/css" href="css/singup.css">
 			<link rel="stylesheet" type="text/css" href="css/inventoryGrid.css">
