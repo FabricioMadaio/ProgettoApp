@@ -12,8 +12,8 @@
 			</script>
 			<![endif]-->
 
-			<title>Company inventory</title>
-			<link rel="icon" href="../icon.ico" />
+			<title>InventarIUM</title>
+			<link rel="icon" href="<?php echo ROOT; ?>/icon.ico" />
 			<link rel="stylesheet" type="text/css" href="../css/style.css">
 			<link rel="stylesheet" type="text/css" href="../css/singup.css">
 			
@@ -30,7 +30,7 @@
 
 
 			<header class="bigHeader">
-				<a href="javascript:toHome()">
+				<a href="<?php echo ROOT; ?>login">
 					<img src="../img/LogoFinal.png" class="logo" alt="Company Inventory" />
 				</a>
 			</header>
