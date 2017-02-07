@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width">
+			<meta name="description" content="Sito E-Commerce">
+			<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+			<meta name="author" content="Fabricio Nicolas Madaio">
+
+			<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+			</script>
+			<![endif]-->
+
+			<title>Company inventory</title>
+			
+			<link rel="icon" href="icon.ico" />
+			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/singup.css">
+			
+			<script src="javascript/utils.js"></script>
+			<script src="javascript/quagga.min.js"></script>
+			
+			<script>
+				window.onload = function(){
+									
+					document.getElementById('inputImage').addEventListener('change', function(event) {
+					
+						var reader = new FileReader();
+						
+						reader.onload = function(e) {
+							Quagga.decodeSingle({
+							
+									inputStream: {
+										size: 800
+									},
+									locator: {
+										patchSize: "medium",
+										halfSample: false
+									},
+									numOfWorkers: 1,
+									decoder: {
+										readers: ["upc_reader", "code_128_reader", "code_39_reader", "code_39_vin_reader", "ean_8_reader", "ean_reader", "upc_e_reader", "codabar_reader"] // List of active readers
+									},
+									locate: true,
+									src: e.target.result,
+								}, function(result){
+									if(result && result.codeResult) {
+										document.getElementById("codice").value = result.codeResult.code;
+										document.getElementById("codice_e").style.display="none";
+									} else {
+										document.getElementById("codice_e").style.display="block";
+									}
+								});
+						};
+						reader.readAsDataURL(event.target.files[0]);
+					});
+				}
+				
+			</script>
+	</head>
+
+	<body style="text-align:center">
+	
+			<header class="bigHeader">
+				<a href="javascript:toHome()">
+					<img src="img/LogoFinal.png" class="logo" alt="Company Inventory" />
+				</a>
+			</header>
+			
+			<section class="sectionbox" style="max-width:800px;text-align: center;">
+				
+				<h1 class="title"> Nuovo Prodotto </h1>
+				
+				<form class="form" id="formNew" action="javascript:document.openModal();" method="POST" style="margin: 3px 2%;">	
+					
+					<aside>
+						<fieldset>
+							<ol class="Item">
+								<li>
+								
+										<div style="float: right;
+													width: 100%;
+													line-height: 16px;
+													border-radius: 6px;
+													border: 1px solid #507bf8;">
+													
+											<div style="overflow: hidden;">
+												<input class="input-text" id="codice" name="nome" style="float: right;width: 100%;border: none;line-height: 16px;" placeholder="Codice" type="text" value="" required="">
+											</div>
+										</div>
+								</li>
+								
+								<li class="error-li" id="codice_e" style="display:none"><p>Codice non trovato</p></li>
+								
+								<li>		
+									<div class="fileUpload" style="float:right">
+										<span>Scan</span>
+										<input type="file" id="inputImage" class="upload" name="file" accept="image/*">
+									</div>
+								</li>
+							</ol>
+						</fieldset>
+					</aside>
+				</form>
+			</section>
+
+	</body>
+
+</html>

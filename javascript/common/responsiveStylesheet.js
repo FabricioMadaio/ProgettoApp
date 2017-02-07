@@ -115,8 +115,9 @@ function updateVisibility(className){
 
 /* fa sparire un menu di tipo dropdown*/
 function resetVisibility(className){
-	var menu = document.getElementsByClassName(className)[0];
-	menu.style.display="none";
+		var menu = document.getElementsByClassName(className);
+		for(var i=0;i<menu.length;i++)
+		menu[i].style.display="none";
 }
 
 /* blocca la propagazione degli eventi nei blocchi sottostanti*/

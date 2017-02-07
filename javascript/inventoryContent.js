@@ -9,7 +9,7 @@
 *********************************************************************/
 
 /*inizializza la pagina caricando gli elementi HTML nella tabella*/
- function loadInventoryContent(idInventory){
+ function loadInventoryContent(idInventory,viewOnly){
 	
 	var params = getSearchParams();
 	
@@ -20,13 +20,13 @@
 	
 	loadDoc(
 		function(xml){
-			loadXMLItems(xml,idInventory);
+			loadXMLItems(xml,idInventory,viewOnly);
 		}
 	,"itemListRetrieve.php",params);
  }
  
  /*carica il contenuto del catalogo da xml nella tabella catalogTable*/
- function loadXMLItems(xml,inventory) {
+ function loadXMLItems(xml,inventory,viewOnly) {
 			
 		var i;
 		var xmlDoc = xml.responseXML;
@@ -45,7 +45,7 @@
 			item.name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 			item.imgUrl = x[i].getElementsByTagName("img")[0].childNodes[0].nodeValue;
 			item.amount = x[i].getElementsByTagName("amount")[0].childNodes[0].nodeValue;
-			list.innerHTML+=itemString(item,inventory);
+			list.innerHTML+=itemString(item,inventory,viewOnly);
 		}
 		
 		//aggiorno le dimensioni
@@ -54,22 +54,30 @@
 
 
  /*genera il codice HTML del singolo prodotto*/
-function itemString(item,inventory){
+function itemString(item,inventory,viewOnly){
 
 	var detailsUrl ="../productsDetails/productsDetailsControl.php?id="+item.idProdotto+"&inventory="+inventory;
 	
-	return "<div class='inventoryElem'>"+
-				"<a class='removeItemButton' onClick=deleteProductFromInventory("+item.idProdotto+","+item.idInventario+")>×</a>"+	
-				"<div class='squareBox'>"+
+	itemStr = "<div class='inventoryElem'>";
+	
+	if(viewOnly==null)
+				itemStr+="<a class='removeItemButton' onClick=deleteProductFromInventory("+item.idProdotto+","+item.idInventario+")>×</a>";
+	
+	itemStr+="<div class='squareBox'>"+
 					"<a href='"+detailsUrl+"'>"+
 						"<div class='circle squareContent' style='background-color: #99a8c1;background-image: url(../uploads/20x20/"+item.imgUrl+");'>"+
 							"<div class='circle squareContent' style='margin: 0;border: none;background-color: transparent;background-image: url(../uploads/150x150/"+item.imgUrl+");'></div>"+
 						"</div><a>"+
-					"<div style='bottom: 0;right: 0;position: absolute;'>"+
-						"<input id='amount"+item.idProdotto+"' onChange=updateAmount("+item.idProdotto+","+item.idInventario+") type='number' class='smallInputNumber' value='"+item.amount+"' />"+
-				"</div></div>"+
+					"<div style='bottom: 0;right: 0;position: absolute;'>";
+	if(viewOnly==null)
+				itemStr+="<input id='amount"+item.idProdotto+"' onChange=updateAmount("+item.idProdotto+","+item.idInventario+") type='number' class='smallInputNumber' value='"+item.amount+"'/>";
+		else
+				itemStr+="<input type='number' class='smallInputNumber' value='"+item.amount+"' disabled/>";
+	
+	itemStr+="</div></div>"+
 				"<span class='inventoryName'>"+item.name+"</span>"+	
-			"</div>";	
+			"</div>";
+	return itemStr;			
  }
 
 /* chiama il servizio di creazione nuovo inventario*/ 
