@@ -35,7 +35,7 @@
 			  </div>
 			
 		</li>
-		<li ><a href=<?php echo "'".ROOT."'"; ?> style="background-color:inherit"class="paragraph-header">Company Inventory</a></li>
+		<li ><a href=<?php echo "'".ROOT."'"; ?> style="background-color:inherit"class="paragraph-header">Inventarium</p></li>
 		
 
 		<li class = "fullmenu">
